@@ -1,0 +1,81 @@
+--- 
+title: "Portfólio Gabriel Maciel"
+author: "Gabriel Maciel"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is a minimal example of using the bookdown package to write a book.
+  The HTML output format for this example is bookdown::gitbook,
+  set in the _output.yml file.
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# Sobre Mim
+
+![](C:/Users/gabri/Documents/Projetos/Portfolio/Gabriel Maciel.jpeg){width=300px}
+
+Olá, bem vindo ao meu portfólio de ciência de dados, nele eu vou falar um pouco sobre minha relação com estatística e ciência de dados, mostrar minhas habilidades e experiências profissionais.
+
+E-mail: gabrielmacieldias@hotmail.com
+
+Celular: (31) 98905-9541
+
+## Curiosidades
+
+Meu nome é Gabriel Maciel Dias, tenho 23 anos e moro na cidade de Belo Horizonte.
+
+Como todo aluno bom em matemática no ensino médio eu me imaginava fazendo faculdade de engenharia, entretanto acabei conhecendo o curso de Estatística na mostra de profissões da UFMG, nela me mostraram um pouco de como a estatística está presente em nossa vida.
+
+Em 2016 fiz o Enem e em 2017 entrei no curso de Estatística, desde então me apaixonei pela área e agora luto diariamente para tentar aprender mais e mais todos os dias.
+
+## Formação
+
+Bacharel em Estatística na Universidade Federal de Minas Gerais (UFMG) 2017 - 2021
+
+## Experiência Profissional
+
+Desde que comecei na graduação passei por alguns estágios em áreas diferentes. Atualmente trabalho como Assistente de Crédito no Banco Semear e também como cientista de dados na startup Sua Rua.
+
+### Estagiário Hospital Odilon Behrens - Abril/2018 à Outubro/2018
+
+Responsável pela confecção de relatórios mensais, além do atendimento de demanda de dados, fazendo a retirada  deles em um banco específico do hospital. Durante esse período de trabalho elaborei alguns códigos na linguagem de programação R com o objetivo de aperfeiçoar relatórios e análises de dados.
+
+### Estagiário no Setor de Estatística da Reitoria da UFMG - Novembro/2018 à Junho/2020
+
+Responsável pela elaboração de relatórios com análises descritivas e modelos de regressão, com finalidade de  analisar o perfil e o desempenho dos estudantes da UFMG e divulgar o resultado em sites da universidade. Além  disso, eram atendidos demandas de dados feitas por funcionários da universidade. Neste período os relatórios foram feitos usando o software R em conjunto com o R Markdown, Latex e excel.
+
+### Estagiário de Crédito no Banco de Desenvolvimento de Minas Gerais – Julho/2020 à Dezembro/2020
+
+Responsável pela conferência de planilhas de classificação de risco e criação de programa em R para automatizar determinadas conferências de dados. Além disso, também faço trabalhos com simulações (em Python e R) de  carteiras de crédito para prever possíveis perdas.
+
+### Estagiário de Crédito no Banco BS2 – Janeiro/2021 à Agosto/2021
+
+Responsável pelos atendimentos de ordens de serviço relacionado a dúvidas sobre análise de crédito além verificar  como está o andamento de uma solicitação de crédito dentro do sistema do banco. Além disso, também trabalho na confecção de relatórios Backtest em R em conjunto com R Markdown com base de dados retiradas do SQL Server para verificar como a esteira de crédito está funcionando e se ela está tomando boas decisões de previsão.
+
+### Assistente de Crédito no Banco Semear - Setembro/2021 - Atualmente
+
+Responsável por criação de dashboards para tomada de decisões usando dados de carteira e esteira de crédito. Participo de comitês de crédito, reuniões com fornecedores de dados e de modelos e reuniões com lojistas do banco.
+Faço também rateio e pagamento de fornecedores, estudo de base de dados para pré aprovado, bem como sugestões de análises que podem ajudar na resolução de problemas de negócio.
+Todas as análises faço através do software R em conjunto com o Shiny e Excel.
+
+### Cientista de Dados na Sua Rua - Agosto/2021 - Atualmente
+
+Nessa startup trabalho com construção de modelos de dados geográficos, trabalhando com R e QGis, além disso atuo coletando dados e criando robôs para fazer Web Scrapping.
+
+## Habilidades
+
+Programação avançada em R
+
+Criação de relatórios com R Markdown
+
+Criação de Dashboards com Shiny
+
+Inglês intermediário
+
+Pacote Office
+

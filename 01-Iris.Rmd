@@ -2,6 +2,162 @@
 
 # Projetos
 
+Abaixo tenho alguns projetos análises de dados que fiz para treinar algumas habilidades.
+
 ## Banco Iris
 
+Para primeira análise não tinha como ser diferente, vou começar com o dataset Iris, que é uma das bases de dados mais utilizadas para fazer análises básicas.
+
+Para verificar a estrutura do banco de dados iris podemos usar a função "head":
+
+
+```{r}
+
+head(iris)
+
+```
+
+Usando a função "head" podemos ver as primeiras linhas da base de dados e suas colunas.
+
+Segundo o [UCI Machine Learning](https://archive.ics.uci.edu/ml/datasets/iris), a base do Iris contém ao todo 150 linhas com 5 colunas, sendo:
+
+ - Sepal.Length = comprimento das sépalas (em cm);
+ - Sepal.Width = largura das sépalas (em cm);
+ - Petal.Lengt = comprimento das pétalas (em cm);
+ - Petal.Width = largura das pétalas (em cm);
+ - Species = espécie das plantas;
+
+Para saber com qual análise posso começar vou verificar antes as classes das variáveis usando a função "glimpse" do pacote "dplyr".
+
+```{r message=FALSE}
+
+# Carregando a função dplyr
+
+library(dplyr)
+
+glimpse(iris)
+
+```
+
+Sabendo que as classes são númericas vou utilizar o "summary" para uma visão geral.
+
+```{r}
+
+summary(iris[,1:4])
+
+```
+
+Ao analisar os resultados pode-se notar que o comprimento das sépalas e pétalas é maior do que a largura dos mesmos.
+
+Após observar brevemente o banco Iris gostaria de responder as seguintes perguntas:
+
+- O tamanho de sépala e as espécies influenciam no tamanho de pétala?
+- Se sim, qual é essa relação?
+
+### Análise descritiva
+
+Para responder essa pergunta vou começar com análise descritivas, que podem ser simples mas que em muitos casos já conseguem identificar informações valiosas
+
+Vou partir do pressuposto que a média entre comprimento e largura de sépalas e pétalas é um bom indicador do seu tamanho, então farei isso no R.
+
+```{r}
+
+iris <- iris %>%
+  mutate(media_petala = (Petal.Length+Petal.Width)/2, # Média das pétalas
+         media_sepala = (Sepal.Length+Sepal.Width)/2) %>% # Média das sépalas
+  select(media_petala,media_sepala,Species)
+
+head(iris, 5)
+
+```
+
+Podemos ver acima como ficou o banco de dados agora com apenas 3 variáveis.
+
+Primeiramente farei um gráfico para verificar visualmente se há uma possível relação entre a média de comprimento e largura das pétalas e sépalas.
+
+```{r message=FALSE}
+
+# Carregando a função do ggplot2
+
+library(ggplot2)
+
+ggplot(iris) +
+  geom_point(aes(x = media_sepala,y = media_petala)) +
+  labs(title = "Relação Pétalas e Sépalas",
+       x = "Média Sépalas",
+       y = "Média Pétalas") +
+  theme_bw()
+
+```
+
+É possível notar que parece existir alguma relação, porém o efeito das espécies não nos permite enxergar isso da melhor forma, então vou segmentar o gráfico de acordo com a espécie.
+
+
+```{r}
+
+ggplot(iris) +
+  geom_point(aes(x = media_sepala,y = media_petala)) +
+  labs(title = "Relação Pétalas e Sépalas",
+       x = "Média Sépalas",
+       y = "Média Pétalas") +
+  theme_bw() +
+  facet_grid(~ Species)
+  
+
+```
+
+Agora podemos notar que as espécies parecem influenciar no tamanho das pétalas e sépalas, visto que os pontos se encontram em locais distintos dos gráficos. Além disso, nota-se possível relação positiva entre tamanho de sépalas e pétalas nas espécies versicolor e virginica, já a setosa não apresenta graficamente essa relação.
+
+### Análise de Regressão
+
+Para avaliar se realmente existe essa relação estatística entre as pétalas, sépalas e espécie de planta eu vou usar a técnica de regressão linear.
+
+```{r}
+
+# Usando a função lm para ajustar o modelo
+
+fit <- lm(media_petala~media_sepala+Species, data = iris)
+
+# Usando a função summary para avaliar resultados dos ajustes
+
+summary(fit)
+
+```
+
+Acima temos alguns resultados interessantes, primeiramente é possível notar que o tamanho médio das sépalas e a espécie influencia no tamanho médio das pétalas, chego nessa conclusão pois o p-valor do modelos para cada um das variáveis é menor que 0,05.
+
+A cada unidade que aumentamos no tamanho médio das sépalas, 0,51 é adicionado no tamanho médio das pétalas. Já quanto as espécies, o tamanho das pétalas na espécie Versicolor é 1,86 vezes maior que na espécie Setosa (que está oculto nos resultados) enquanto as pétalas na espécie Virginica são 2,64 vezes maiores que na Setosa.
+
+Além disso, o R² foi de 0,9744, isso indica que aproximadamente 97% da variação do tamanho das pétalas é explicada pelo tamanho das sépalas e espécie.
+
+Antes de chegar a uma conclusão final dos resultados devemos verificar algumas suposições. Para o modelo de regressão linear é necessário normalidade e homocedasticidade dos resíduos.
+
+```{r}
+
+# Teste de normalidade de Shapiro Wilk
+
+shapiro.test(fit$residuals)
+
+```
+
+O p-valor do teste de Shapiro Wilk foi de 0,7868, dessa forma concluímos que os resíduos seguem a distribuição normal.
+
+```{r message=FALSE}
+
+# Verificação de homocedasticidade
+
+plot(fit$fitted.values,fit$residuals)
+
+```
+
+Acima temos o gráfico dos resíduos pelo valores ajustados, a dispersão dos resíduos ao longo do eixo dos valores ajustados parece ser a mesma, esse é um grande indicativo de homocedasticidade dos resíduos, ou seja, variância constante.
+
+### Conclusão
+
+Com os pressupostos verificados posso chegar a uma conclusão respondendo as perguntas feitas no início.
+
+O tamanho de sépala e tipo de espécie influenciam sim no tamanho das pétalas, e essa relação acontece da seguinte forma:
+
+  - O tamanho de sépala tem uma relação positiva com o tamanho das pétalas, ou seja, quanto maior são as sépalas, maiores vão ser as pétalas.
+  - As espécies Virginica e Versicolor apresentam tamanho de pétala maior em relação a espécie Setosa
   

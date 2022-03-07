@@ -25,13 +25,17 @@ E-mail: gabrielmacieldias@hotmail.com
 
 Celular: (31) 98905-9541
 
-## Curiosidades
+## Quem sou eu?
 
 Meu nome é Gabriel Maciel Dias, tenho 23 anos e moro na cidade de Belo Horizonte.
 
-Como todo aluno bom em matemática no ensino médio eu me imaginava fazendo faculdade de engenharia, entretanto acabei conhecendo o curso de Estatística na mostra de profissões da UFMG, nela me mostraram um pouco de como a estatística está presente em nossa vida.
+Ingressei no curso de Estatística na UFMG em 2017 através do Enem, onde tive o primeiro contato com o mundo dos dados, desde então venho aprendendo sobre ciência de dados e como ela pode resolver problemas de diversas áreas.
 
-Em 2016 fiz o Enem e em 2017 entrei no curso de Estatística, desde então me apaixonei pela área e agora luto diariamente para tentar aprender mais e mais todos os dias.
+Durante minha trajetória na graduação passei por estágios em diferentes áreas, comecei com uma rápida passagem no Hospital Odilon Behrens, no qual fazia análises voltada para saúde, m seguida fiz a transição para a própria UFMG, trabalhando como estagiário na Prograd fazendo grandes relatórios internos e públicos para avaliar qual é performace dos dicentes da UFMG, bem como o perfil dos ingressantes pelo SiSU.
+
+Depois desses estágios comecei minha carreira na área de crédito, iniciei no Banco BDMG onde vi os primeiros modelos de risco, modelagem de perda e estudos de fraude voltados para pessoa jurídica. Trabalhei também no Banco BS2, vendo novamentes os modelos de crédito para pessoa jurídica e também para pessoa física, lá tive mais contato com os desenvolvedores que criavam as API´s e engenheiros de dados que preparavam os bancos de dados para as análises.
+
+Atualmente trabalho como Assistente de Crédito no Banco Semear, no qual posso ter ainda mais contato com as esteiras e modelos de créditos, aprendendo diariamente sobre a parte operacional e teórica do crédito.
 
 ## Formação
 
@@ -41,29 +45,41 @@ Bacharel em Estatística na Universidade Federal de Minas Gerais (UFMG) 2017 - 2
 
 Desde que comecei na graduação passei por alguns estágios em áreas diferentes. Atualmente trabalho como Assistente de Crédito no Banco Semear e também como cientista de dados na startup Sua Rua.
 
-### Estagiário Hospital Odilon Behrens - Abril/2018 à Outubro/2018
+### Hospital Odilon Behrens
+
+Cargo: Estagiário de Estatística - Abril/2018 à Outubro/2018
 
 Responsável pela confecção de relatórios mensais, além do atendimento de demanda de dados, fazendo a retirada  deles em um banco específico do hospital. Durante esse período de trabalho elaborei alguns códigos na linguagem de programação R com o objetivo de aperfeiçoar relatórios e análises de dados.
 
-### Estagiário no Setor de Estatística da Reitoria da UFMG - Novembro/2018 à Junho/2020
+### Prograd UFMG
+
+Cargo: Estagiário no Setor de Estatística da Prograd UFMG - Novembro/2018 à Junho/2020
 
 Responsável pela elaboração de relatórios com análises descritivas e modelos de regressão, com finalidade de  analisar o perfil e o desempenho dos estudantes da UFMG e divulgar o resultado em sites da universidade. Além  disso, eram atendidos demandas de dados feitas por funcionários da universidade. Neste período os relatórios foram feitos usando o software R em conjunto com o R Markdown, Latex e excel.
 
-### Estagiário de Crédito no Banco de Desenvolvimento de Minas Gerais – Julho/2020 à Dezembro/2020
+### Banco de Desenvolvimento de Minas Gerais - BDMG
 
-Responsável pela conferência de planilhas de classificação de risco e criação de programa em R para automatizar determinadas conferências de dados. Além disso, também faço trabalhos com simulações (em Python e R) de  carteiras de crédito para prever possíveis perdas.
+Cargo: Estagiário de Crédito – Julho/2020 à Dezembro/2020
 
-### Estagiário de Crédito no Banco BS2 – Janeiro/2021 à Agosto/2021
+Responsável pela conferência de planilhas de classificação de risco e criação de programa em R para automatizar determinadas conferências de dados. Além disso, também faço trabalhos com simulações (em Python e R) de  carteiras de crédito para prever possíveis perdas. Fiz a criação de um programa em R que fazia a leitura e interpretação de PDF´s que verificavam possíveis anomalias, além disso, trabalhei diretamente com análise de fraude.
+
+### Banco BS2
+
+Cargo: Estagiário de Crédito – Janeiro/2021 à Agosto/2021
 
 Responsável pelos atendimentos de ordens de serviço relacionado a dúvidas sobre análise de crédito além verificar  como está o andamento de uma solicitação de crédito dentro do sistema do banco. Além disso, também trabalho na confecção de relatórios Backtest em R em conjunto com R Markdown com base de dados retiradas do SQL Server para verificar como a esteira de crédito está funcionando e se ela está tomando boas decisões de previsão.
 
-### Assistente de Crédito no Banco Semear - Setembro/2021 - Atualmente
+### Banco Semear
+
+Cargo: Assistente de Crédito - Setembro/2021 - Atualmente
 
 Responsável por criação de dashboards para tomada de decisões usando dados de carteira e esteira de crédito. Participo de comitês de crédito, reuniões com fornecedores de dados e de modelos e reuniões com lojistas do banco.
 Faço também rateio e pagamento de fornecedores, estudo de base de dados para pré aprovado, bem como sugestões de análises que podem ajudar na resolução de problemas de negócio.
 Todas as análises faço através do software R em conjunto com o Shiny e Excel.
 
-### Cientista de Dados na Sua Rua - Agosto/2021 - Atualmente
+### Sua Rua
+
+Cargo: Cientista de Dados - Agosto/2021 - Atualmente
 
 Nessa startup trabalho com construção de modelos de dados geográficos, trabalhando com R e QGis, além disso atuo coletando dados e criando robôs para fazer Web Scrapping.
 

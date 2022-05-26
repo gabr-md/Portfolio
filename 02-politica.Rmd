@@ -14,7 +14,7 @@ Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi real
 
 Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.
 
-```{r, eval=T, echo = T}
+```{r, eval=T, echo = F}
 
 # Pacotes
 

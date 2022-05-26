@@ -352,11 +352,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>O novo diretor de crédito da Dorela, que havia atuado como gestor de credito de uma grande cadeira verejista de moda e tinha experiência no uso de modelos estatísticos decidiu desenvolver um modelo para esse caso.</p>
 <p>Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi realizado no período de julho de 2007 a junho de 2008, ele considerou a performance do cliente nos 6 meses seguintes, e classificou como mau cliente aquele que teve qualquer atraso acima de 30 dias, caso contrário era classificado com bom cliente.”</p>
 <p>Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="projetos.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacotes</span></span>
-<span id="cb18-2"><a href="projetos.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="projetos.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb18-4"><a href="projetos.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb18-5"><a href="projetos.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pROC)</span></code></pre></div>
 <pre><code>## Warning: package &#39;pROC&#39; was built under R version 4.1.3</code></pre>
 <pre><code>## Type &#39;citation(&quot;pROC&quot;)&#39; for a citation.</code></pre>
 <pre><code>## 
@@ -364,23 +359,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
 ## 
 ##     cov, smooth, var</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="projetos.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb23-2"><a href="projetos.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="projetos.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span></code></pre></div>
 <div id="banco-de-dados" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Banco de Dados<a href="projetos.html#banco-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="projetos.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo dataset</span></span>
-<span id="cb24-2"><a href="projetos.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="projetos.html#cb24-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">gabri</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">Projetos</span><span class="sc">\\</span><span class="st">Crédito</span><span class="sc">\\</span><span class="st">Laredo</span><span class="sc">\\</span><span class="st">351.xls&quot;</span>)</span>
-<span id="cb24-4"><a href="projetos.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="projetos.html#cb24-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb24-6"><a href="projetos.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICÇÃO,NÃOFICÇAO,AUTOAJUDA,CATEG,STATUS)</span>
-<span id="cb24-7"><a href="projetos.html#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-8"><a href="projetos.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">#---------------</span></span>
-<span id="cb24-9"><a href="projetos.html#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="projetos.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Tipo das colunas da base de dados</span></span>
-<span id="cb24-11"><a href="projetos.html#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-12"><a href="projetos.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="projetos.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo dataset</span></span>
+<span id="cb22-2"><a href="projetos.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="projetos.html#cb22-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">gabri</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">Projetos</span><span class="sc">\\</span><span class="st">Crédito</span><span class="sc">\\</span><span class="st">Laredo</span><span class="sc">\\</span><span class="st">351.xls&quot;</span>)</span>
+<span id="cb22-4"><a href="projetos.html#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="projetos.html#cb22-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb22-6"><a href="projetos.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICÇÃO,NÃOFICÇAO,AUTOAJUDA,CATEG,STATUS)</span>
+<span id="cb22-7"><a href="projetos.html#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="projetos.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#---------------</span></span>
+<span id="cb22-9"><a href="projetos.html#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-10"><a href="projetos.html#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Tipo das colunas da base de dados</span></span>
+<span id="cb22-11"><a href="projetos.html#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="projetos.html#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code></pre></div>
 <pre><code>## Rows: 3,000
 ## Columns: 12
 ## $ IDADE     &lt;dbl&gt; 26, 43, 33, 39, 43, 40, 39, 50, 51, 45, 67, 34, 49, 59, 41, ~

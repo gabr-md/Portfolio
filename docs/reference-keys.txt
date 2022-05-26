@@ -14,5 +14,5 @@ banco-iris
 análise-descritiva
 análise-de-regressão
 conclusão
-outro-banco
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
+data-sciente-e-credit-scoring
+banco-de-dados

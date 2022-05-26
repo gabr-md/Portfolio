@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Projetos | Portfólio Gabriel Maciel</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Projetos | Portfólio Gabriel Maciel" />
@@ -15,22 +15,22 @@ set in the _output.yml file.</p>" />
   
   
   <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="2 Projetos | Portfólio Gabriel Maciel" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::gitbook,
-set in the _output.yml file.</p>" />
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
   
 
 <meta name="author" content="Gabriel Maciel" />
 
 
-<meta name="date" content="2022-03-06" />
+<meta name="date" content="2022-05-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -144,7 +144,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Portfólio Gabriel Maciel</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like <span>https://bookdown.org/yihui/bookdown</span><span></span></a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre Mim<span></span></a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quem-sou-eu"><i class="fa fa-check"></i><b>1.1</b> Quem sou eu?<span></span></a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#formação"><i class="fa fa-check"></i><b>1.2</b> Formação<span></span></a></li>
@@ -167,7 +167,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.2" data-path="projetos.html"><a href="projetos.html#análise-de-regressão"><i class="fa fa-check"></i><b>2.1.2</b> Análise de Regressão<span></span></a></li>
 <li class="chapter" data-level="2.1.3" data-path="projetos.html"><a href="projetos.html#conclusão"><i class="fa fa-check"></i><b>2.1.3</b> Conclusão<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="projetos.html"><a href="projetos.html#outro-banco"><i class="fa fa-check"></i><b>2.2</b> Outro banco<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="projetos.html"><a href="projetos.html#data-sciente-e-credit-scoring"><i class="fa fa-check"></i><b>2.2</b> Data Sciente e credit scoring<span></span></a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="projetos.html"><a href="projetos.html#banco-de-dados"><i class="fa fa-check"></i><b>2.2.1</b> Banco de Dados<span></span></a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -216,9 +219,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Para saber com qual análise posso começar vou verificar antes as classes das variáveis usando a função “glimpse” do pacote “dplyr.”</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="projetos.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando a função dplyr</span></span>
 <span id="cb3-2"><a href="projetos.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="projetos.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-4"><a href="projetos.html#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="projetos.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(iris)</span></code></pre></div>
+<span id="cb3-3"><a href="projetos.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.1.3</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="projetos.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(iris)</span></code></pre></div>
 <pre><code>## Rows: 150
 ## Columns: 5
 ## $ Sepal.Length &lt;dbl&gt; 5.1, 4.9, 4.7, 4.6, 5.0, 5.4, 4.6, 5.0, 4.4, 4.9, 5.4, 4.~
@@ -227,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ Petal.Width  &lt;dbl&gt; 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.3, 0.2, 0.2, 0.1, 0.2, 0.~
 ## $ Species      &lt;fct&gt; setosa, setosa, setosa, setosa, setosa, setosa, setosa, s~</code></pre>
 <p>Sabendo que as classes são númericas vou utilizar o “summary” para uma visão geral.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="projetos.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="projetos.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(iris[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
 <pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
 ##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
 ##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
@@ -245,12 +248,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.1.1</span> Análise descritiva<a href="projetos.html#análise-descritiva" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para responder essa pergunta vou começar com análise descritivas, que podem ser simples mas que em muitos casos já conseguem identificar informações valiosas</p>
 <p>Vou partir do pressuposto que a média entre comprimento e largura de sépalas e pétalas é um bom indicador do seu tamanho, então farei isso no R.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="projetos.html#cb7-1" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="projetos.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">media_petala =</span> (Petal.Length<span class="sc">+</span>Petal.Width)<span class="sc">/</span><span class="dv">2</span>, <span class="co"># Média das pétalas</span></span>
-<span id="cb7-3"><a href="projetos.html#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">media_sepala =</span> (Sepal.Length<span class="sc">+</span>Sepal.Width)<span class="sc">/</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co"># Média das sépalas</span></span>
-<span id="cb7-4"><a href="projetos.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(media_petala,media_sepala,Species)</span>
-<span id="cb7-5"><a href="projetos.html#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="projetos.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="projetos.html#cb9-1" aria-hidden="true" tabindex="-1"></a>iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="projetos.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">media_petala =</span> (Petal.Length<span class="sc">+</span>Petal.Width)<span class="sc">/</span><span class="dv">2</span>, <span class="co"># Média das pétalas</span></span>
+<span id="cb9-3"><a href="projetos.html#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">media_sepala =</span> (Sepal.Length<span class="sc">+</span>Sepal.Width)<span class="sc">/</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> <span class="co"># Média das sépalas</span></span>
+<span id="cb9-4"><a href="projetos.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(media_petala,media_sepala,Species)</span>
+<span id="cb9-5"><a href="projetos.html#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="projetos.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##   media_petala media_sepala Species
 ## 1         0.80         4.30  setosa
 ## 2         0.80         3.95  setosa
@@ -259,38 +262,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5         0.80         4.30  setosa</code></pre>
 <p>Podemos ver acima como ficou o banco de dados agora com apenas 3 variáveis.</p>
 <p>Primeiramente farei um gráfico para verificar visualmente se há uma possível relação entre a média de comprimento e largura das pétalas e sépalas.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="projetos.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando a função do ggplot2</span></span>
-<span id="cb9-2"><a href="projetos.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="projetos.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb9-4"><a href="projetos.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="projetos.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris) <span class="sc">+</span></span>
-<span id="cb9-6"><a href="projetos.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> media_sepala,<span class="at">y =</span> media_petala)) <span class="sc">+</span></span>
-<span id="cb9-7"><a href="projetos.html#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relação Pétalas e Sépalas&quot;</span>,</span>
-<span id="cb9-8"><a href="projetos.html#cb9-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Média Sépalas&quot;</span>,</span>
-<span id="cb9-9"><a href="projetos.html#cb9-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Média Pétalas&quot;</span>) <span class="sc">+</span></span>
-<span id="cb9-10"><a href="projetos.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="projetos.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando a função do ggplot2</span></span>
+<span id="cb11-2"><a href="projetos.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="projetos.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-4"><a href="projetos.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="projetos.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="projetos.html#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> media_sepala,<span class="at">y =</span> media_petala)) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="projetos.html#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relação Pétalas e Sépalas&quot;</span>,</span>
+<span id="cb11-8"><a href="projetos.html#cb11-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Média Sépalas&quot;</span>,</span>
+<span id="cb11-9"><a href="projetos.html#cb11-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Média Pétalas&quot;</span>) <span class="sc">+</span></span>
+<span id="cb11-10"><a href="projetos.html#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>É possível notar que parece existir alguma relação, porém o efeito das espécies não nos permite enxergar isso da melhor forma, então vou segmentar o gráfico de acordo com a espécie.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="projetos.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris) <span class="sc">+</span></span>
-<span id="cb10-2"><a href="projetos.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> media_sepala,<span class="at">y =</span> media_petala)) <span class="sc">+</span></span>
-<span id="cb10-3"><a href="projetos.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relação Pétalas e Sépalas&quot;</span>,</span>
-<span id="cb10-4"><a href="projetos.html#cb10-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Média Sépalas&quot;</span>,</span>
-<span id="cb10-5"><a href="projetos.html#cb10-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Média Pétalas&quot;</span>) <span class="sc">+</span></span>
-<span id="cb10-6"><a href="projetos.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb10-7"><a href="projetos.html#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span> Species)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="projetos.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="projetos.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> media_sepala,<span class="at">y =</span> media_petala)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="projetos.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Relação Pétalas e Sépalas&quot;</span>,</span>
+<span id="cb12-4"><a href="projetos.html#cb12-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Média Sépalas&quot;</span>,</span>
+<span id="cb12-5"><a href="projetos.html#cb12-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Média Pétalas&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="projetos.html#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb12-7"><a href="projetos.html#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span> Species)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Agora podemos notar que as espécies parecem influenciar no tamanho das pétalas e sépalas, visto que os pontos se encontram em locais distintos dos gráficos. Além disso, nota-se possível relação positiva entre tamanho de sépalas e pétalas nas espécies versicolor e virginica, já a setosa não apresenta graficamente essa relação.</p>
 </div>
 <div id="análise-de-regressão" class="section level3 hasAnchor" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Análise de Regressão<a href="projetos.html#análise-de-regressão" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Para avaliar se realmente existe essa relação estatística entre as pétalas, sépalas e espécie de planta eu vou usar a técnica de regressão linear.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="projetos.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando a função lm para ajustar o modelo</span></span>
-<span id="cb11-2"><a href="projetos.html#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="projetos.html#cb11-3" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(media_petala<span class="sc">~</span>media_sepala<span class="sc">+</span>Species, <span class="at">data =</span> iris)</span>
-<span id="cb11-4"><a href="projetos.html#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="projetos.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando a função summary para avaliar resultados dos ajustes</span></span>
-<span id="cb11-6"><a href="projetos.html#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="projetos.html#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="projetos.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando a função lm para ajustar o modelo</span></span>
+<span id="cb13-2"><a href="projetos.html#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="projetos.html#cb13-3" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(media_petala<span class="sc">~</span>media_sepala<span class="sc">+</span>Species, <span class="at">data =</span> iris)</span>
+<span id="cb13-4"><a href="projetos.html#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="projetos.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando a função summary para avaliar resultados dos ajustes</span></span>
+<span id="cb13-6"><a href="projetos.html#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="projetos.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = media_petala ~ media_sepala + Species, data = iris)
@@ -315,18 +318,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A cada unidade que aumentamos no tamanho médio das sépalas, 0,51 é adicionado no tamanho médio das pétalas. Já quanto as espécies, o tamanho das pétalas na espécie Versicolor é 1,86 vezes maior que na espécie Setosa (que está oculto nos resultados) enquanto as pétalas na espécie Virginica são 2,64 vezes maiores que na Setosa.</p>
 <p>Além disso, o R² foi de 0,9744, isso indica que aproximadamente 97% da variação do tamanho das pétalas é explicada pelo tamanho das sépalas e espécie.</p>
 <p>Antes de chegar a uma conclusão final dos resultados devemos verificar algumas suposições. Para o modelo de regressão linear é necessário normalidade e homocedasticidade dos resíduos.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="projetos.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de normalidade de Shapiro Wilk</span></span>
-<span id="cb13-2"><a href="projetos.html#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="projetos.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(fit<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="projetos.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Teste de normalidade de Shapiro Wilk</span></span>
+<span id="cb15-2"><a href="projetos.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="projetos.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(fit<span class="sc">$</span>residuals)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  fit$residuals
 ## W = 0.99395, p-value = 0.7868</code></pre>
 <p>O p-valor do teste de Shapiro Wilk foi de 0,7868, dessa forma concluímos que os resíduos seguem a distribuição normal.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="projetos.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificação de homocedasticidade</span></span>
-<span id="cb15-2"><a href="projetos.html#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="projetos.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit<span class="sc">$</span>fitted.values,fit<span class="sc">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="projetos.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificação de homocedasticidade</span></span>
+<span id="cb17-2"><a href="projetos.html#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="projetos.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit<span class="sc">$</span>fitted.values,fit<span class="sc">$</span>residuals)</span></code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Acima temos o gráfico dos resíduos pelo valores ajustados, a dispersão dos resíduos ao longo do eixo dos valores ajustados parece ser a mesma, esse é um grande indicativo de homocedasticidade dos resíduos, ou seja, variância constante.</p>
 </div>
@@ -341,9 +344,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </div>
-<div id="outro-banco" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Outro banco<a href="projetos.html#outro-banco" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-sciente-e-credit-scoring" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Data Sciente e credit scoring<a href="projetos.html#data-sciente-e-credit-scoring" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre isso, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre esse tema e no final fornece alguns bancos de dados e um “problema” que pode ser utilizado para colocar em prática o que é aprendido com a leitura. Aproveitei essa oportunidade e usei o problema passado para desenvolver um modelo e uma política de crédito que solucione o caso específico.</p>
+<p>Atividade proposta:</p>
+<p>“Livraria Dorela é uma cadeia de livrarias que tem quiosques nos principais supermercados das grandes capitais brasileiras. A Dorela passou a fazer o financiamento de livros, de acordo com um score definido de forma subjetiva, a taxa de rejeição era de 30% e a taxa aplicada era muito baixa, visto isso, os resultados não eram satisfatórios.</p>
+<p>O novo diretor de crédito da Dorela, que havia atuado como gestor de credito de uma grande cadeira verejista de moda e tinha experiência no uso de modelos estatísticos decidiu desenvolver um modelo para esse caso.</p>
+<p>Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi realizado no período de julho de 2007 a junho de 2008, ele considerou a performance do cliente nos 6 meses seguintes, e classificou como mau cliente aquele que teve qualquer atraso acima de 30 dias, caso contrário era classificado com bom cliente.”</p>
+<p>Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="projetos.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pacotes</span></span>
+<span id="cb18-2"><a href="projetos.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="projetos.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb18-4"><a href="projetos.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb18-5"><a href="projetos.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pROC)</span></code></pre></div>
+<pre><code>## Warning: package &#39;pROC&#39; was built under R version 4.1.3</code></pre>
+<pre><code>## Type &#39;citation(&quot;pROC&quot;)&#39; for a citation.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;pROC&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     cov, smooth, var</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="projetos.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb23-2"><a href="projetos.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="projetos.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span></code></pre></div>
+<div id="banco-de-dados" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Banco de Dados<a href="projetos.html#banco-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="projetos.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo dataset</span></span>
+<span id="cb24-2"><a href="projetos.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="projetos.html#cb24-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">gabri</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">Projetos</span><span class="sc">\\</span><span class="st">Crédito</span><span class="sc">\\</span><span class="st">Laredo</span><span class="sc">\\</span><span class="st">351.xls&quot;</span>)</span>
+<span id="cb24-4"><a href="projetos.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="projetos.html#cb24-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb24-6"><a href="projetos.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICÇÃO,NÃOFICÇAO,AUTOAJUDA,CATEG,STATUS)</span>
+<span id="cb24-7"><a href="projetos.html#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="projetos.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">#---------------</span></span>
+<span id="cb24-9"><a href="projetos.html#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="projetos.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Tipo das colunas da base de dados</span></span>
+<span id="cb24-11"><a href="projetos.html#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="projetos.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code></pre></div>
+<pre><code>## Rows: 3,000
+## Columns: 12
+## $ IDADE     &lt;dbl&gt; 26, 43, 33, 39, 43, 40, 39, 50, 51, 45, 67, 34, 49, 59, 41, ~
+## $ UNIFED    &lt;chr&gt; &quot;SP&quot;, &quot;SP&quot;, &quot;OUTROS&quot;, &quot;RJ&quot;, &quot;OUTROS&quot;, &quot;RJ&quot;, &quot;SP&quot;, &quot;SP&quot;, &quot;OUT~
+## $ FONE      &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM~
+## $ INSTRU    &lt;chr&gt; &quot;PRIM &amp; SEC&quot;, &quot;SUP&quot;, &quot;SUP&quot;, &quot;MV&quot;, &quot;PRIM &amp; SEC&quot;, &quot;PRIM &amp; SEC&quot;~
+## $ CARTAO    &lt;chr&gt; &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;MV&quot;, &quot;SIM&quot;, &quot;SIM&quot;~
+## $ RESTR     &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM~
+## $ RESID     &lt;chr&gt; &quot;PROP&quot;, &quot;ALUG&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PRO~
+## $ FICÇÃO    &lt;chr&gt; &quot;SIM&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM~
+## $ NÃOFICÇAO &lt;chr&gt; &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO~
+## $ AUTOAJUDA &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO~
+## $ CATEG     &lt;dbl&gt; 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, ~
+## $ STATUS    &lt;chr&gt; &quot;MAU&quot;, &quot;MAU&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;MAU&quot;, &quot;BOM&quot;, &quot;BOM~</code></pre>
 
+</div>
 </div>
 </div>
             </section>

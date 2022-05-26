@@ -4,13 +4,13 @@ author: "Gabriel Maciel"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib, packages.bib]
-# url: your book url like https://bookdown.org/yihui/bookdown
-# cover-image: path to the social sharing image like images/cover.jpg
+bibliography:
+- book.bib
+- packages.bib
 description: |
   This is a minimal example of using the bookdown package to write a book.
-  The HTML output format for this example is bookdown::gitbook,
   set in the _output.yml file.
+  The HTML output format for this example is bookdown::gitbook,
 link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
@@ -43,7 +43,7 @@ Bacharel em Estatística na Universidade Federal de Minas Gerais (UFMG) 2017 - 2
 
 ## Experiência Profissional
 
-Desde que comecei na graduação passei por alguns estágios em áreas diferentes. Atualmente trabalho como Assistente de Crédito no Banco Semear e também como cientista de dados na startup Sua Rua.
+Desde que comecei na graduação passei por alguns estágios em áreas diferentes. Atualmente trabalho como Assistente de Crédito no Banco Semear e também como cientista de dados na Startup Sua Rua.
 
 ### Hospital Odilon Behrens
 

@@ -6,7 +6,7 @@
 ]{book}
 \title{Portfólio Gabriel Maciel}
 \author{Gabriel Maciel}
-\date{2022-03-06}
+\date{2022-05-25}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -158,7 +158,7 @@ Bacharel em Estatística na Universidade Federal de Minas Gerais (UFMG) 2017 - 2
 \hypertarget{experiuxeancia-profissional}{%
 \section{Experiência Profissional}\label{experiuxeancia-profissional}}
 
-Desde que comecei na graduação passei por alguns estágios em áreas diferentes. Atualmente trabalho como Assistente de Crédito no Banco Semear e também como cientista de dados na startup Sua Rua.
+Desde que comecei na graduação passei por alguns estágios em áreas diferentes. Atualmente trabalho como Assistente de Crédito no Banco Semear e também como cientista de dados na Startup Sua Rua.
 
 \hypertarget{hospital-odilon-behrens}{%
 \subsection{Hospital Odilon Behrens}\label{hospital-odilon-behrens}}
@@ -267,8 +267,18 @@ Para saber com qual análise posso começar vou verificar antes as classes das v
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(dplyr)}
+\CommentTok{\# Carregando a função dplyr}
 
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'dplyr' was built under R version 4.1.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{glimpse}\NormalTok{(iris)}
 \end{Highlighting}
 \end{Shaded}
@@ -346,6 +356,8 @@ Primeiramente farei um gráfico para verificar visualmente se há uma possível 
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Carregando a função do ggplot2}
+
 \FunctionTok{library}\NormalTok{(ggplot2)}
 
 \FunctionTok{ggplot}\NormalTok{(iris) }\SpecialCharTok{+}
@@ -358,7 +370,8 @@ Primeiramente farei um gráfico para verificar visualmente se há uma possível 
 \end{Shaded}
 
 \includegraphics{_main_files/figure-latex/unnamed-chunk-5-1.pdf}
-É possível notar que parece existir alguma relação, porém o efeito das espécies não nos permite enxergar essa relação, então vou segmentar meu gráfico de acordo com a espécie.
+
+É possível notar que parece existir alguma relação, porém o efeito das espécies não nos permite enxergar isso da melhor forma, então vou segmentar o gráfico de acordo com a espécie.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -379,7 +392,7 @@ Agora podemos notar que as espécies parecem influenciar no tamanho das pétalas
 \hypertarget{anuxe1lise-de-regressuxe3o}{%
 \subsection{Análise de Regressão}\label{anuxe1lise-de-regressuxe3o}}
 
-Para avaliar se realmente existe essa relação estatística entre as pétalas, sépalas e espécie de planta eu vou usar a técnica de regressão, que é robusta e nos ajuda em diversas situações.
+Para avaliar se realmente existe essa relação estatística entre as pétalas, sépalas e espécie de planta eu vou usar a técnica de regressão linear.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -418,11 +431,11 @@ Para avaliar se realmente existe essa relação estatística entre as pétalas, 
 
 Acima temos alguns resultados interessantes, primeiramente é possível notar que o tamanho médio das sépalas e a espécie influencia no tamanho médio das pétalas, chego nessa conclusão pois o p-valor do modelos para cada um das variáveis é menor que 0,05.
 
-A cada unidade que aumentamos no tamanho médio das sépalas, 0,51 é adicionado no tamanho médio das pétalas. Já quanto as espécies, o tamanho das pétalas na espécie Versicolor é 1,86 vezes maior que na espécie Setosa (que está oculto nos resultados) enquanto as pétalas na espécie Virginica é 2,64 vezes maior que na Setosa.
+A cada unidade que aumentamos no tamanho médio das sépalas, 0,51 é adicionado no tamanho médio das pétalas. Já quanto as espécies, o tamanho das pétalas na espécie Versicolor é 1,86 vezes maior que na espécie Setosa (que está oculto nos resultados) enquanto as pétalas na espécie Virginica são 2,64 vezes maiores que na Setosa.
 
-Além disso temos o resultado ajustado o R² de 0,9744, isso indica que aproximadamente 97\% da variação do tamanho das pétalas é explicada pelo tamanho das sépalas e a espécie.
+Além disso, o R² foi de 0,9744, isso indica que aproximadamente 97\% da variação do tamanho das pétalas é explicada pelo tamanho das sépalas e espécie.
 
-Antes de chegar a uma conclusão final dos resultados devemos verificar algumas suposições. Para o modelo de regressão polinomial é necessário normalidade e homocedasticidade dos resíduos.
+Antes de chegar a uma conclusão final dos resultados devemos verificar algumas suposições. Para o modelo de regressão linear é necessário normalidade e homocedasticidade dos resíduos.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -457,7 +470,7 @@ Acima temos o gráfico dos resíduos pelo valores ajustados, a dispersão dos re
 \hypertarget{conclusuxe3o}{%
 \subsection{Conclusão}\label{conclusuxe3o}}
 
-Após essa análise podemos responder as questões propostas no início do estudo.
+Com os pressupostos verificados posso chegar a uma conclusão respondendo as perguntas feitas no início.
 
 O tamanho de sépala e tipo de espécie influenciam sim no tamanho das pétalas, e essa relação acontece da seguinte forma:
 
@@ -466,11 +479,97 @@ O tamanho de sépala e tipo de espécie influenciam sim no tamanho das pétalas,
 \item
   O tamanho de sépala tem uma relação positiva com o tamanho das pétalas, ou seja, quanto maior são as sépalas, maiores vão ser as pétalas.
 \item
-  Além disso, as espécies Virginica e Versicolor apresentam influenciam com tamanho de pétala maior em relação as plantas da espécie Setosa.
+  As espécies Virginica e Versicolor apresentam tamanho de pétala maior em relação a espécie Setosa
 \end{itemize}
 
-\hypertarget{outro-banco}{%
-\section{Outro banco}\label{outro-banco}}
+\hypertarget{data-sciente-e-credit-scoring}{%
+\section{Data Sciente e credit scoring}\label{data-sciente-e-credit-scoring}}
+
+Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre isso, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre esse tema e no final fornece alguns bancos de dados e um ``problema'' que pode ser utilizado para colocar em prática o que é aprendido com a leitura. Aproveitei essa oportunidade e usei o problema passado para desenvolver um modelo e uma política de crédito que solucione o caso específico.
+
+Atividade proposta:
+
+``Livraria Dorela é uma cadeia de livrarias que tem quiosques nos principais supermercados das grandes capitais brasileiras. A Dorela passou a fazer o financiamento de livros, de acordo com um score definido de forma subjetiva, a taxa de rejeição era de 30\% e a taxa aplicada era muito baixa, visto isso, os resultados não eram satisfatórios.
+
+O novo diretor de crédito da Dorela, que havia atuado como gestor de credito de uma grande cadeira verejista de moda e tinha experiência no uso de modelos estatísticos decidiu desenvolver um modelo para esse caso.
+
+Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi realizado no período de julho de 2007 a junho de 2008, ele considerou a performance do cliente nos 6 meses seguintes, e classificou como mau cliente aquele que teve qualquer atraso acima de 30 dias, caso contrário era classificado com bom cliente.''
+
+Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Pacotes}
+
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(pROC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'pROC' was built under R version 4.1.3
+\end{verbatim}
+
+\begin{verbatim}
+## Type 'citation("pROC")' for a citation.
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## Attaching package: 'pROC'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     cov, smooth, var
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{12345}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{banco-de-dados}{%
+\subsection{Banco de Dados}\label{banco-de-dados}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Lendo dataset}
+
+\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\StringTok{"C:}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Users}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{gabri}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Documents}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Projetos}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Crédito}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Laredo}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{351.xls"}\NormalTok{)}
+
+\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{select}\NormalTok{(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICÇÃO,NÃOFICÇAO,AUTOAJUDA,CATEG,STATUS)}
+
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+
+\CommentTok{\# Tipo das colunas da base de dados}
+
+\FunctionTok{glimpse}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 3,000
+## Columns: 12
+## $ IDADE     <dbl> 26, 43, 33, 39, 43, 40, 39, 50, 51, 45, 67, 34, 49, 59, 41, ~
+## $ UNIFED    <chr> "SP", "SP", "OUTROS", "RJ", "OUTROS", "RJ", "SP", "SP", "OUT~
+## $ FONE      <chr> "SIM", "SIM", "SIM", "SIM", "SIM", "SIM", "SIM", "SIM", "SIM~
+## $ INSTRU    <chr> "PRIM & SEC", "SUP", "SUP", "MV", "PRIM & SEC", "PRIM & SEC"~
+## $ CARTAO    <chr> "SIM", "NAO", "NAO", "SIM", "SIM", "SIM", "MV", "SIM", "SIM"~
+## $ RESTR     <chr> "SIM", "SIM", "SIM", "NAO", "NAO", "NAO", "NAO", "NAO", "SIM~
+## $ RESID     <chr> "PROP", "ALUG", "PROP", "PROP", "PROP", "PROP", "PROP", "PRO~
+## $ FICÇÃO    <chr> "SIM", "NAO", "SIM", "SIM", "SIM", "SIM", "SIM", "SIM", "SIM~
+## $ NÃOFICÇAO <chr> "NAO", "NAO", "NAO", "NAO", "NAO", "NAO", "NAO", "NAO", "NAO~
+## $ AUTOAJUDA <chr> "SIM", "SIM", "NAO", "NAO", "NAO", "SIM", "NAO", "NAO", "NAO~
+## $ CATEG     <dbl> 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, ~
+## $ STATUS    <chr> "MAU", "MAU", "BOM", "BOM", "BOM", "BOM", "MAU", "BOM", "BOM~
+\end{verbatim}
 
   \bibliography{book.bib,packages.bib}
 

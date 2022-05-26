@@ -1,6 +1,6 @@
 
 
-## Data Sciente e credit scoring
+## Data Sciente e Credit Scoring
 
 Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre isso, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre esse tema e no final fornece alguns bancos de dados e um "problema" que pode ser utilizado para colocar em prática o que é aprendido com a leitura. Aproveitei essa oportunidade e usei o problema passado para desenvolver um modelo e uma política de crédito que solucione o caso específico.
 
@@ -50,7 +50,7 @@ glimpse(data)
 
 ```
 
-Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e apliquei o glimpse para entender as variáveis.
+Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e aplicar o glimpse para entender as variáveis.
 
 Entre as variáveis, temos:
 
@@ -64,13 +64,41 @@ Entre as variáveis, temos:
 - FICCAO: comprou livro de ficção;
 - NAOFICCAO: comprou livro de não ficção;
 - AUTOAJUDA: comprou livro de autoajuda;
-- CATEG: comrpou dois livros;
+- CATEG: comprou dois livros ou mais;
 - STATUS: variável resposta, bom ou mau cliente.
 
+Com isso já é possível mapear a classe de cada variável, se é numérica, string ou fator, essa diferença entre as classes pode interferir na análise descritiva e na modelagem.
 
+Ainda há alguns pontos para analisar antes de passar para a parte descritiva, vou verificar se há algum dado faltante ou vazio que ainda não está mapeado.
 
+```{r}
 
+# Conferindo dados faltantes
 
+# NA
 
+table(is.na(data))
+
+# Vazio
+
+table(data == "")
+
+```
+
+Nenhuma das colunas apresentaram dados faltantes (NA) ou em branco.
+
+### Análise Descritiva
+
+Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual e a proporção, nesse caso, de bons e maus clientes.
+
+```{r}
+
+# Status
+
+prop.table(table(data$STATUS))
+
+```
+
+Vemos então que de todos os 3000 clientes, 80% são bons e apenas 20% apresentaram atraso maior do que 30 dias.
 
 

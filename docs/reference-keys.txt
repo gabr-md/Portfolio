@@ -16,3 +16,4 @@ análise-de-regressão
 conclusão
 data-sciente-e-credit-scoring
 banco-de-dados
+análise-descritiva-1

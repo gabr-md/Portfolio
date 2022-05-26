@@ -14,14 +14,18 @@ Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi real
 
 Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.
 
-```{r, eval=T, echo = F}
+```{r, eval=T, echo = F, warning=F, message = F}
 
 # Pacotes
+
+options(warn=-1)
 
 library(dplyr)
 library(ggplot2)
 library(pROC)
 library(readr)
+
+#teste
 
 set.seed(12345)
 
@@ -33,18 +37,40 @@ set.seed(12345)
 
 # Lendo dataset
 
-data <- readxl::read_xls("C:\\Users\\gabri\\Documents\\Projetos\\Crédito\\Laredo\\351.xls")
+data <- readxl::read_xls("351.xls")
+
+# Selecionando as colunas de interesse
 
 data <- data %>%
-select(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICÇÃO,NÃOFICÇAO,AUTOAJUDA,CATEG,STATUS)
-
-#---------------
+  dplyr::select(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICCAO,NAOFICCAO,AUTOAJUDA,CATEG,STATUS)
 
 # Tipo das colunas da base de dados
 
 glimpse(data)
 
 ```
+
+Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e apliquei o glimpse para entender as variáveis.
+
+Entre as variáveis, temos:
+
+- Idade: idade do cliente em anos;
+- UNIFED: estado do cliente (SP, RJ e Outros);
+- FONE: indica se há presença de telefone fixo ou não;
+- INSTRU: nível de escolaridade;
+- CARTAO: tem cartão de crédito;
+- RESTR: apresenta algum restritivo no mercado;
+- RESID: mora em residência própria ou alugada;
+- FICCAO: comprou livro de ficção;
+- NAOFICCAO: comprou livro de não ficção;
+- AUTOAJUDA: comprou livro de autoajuda;
+- CATEG: comrpou dois livros;
+- STATUS: variável resposta, bom ou mau cliente.
+
+
+
+
+
 
 
 

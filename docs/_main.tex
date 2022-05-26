@@ -483,7 +483,7 @@ O tamanho de sépala e tipo de espécie influenciam sim no tamanho das pétalas,
 \end{itemize}
 
 \hypertarget{data-sciente-e-credit-scoring}{%
-\section{Data Sciente e credit scoring}\label{data-sciente-e-credit-scoring}}
+\section{Data Sciente e Credit Scoring}\label{data-sciente-e-credit-scoring}}
 
 Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre isso, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre esse tema e no final fornece alguns bancos de dados e um ``problema'' que pode ser utilizado para colocar em prática o que é aprendido com a leitura. Aproveitei essa oportunidade e usei o problema passado para desenvolver um modelo e uma política de crédito que solucione o caso específico.
 
@@ -497,25 +497,6 @@ Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi real
 
 Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.
 
-\begin{verbatim}
-## Warning: package 'pROC' was built under R version 4.1.3
-\end{verbatim}
-
-\begin{verbatim}
-## Type 'citation("pROC")' for a citation.
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'pROC'
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:stats':
-## 
-##     cov, smooth, var
-\end{verbatim}
-
 \hypertarget{banco-de-dados}{%
 \subsection{Banco de Dados}\label{banco-de-dados}}
 
@@ -523,12 +504,12 @@ Com esse banco de dados disponível vou iniciar o estudo e propor ao final um mo
 \begin{Highlighting}[]
 \CommentTok{\# Lendo dataset}
 
-\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\StringTok{"C:}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Users}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{gabri}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Documents}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Projetos}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Crédito}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{Laredo}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{351.xls"}\NormalTok{)}
+\NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ readxl}\SpecialCharTok{::}\FunctionTok{read\_xls}\NormalTok{(}\StringTok{"351.xls"}\NormalTok{)}
+
+\CommentTok{\# Selecionando as colunas de interesse}
 
 \NormalTok{data }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
-\FunctionTok{select}\NormalTok{(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICÇÃO,NÃOFICÇAO,AUTOAJUDA,CATEG,STATUS)}
-
-\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{select}\NormalTok{(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICCAO,NAOFICCAO,AUTOAJUDA,CATEG,STATUS)}
 
 \CommentTok{\# Tipo das colunas da base de dados}
 
@@ -546,12 +527,101 @@ Com esse banco de dados disponível vou iniciar o estudo e propor ao final um mo
 ## $ CARTAO    <chr> "SIM", "NAO", "NAO", "SIM", "SIM", "SIM", "MV", "SIM", "SIM"~
 ## $ RESTR     <chr> "SIM", "SIM", "SIM", "NAO", "NAO", "NAO", "NAO", "NAO", "SIM~
 ## $ RESID     <chr> "PROP", "ALUG", "PROP", "PROP", "PROP", "PROP", "PROP", "PRO~
-## $ FICÇÃO    <chr> "SIM", "NAO", "SIM", "SIM", "SIM", "SIM", "SIM", "SIM", "SIM~
-## $ NÃOFICÇAO <chr> "NAO", "NAO", "NAO", "NAO", "NAO", "NAO", "NAO", "NAO", "NAO~
+## $ FICCAO    <chr> "SIM", "NAO", "SIM", "SIM", "SIM", "SIM", "SIM", "SIM", "SIM~
+## $ NAOFICCAO <chr> "NAO", "NAO", "NAO", "NAO", "NAO", "NAO", "NAO", "NAO", "NAO~
 ## $ AUTOAJUDA <chr> "SIM", "SIM", "NAO", "NAO", "NAO", "SIM", "NAO", "NAO", "NAO~
 ## $ CATEG     <dbl> 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, ~
 ## $ STATUS    <chr> "MAU", "MAU", "BOM", "BOM", "BOM", "BOM", "MAU", "BOM", "BOM~
 \end{verbatim}
+
+Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e aplicar o glimpse para entender as variáveis.
+
+Entre as variáveis, temos:
+
+\begin{itemize}
+\tightlist
+\item
+  Idade: idade do cliente em anos;
+\item
+  UNIFED: estado do cliente (SP, RJ e Outros);
+\item
+  FONE: indica se há presença de telefone fixo ou não;
+\item
+  INSTRU: nível de escolaridade;
+\item
+  CARTAO: tem cartão de crédito;
+\item
+  RESTR: apresenta algum restritivo no mercado;
+\item
+  RESID: mora em residência própria ou alugada;
+\item
+  FICCAO: comprou livro de ficção;
+\item
+  NAOFICCAO: comprou livro de não ficção;
+\item
+  AUTOAJUDA: comprou livro de autoajuda;
+\item
+  CATEG: comprou dois livros ou mais;
+\item
+  STATUS: variável resposta, bom ou mau cliente.
+\end{itemize}
+
+Com isso já é possível mapear a classe de cada variável, se é numérica, string ou fator, essa diferença entre as classes pode interferir na análise descritiva e na modelagem.
+
+Ainda há alguns pontos para analisar antes de passar para a parte descritiva, vou verificar se há algum dado faltante ou vazio que ainda não está mapeado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Conferindo dados faltantes}
+
+\CommentTok{\# NA}
+
+\FunctionTok{table}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(data))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## FALSE 
+## 36000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Vazio}
+
+\FunctionTok{table}\NormalTok{(data }\SpecialCharTok{==} \StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## FALSE 
+## 36000
+\end{verbatim}
+
+Nenhuma das colunas apresentaram dados faltantes (NA) ou em branco.
+
+\hypertarget{anuxe1lise-descritiva-1}{%
+\subsection{Análise Descritiva}\label{anuxe1lise-descritiva-1}}
+
+Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual e a proporção, nesse caso, de bons e maus clientes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Status}
+
+\FunctionTok{prop.table}\NormalTok{(}\FunctionTok{table}\NormalTok{(data}\SpecialCharTok{$}\NormalTok{STATUS))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## BOM MAU 
+## 0.8 0.2
+\end{verbatim}
+
+Vemos então que de todos os 3000 clientes, 80\% são bons e apenas 20\% apresentaram atraso maior do que 30 dias.
 
   \bibliography{book.bib,packages.bib}
 

@@ -167,9 +167,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.2" data-path="projetos.html"><a href="projetos.html#análise-de-regressão"><i class="fa fa-check"></i><b>2.1.2</b> Análise de Regressão<span></span></a></li>
 <li class="chapter" data-level="2.1.3" data-path="projetos.html"><a href="projetos.html#conclusão"><i class="fa fa-check"></i><b>2.1.3</b> Conclusão<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="projetos.html"><a href="projetos.html#data-sciente-e-credit-scoring"><i class="fa fa-check"></i><b>2.2</b> Data Sciente e credit scoring<span></span></a>
+<li class="chapter" data-level="2.2" data-path="projetos.html"><a href="projetos.html#data-sciente-e-credit-scoring"><i class="fa fa-check"></i><b>2.2</b> Data Sciente e Credit Scoring<span></span></a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="projetos.html"><a href="projetos.html#banco-de-dados"><i class="fa fa-check"></i><b>2.2.1</b> Banco de Dados<span></span></a></li>
+<li class="chapter" data-level="2.2.2" data-path="projetos.html"><a href="projetos.html#análise-descritiva-1"><i class="fa fa-check"></i><b>2.2.2</b> Análise Descritiva<span></span></a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -345,34 +346,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="data-sciente-e-credit-scoring" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Data Sciente e credit scoring<a href="projetos.html#data-sciente-e-credit-scoring" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">2.2</span> Data Sciente e Credit Scoring<a href="projetos.html#data-sciente-e-credit-scoring" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre isso, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre esse tema e no final fornece alguns bancos de dados e um “problema” que pode ser utilizado para colocar em prática o que é aprendido com a leitura. Aproveitei essa oportunidade e usei o problema passado para desenvolver um modelo e uma política de crédito que solucione o caso específico.</p>
 <p>Atividade proposta:</p>
 <p>“Livraria Dorela é uma cadeia de livrarias que tem quiosques nos principais supermercados das grandes capitais brasileiras. A Dorela passou a fazer o financiamento de livros, de acordo com um score definido de forma subjetiva, a taxa de rejeição era de 30% e a taxa aplicada era muito baixa, visto isso, os resultados não eram satisfatórios.</p>
 <p>O novo diretor de crédito da Dorela, que havia atuado como gestor de credito de uma grande cadeira verejista de moda e tinha experiência no uso de modelos estatísticos decidiu desenvolver um modelo para esse caso.</p>
 <p>Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi realizado no período de julho de 2007 a junho de 2008, ele considerou a performance do cliente nos 6 meses seguintes, e classificou como mau cliente aquele que teve qualquer atraso acima de 30 dias, caso contrário era classificado com bom cliente.”</p>
 <p>Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.</p>
-<pre><code>## Warning: package &#39;pROC&#39; was built under R version 4.1.3</code></pre>
-<pre><code>## Type &#39;citation(&quot;pROC&quot;)&#39; for a citation.</code></pre>
-<pre><code>## 
-## Attaching package: &#39;pROC&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:stats&#39;:
-## 
-##     cov, smooth, var</code></pre>
 <div id="banco-de-dados" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Banco de Dados<a href="projetos.html#banco-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="projetos.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo dataset</span></span>
-<span id="cb22-2"><a href="projetos.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="projetos.html#cb22-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="st">&quot;C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">gabri</span><span class="sc">\\</span><span class="st">Documents</span><span class="sc">\\</span><span class="st">Projetos</span><span class="sc">\\</span><span class="st">Crédito</span><span class="sc">\\</span><span class="st">Laredo</span><span class="sc">\\</span><span class="st">351.xls&quot;</span>)</span>
-<span id="cb22-4"><a href="projetos.html#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="projetos.html#cb22-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb22-6"><a href="projetos.html#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICÇÃO,NÃOFICÇAO,AUTOAJUDA,CATEG,STATUS)</span>
-<span id="cb22-7"><a href="projetos.html#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="projetos.html#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co">#---------------</span></span>
-<span id="cb22-9"><a href="projetos.html#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="projetos.html#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Tipo das colunas da base de dados</span></span>
-<span id="cb22-11"><a href="projetos.html#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-12"><a href="projetos.html#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="projetos.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo dataset</span></span>
+<span id="cb18-2"><a href="projetos.html#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="projetos.html#cb18-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="st">&quot;351.xls&quot;</span>)</span>
+<span id="cb18-4"><a href="projetos.html#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="projetos.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecionando as colunas de interesse</span></span>
+<span id="cb18-6"><a href="projetos.html#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="projetos.html#cb18-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb18-8"><a href="projetos.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICCAO,NAOFICCAO,AUTOAJUDA,CATEG,STATUS)</span>
+<span id="cb18-9"><a href="projetos.html#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="projetos.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Tipo das colunas da base de dados</span></span>
+<span id="cb18-11"><a href="projetos.html#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="projetos.html#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code></pre></div>
 <pre><code>## Rows: 3,000
 ## Columns: 12
 ## $ IDADE     &lt;dbl&gt; 26, 43, 33, 39, 43, 40, 39, 50, 51, 45, 67, 34, 49, 59, 41, ~
@@ -382,11 +376,55 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ CARTAO    &lt;chr&gt; &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;MV&quot;, &quot;SIM&quot;, &quot;SIM&quot;~
 ## $ RESTR     &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM~
 ## $ RESID     &lt;chr&gt; &quot;PROP&quot;, &quot;ALUG&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PRO~
-## $ FICÇÃO    &lt;chr&gt; &quot;SIM&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM~
-## $ NÃOFICÇAO &lt;chr&gt; &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO~
+## $ FICCAO    &lt;chr&gt; &quot;SIM&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM~
+## $ NAOFICCAO &lt;chr&gt; &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO~
 ## $ AUTOAJUDA &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO~
 ## $ CATEG     &lt;dbl&gt; 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, ~
 ## $ STATUS    &lt;chr&gt; &quot;MAU&quot;, &quot;MAU&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;MAU&quot;, &quot;BOM&quot;, &quot;BOM~</code></pre>
+<p>Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e aplicar o glimpse para entender as variáveis.</p>
+<p>Entre as variáveis, temos:</p>
+<ul>
+<li>Idade: idade do cliente em anos;</li>
+<li>UNIFED: estado do cliente (SP, RJ e Outros);</li>
+<li>FONE: indica se há presença de telefone fixo ou não;</li>
+<li>INSTRU: nível de escolaridade;</li>
+<li>CARTAO: tem cartão de crédito;</li>
+<li>RESTR: apresenta algum restritivo no mercado;</li>
+<li>RESID: mora em residência própria ou alugada;</li>
+<li>FICCAO: comprou livro de ficção;</li>
+<li>NAOFICCAO: comprou livro de não ficção;</li>
+<li>AUTOAJUDA: comprou livro de autoajuda;</li>
+<li>CATEG: comprou dois livros ou mais;</li>
+<li>STATUS: variável resposta, bom ou mau cliente.</li>
+</ul>
+<p>Com isso já é possível mapear a classe de cada variável, se é numérica, string ou fator, essa diferença entre as classes pode interferir na análise descritiva e na modelagem.</p>
+<p>Ainda há alguns pontos para analisar antes de passar para a parte descritiva, vou verificar se há algum dado faltante ou vazio que ainda não está mapeado.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="projetos.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conferindo dados faltantes</span></span>
+<span id="cb20-2"><a href="projetos.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="projetos.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># NA</span></span>
+<span id="cb20-4"><a href="projetos.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="projetos.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">is.na</span>(data))</span></code></pre></div>
+<pre><code>## 
+## FALSE 
+## 36000</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="projetos.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vazio</span></span>
+<span id="cb22-2"><a href="projetos.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="projetos.html#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data <span class="sc">==</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## FALSE 
+## 36000</code></pre>
+<p>Nenhuma das colunas apresentaram dados faltantes (NA) ou em branco.</p>
+</div>
+<div id="análise-descritiva-1" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Análise Descritiva<a href="projetos.html#análise-descritiva-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual e a proporção, nesse caso, de bons e maus clientes.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="projetos.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Status</span></span>
+<span id="cb24-2"><a href="projetos.html#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="projetos.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>STATUS))</span></code></pre></div>
+<pre><code>## 
+## BOM MAU 
+## 0.8 0.2</code></pre>
+<p>Vemos então que de todos os 3000 clientes, 80% são bons e apenas 20% apresentaram atraso maior do que 30 dias.</p>
 
 </div>
 </div>

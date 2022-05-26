@@ -1,0 +1,50 @@
+
+
+## Data Sciente e credit scoring
+
+Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre isso, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre esse tema e no final fornece alguns bancos de dados e um "problema" que pode ser utilizado para colocar em prática o que é aprendido com a leitura. Aproveitei essa oportunidade e usei o problema passado para desenvolver um modelo e uma política de crédito que solucione o caso específico.
+
+Atividade proposta:
+
+"Livraria Dorela é uma cadeia de livrarias que tem quiosques nos principais supermercados das grandes capitais brasileiras. A Dorela passou a fazer o financiamento de livros, de acordo com um score definido de forma subjetiva, a taxa de rejeição era de 30% e a taxa aplicada era muito baixa, visto isso, os resultados não eram satisfatórios.
+
+O novo diretor de crédito da Dorela, que havia atuado como gestor de credito de uma grande cadeira verejista de moda e tinha experiência no uso de modelos estatísticos decidiu desenvolver um modelo para esse caso.
+
+Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi realizado no período de julho de 2007 a junho de 2008, ele considerou a performance do cliente nos 6 meses seguintes, e classificou como mau cliente aquele que teve qualquer atraso acima de 30 dias, caso contrário era classificado com bom cliente."
+
+Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.
+
+```{r, eval=T, echo = T}
+
+# Pacotes
+
+library(dplyr)
+library(ggplot2)
+library(pROC)
+library(readr)
+
+set.seed(12345)
+
+```
+
+### Banco de Dados
+
+```{r, warning=F,message=F}
+
+# Lendo dataset
+
+data <- readxl::read_xls("C:\\Users\\gabri\\Documents\\Projetos\\Crédito\\Laredo\\351.xls")
+
+data <- data %>%
+select(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICÇÃO,NÃOFICÇAO,AUTOAJUDA,CATEG,STATUS)
+
+#---------------
+
+# Tipo das colunas da base de dados
+
+glimpse(data)
+
+```
+
+
+

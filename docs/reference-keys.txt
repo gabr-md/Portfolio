@@ -17,3 +17,7 @@ conclusão
 data-sciente-e-credit-scoring
 banco-de-dados
 análise-descritiva-1
+modelagem
+criação-de-política
+conclusão-1
+referências

@@ -6,7 +6,7 @@
 ]{book}
 \title{Portfólio Gabriel Maciel}
 \author{Gabriel Maciel}
-\date{2022-05-25}
+\date{2022-05-31}
 
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
@@ -605,7 +605,7 @@ Nenhuma das colunas apresentaram dados faltantes (NA) ou em branco.
 \hypertarget{anuxe1lise-descritiva-1}{%
 \subsection{Análise Descritiva}\label{anuxe1lise-descritiva-1}}
 
-Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual e a proporção, nesse caso, de bons e maus clientes.
+Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual é a proporção dessa variável, nesse caso, de bons e maus clientes.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -622,6 +622,124 @@ Como estou trabalhando com uma base de dado de variável resposta binária é im
 \end{verbatim}
 
 Vemos então que de todos os 3000 clientes, 80\% são bons e apenas 20\% apresentaram atraso maior do que 30 dias.
+
+Agora vou partir para a análise das variáveis preditoras, começando com a variável númerica idade
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Descrição com dados simples}
+
+\NormalTok{data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(STATUS }\SpecialCharTok{==} \StringTok{"BOM"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\FunctionTok{summary}\NormalTok{(IDADE)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{metrica =} \FunctionTok{c}\NormalTok{(}\StringTok{"min"}\NormalTok{,}\StringTok{"1 quartil"}\NormalTok{,}\StringTok{"mediana"}\NormalTok{,}\StringTok{"media"}\NormalTok{,}\StringTok{"3 quartil"}\NormalTok{,}\StringTok{"max"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(metrica,}\FunctionTok{everything}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\StringTok{"Bom"} \OtherTok{=} \StringTok{"summary(IDADE)"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(data }\SpecialCharTok{\%\textgreater{}\%}
+              \FunctionTok{filter}\NormalTok{(STATUS }\SpecialCharTok{==} \StringTok{"MAU"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+              \FunctionTok{summarise}\NormalTok{(}\FunctionTok{summary}\NormalTok{(IDADE)) }\SpecialCharTok{\%\textgreater{}\%}
+              \FunctionTok{mutate}\NormalTok{(}\AttributeTok{metrica =} \FunctionTok{c}\NormalTok{(}\StringTok{"min"}\NormalTok{,}\StringTok{"1 quartil"}\NormalTok{,}\StringTok{"mediana"}\NormalTok{,}\StringTok{"media"}\NormalTok{,}\StringTok{"3 quartil"}\NormalTok{,}\StringTok{"max"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+              \FunctionTok{select}\NormalTok{(metrica,}\FunctionTok{everything}\NormalTok{()), }\AttributeTok{by =} \StringTok{"metrica"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename}\NormalTok{(}\StringTok{"Mau"} \OtherTok{=} \StringTok{"summary(IDADE)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##   metrica   Bom     Mau     
+##   <chr>     <table> <table> 
+## 1 min       18.00   18.00000
+## 2 1 quartil 34.00   30.00000
+## 3 mediana   41.00   37.00000
+## 4 media     42.72   38.28333
+## 5 3 quartil 49.25   45.00000
+## 6 max       88.00   70.00000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ IDADE, }\AttributeTok{fill =}\NormalTok{ STATUS)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+É possível notar acima que parece haver pouca diferença de idade entre as classes de bons e maus pagadores, a média de idade dos bons pagadores é 4 anos maior que a dos maus pagadores.
+
+Para analisar as variáveis categóricas eu criei uma pequena função que cria tabelas com a proporção de bons e maus pagadores em cada uma das classes das variáveis. Veja abaixo a função utilizada e a aplicação para montar a tabela.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{freq.tab }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(data,coluna)\{}
+  
+  \CommentTok{\#coluna \textless{}{-} all\_of(coluna)}
+  
+\NormalTok{  tabela }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{rename}\NormalTok{(}\StringTok{"variavel"} \OtherTok{=}\NormalTok{ coluna) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{group\_by}\NormalTok{(variavel,STATUS) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(STATUS }\SpecialCharTok{==} \StringTok{"BOM"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n\_bom =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{select}\NormalTok{(variavel,n\_bom) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{left\_join}\NormalTok{(data }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{rename}\NormalTok{(}\StringTok{"variavel"} \OtherTok{=}\NormalTok{ coluna) }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{group\_by}\NormalTok{(variavel,STATUS) }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{filter}\NormalTok{(STATUS }\SpecialCharTok{==} \StringTok{"MAU"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{summarise}\NormalTok{(}\AttributeTok{n\_mau =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+                \FunctionTok{select}\NormalTok{(variavel,n\_mau), }\AttributeTok{by =} \FunctionTok{c}\NormalTok{(}\StringTok{"variavel"}\NormalTok{))}
+  
+\NormalTok{  tabela }\OtherTok{\textless{}{-}}\NormalTok{ tabela }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{total =}\NormalTok{ n\_bom }\SpecialCharTok{+}\NormalTok{ n\_mau,}
+           \AttributeTok{perc.bom =} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{round}\NormalTok{(n\_bom}\SpecialCharTok{/}\NormalTok{total,}\DecValTok{4}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{,}\StringTok{"\%"}\NormalTok{),}
+           \AttributeTok{perc.mau =} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{round}\NormalTok{(n\_mau}\SpecialCharTok{/}\NormalTok{total,}\DecValTok{4}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{,}\StringTok{"\%"}\NormalTok{),}
+           \AttributeTok{perc.total =} \StringTok{"100\%"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{select}\NormalTok{(variavel,perc.bom,perc.mau,perc.total)}
+  
+  \FunctionTok{colnames}\NormalTok{(tabela)[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(coluna)}
+  
+  \FunctionTok{return}\NormalTok{(tabela)}
+  
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Utilizando a função para criar as tabelas vou começar analisando as variáveis de UNIFED, FONE, INSTRU e CARTAO.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# UNIFED}
+
+\NormalTok{tabela\_unifed }\OtherTok{\textless{}{-}} \FunctionTok{freq.tab}\NormalTok{(data,}\StringTok{"UNIFED"}\NormalTok{)}
+
+\CommentTok{\# Fone}
+
+\NormalTok{tabela\_fone }\OtherTok{\textless{}{-}} \FunctionTok{freq.tab}\NormalTok{(data,}\StringTok{"FONE"}\NormalTok{)}
+
+\CommentTok{\# Instru}
+
+\NormalTok{tabela\_instru }\OtherTok{\textless{}{-}} \FunctionTok{freq.tab}\NormalTok{(data,}\StringTok{"INSTRU"}\NormalTok{)}
+
+\CommentTok{\# Cartão}
+
+\NormalTok{tabela\_cartao }\OtherTok{\textless{}{-}} \FunctionTok{freq.tab}\NormalTok{(data,}\StringTok{"CARTAO"}\NormalTok{)}
+
+\FunctionTok{grid.arrange}\NormalTok{(}\FunctionTok{tableGrob}\NormalTok{(tabela\_unifed, }\AttributeTok{rows =} \ConstantTok{NULL}\NormalTok{),}
+             \FunctionTok{tableGrob}\NormalTok{(tabela\_fone, }\AttributeTok{rows =} \ConstantTok{NULL}\NormalTok{),}
+             \FunctionTok{tableGrob}\NormalTok{(tabela\_instru, }\AttributeTok{rows =} \ConstantTok{NULL}\NormalTok{),}
+             \FunctionTok{tableGrob}\NormalTok{(tabela\_cartao, }\AttributeTok{rows =} \ConstantTok{NULL}\NormalTok{),}
+             \AttributeTok{top =} \FunctionTok{textGrob}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Análise variáveis"}\NormalTok{)),}
+             \AttributeTok{nrow =} \DecValTok{2}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/unnamed-chunk-16-1.pdf}
 
   \bibliography{book.bib,packages.bib}
 

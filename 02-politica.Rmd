@@ -24,6 +24,10 @@ library(dplyr)
 library(ggplot2)
 library(pROC)
 library(readr)
+library(gridExtra)
+library(grid)
+library(kableExtra)
+library(patchwork)
 
 #teste
 
@@ -69,27 +73,11 @@ Entre as variáveis, temos:
 
 Com isso já é possível mapear a classe de cada variável, se é numérica, string ou fator, essa diferença entre as classes pode interferir na análise descritiva e na modelagem.
 
-Ainda há alguns pontos para analisar antes de passar para a parte descritiva, vou verificar se há algum dado faltante ou vazio que ainda não está mapeado.
-
-```{r}
-
-# Conferindo dados faltantes
-
-# NA
-
-table(is.na(data))
-
-# Vazio
-
-table(data == "")
-
-```
-
-Nenhuma das colunas apresentaram dados faltantes (NA) ou em branco.
+Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes ou NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados eu vou pular essa parte.
 
 ### Análise Descritiva
 
-Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual e a proporção, nesse caso, de bons e maus clientes.
+Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual é a proporção dessa variável, nesse caso, de bons e maus clientes.
 
 ```{r}
 
@@ -100,5 +88,344 @@ prop.table(table(data$STATUS))
 ```
 
 Vemos então que de todos os 3000 clientes, 80% são bons e apenas 20% apresentaram atraso maior do que 30 dias.
+
+Agora vou partir para a análise das variáveis preditoras, começando com a variável númerica idade 
+
+
+```{r echo=FALSE, message=FALSE,warning=FALSE}
+
+# Descrição com dados simples
+
+data %>%
+  filter(STATUS == "BOM") %>%
+  summarise(summary(IDADE)) %>%
+  mutate(metrica = c("min","1 quartil","mediana","media","3 quartil","max")) %>%
+  select(metrica,everything()) %>%
+  rename("Bom" = "summary(IDADE)") %>%
+  left_join(data %>%
+              filter(STATUS == "MAU") %>%
+              summarise(summary(IDADE)) %>%
+              mutate(metrica = c("min","1 quartil","mediana","media","3 quartil","max")) %>%
+              select(metrica,everything()), by = "metrica") %>%
+  rename("Mau" = "summary(IDADE)")
+
+data %>%
+  ggplot(aes(x = IDADE, fill = STATUS)) +
+  geom_histogram() +
+  theme_bw()
+
+```
+
+É possível notar acima que parece haver pouca diferença de idade entre as classes de bons e maus pagadores, a média de idade dos bons pagadores é 4 anos maior que a dos maus pagadores.
+
+Para analisar as variáveis categóricas eu criei uma pequena função que cria tabelas com a proporção de bons e maus pagadores em cada uma das classes das variáveis.
+
+```{r message=FALSE,warning=FALSE, echo = FALSE}
+
+freq.tab <- function(data,coluna){
+  
+  #coluna <- all_of(coluna)
+  
+  tabela <- data %>%
+    rename("variavel" = coluna) %>%
+    group_by(variavel,STATUS) %>%
+    filter(STATUS == "BOM") %>%
+    summarise(n_bom = n()) %>%
+    ungroup() %>%
+    select(variavel,n_bom) %>%
+    left_join(data %>%
+                rename("variavel" = coluna) %>%
+                group_by(variavel,STATUS) %>%
+                filter(STATUS == "MAU") %>%
+                summarise(n_mau = n()) %>%
+                ungroup() %>%
+                select(variavel,n_mau), by = c("variavel"))
+  
+  tabela <- tabela %>%
+    mutate(total = n_bom + n_mau,
+           perc.bom = paste0(round(n_bom/total,4)*100,"%"),
+           perc.mau = paste0(round(n_mau/total,4)*100,"%"),
+           perc.total = "100%") %>%
+    select(variavel,perc.bom,perc.mau,perc.total)
+  
+  colnames(tabela)[1] <- c(coluna)
+  
+  return(tabela)
+  
+}
+
+```
+
+Vou começar analisando as variáveis de UNIFED, FONE, INSTRU e CARTAO.
+
+```{r warning=F, message = F, echo = FALSE}
+# UNIFED
+tabela_unifed <- freq.tab(data,"UNIFED")
+# Fone
+tabela_fone <- freq.tab(data,"FONE")
+# Instru
+tabela_instru <- freq.tab(data,"INSTRU")
+# Cartão
+tabela_cartao <- freq.tab(data,"CARTAO")
+# Restr
+tabela_restr <- freq.tab(data,"RESTR")
+# RESID
+tabela_resid <- freq.tab(data,"RESID")
+# FICÇÃO
+tabela_ficcao <- freq.tab(data,"FICCAO")
+# NÃOFICÇAO
+tabela_nficcao <- freq.tab(data,"NAOFICCAO")
+# AUTOAJUDA
+tabela_autoajuda <- freq.tab(data,"AUTOAJUDA")
+# CATEG
+tabela_categ<- freq.tab(data,"CATEG")
+
+```
+
+```{r warning=F, message = F, echo=FALSE}
+
+kbl(list(tabela_fone,tabela_unifed),align = "c", format = "html") %>%
+  kable_paper("hover", full_width = F)
+
+kbl(list(tabela_cartao,tabela_instru),align = "c",format = "html") %>%
+  kable_paper("hover", full_width = F)
+
+```
+
+
+A primeira tabela é da variável FONE, para a safra da base de dados era esperado que essa variável apresentasse uma diferença maior na distribuição de bons e maus clientes entre as classes, entretando vimos que a proporção de clientes bons e maus é semelhante, ficando próximo dos 80% de bons.
+
+Já na tabela da variável UNIFED é possível notar que os clientes do RJ apresentam uma taxa menor de maus clientes, podendo ser um fator importante para a variável.
+
+Na tabela de CARTAO, aqueles que previamente já tinham um cartão apresentaram uma taxa menor de inadimplência e os clientes sem cartão e sem informação (MV) apresentaram uma distribuição semelhante de maus clientes, não farei nenhuma junção de classe considerando MV como um fator.
+
+Na variável INSTRU, aqueles que têm nível PRIM E SEC mostraram uma distribuição de bons e maus clientes diferente das classes SUP e de MV, que tiveram uma distribuição semelhante, nesse caso também não vou fazer nenhuma junção de níveis, mantendo o MV.
+
+```{r warning=F, message = F, echo=FALSE}
+
+kbl(list(tabela_restr,tabela_resid),align = "c", format = "html") %>%
+  kable_paper("hover", full_width = F)
+
+kbl(list(tabela_ficcao,tabela_nficcao),align = "c",format = "html") %>%
+  kable_paper("hover", full_width = F)
+
+```
+
+A variável RESTR, como esperado, ela segmenta bem a base de clientes, dentre os que apresentam restritivos, 49% são maus clientes, e entre os que não tem restritivos 84% são bons clientes.
+
+Na variável RESID a proporção de bons clientes é maior para os clientes que têm casa própria.
+
+Na variável FICCAO, que fala se o cliente comprou livro de ficção, vemos que entre os que compram livro de ficção a proporção de bons clientes é maior do que entre os que não compraram.
+
+Já na variável de NAOFICCAO não vemos uma diferença entre os níveis dela.
+
+```{r warning=F, message = F, echo=FALSE}
+
+kbl(list(tabela_categ,tabela_autoajuda),align = "c", format = "html") %>%
+  kable_paper("hover", full_width = F)
+
+```
+A variável CATEG mostra que entre aqueles que compram 2 livrous ou mais a inadimplência é menor.
+
+Já a variável que aponta aqueles clientes que compraram livro de auto ajuda o percentual de maus pagadores é aproximadamente 4x maior do que aqueles que não compraram livros de auto ajuda.
+
+### Modelagem
+
+Para fazer a criação do modelo farei a divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.
+
+Essa divisão é feita para avaliarmos a performance do modelos em uma base que não seja utilizada para o ajuste do modelo.
+
+```{r message = F,warning = FALSE}
+
+library(caret)
+library(dplyr)
+set.seed(12345)
+
+indice = createDataPartition(y=data$STATUS, p=0.7, list=FALSE)
+treino = data[indice, ]
+teste = data[-indice, ]
+
+treino <- treino %>% 
+  mutate(STATUS = ifelse(STATUS == 'BOM',"0","1"),
+         STATUS = as.numeric(STATUS))
+
+# Fazendo os modelos
+
+fit1 <- glm(STATUS ~.,data = treino, family = "binomial")
+
+resultado <- summary(fit1)
+
+kbl(resultado$coefficients,align = "c", format = "html") %>%
+  kable_paper("hover", full_width = F)
+
+```
+
+No resultado do modelo vemos que algumas variáveis não foram significativas, visto isso, vou fazer uma nova modelagem sem essas variáveis.
+
+```{r echo=F, message = F, warning=F}
+
+fit2 <- glm(STATUS ~.-FONE-RESID-NAOFICCAO,data = treino, family = "binomial")
+
+resultado <- summary(fit2)
+
+kbl(resultado$coefficients,align = "c", format = "html") %>%
+  kable_paper("hover", full_width = F)
+
+```
+
+Agora vejo que todas as variáveis são influentes. Posso prosseguir a análise fazendo a escoragem e analisando a performance do modelo feito na base de teste. Para avaliar o modelo vou utilizar o KS (maior diferença entre a frquência acumulada de bons e maus pagadores) e o AUC (área abaixo da curva) com curva ROC.
+
+```{r echo=F, message = F, warning=F, results='asis',eval = T}
+
+predito_fit2_restr <- predict(fit2, newdata = teste,type = "response")
+
+predito_fit2_restr <- ifelse(predito_fit2_restr >= 0.5,"MAU","BOM")
+
+teste <- teste %>%
+  mutate(valor = ifelse(STATUS == 1,"MAU","BOM"))
+
+#confusionMatrix(table(teste$STATUS,predito_fit2_restr)) # Acurácia 0,8433
+
+predito_auc <- predict(fit2, newdata = teste,type = "response")
+
+#auc(teste$STATUS,predito_auc)
+
+curva_roc <- roc(teste$STATUS,predito_auc)
+
+roccurve <- ggroc(curva_roc) +
+  labs(title = "Curva ROC - AUC 0.86") +
+  theme_bw()
+
+#------------------------------------------------------------
+
+# Re Scorando o modelo
+
+predito_fit2 <- predict(fit2, newdata = data)
+
+x <- -round(1000*((predito_fit2-6)/12))
+
+x[x <= 0] <- 0
+x[x >= 1000] <- 1000
+
+data_aux <- data
+
+data_aux$score <- x
+
+data_aux <- data_aux %>% arrange(score)
+
+limiares <- c()
+
+for(i in c(seq(300,3000,300))){
+  
+  limiares <- c(limiares,data_aux$score[i])
+  
+}
+
+data_aux$range <- cut(data_aux$score, breaks = c(0,limiares),
+                  labels = limiares)
+
+tabela_ks <- data_aux %>%
+  filter(STATUS == "MAU") %>%
+  group_by(range) %>%
+  summarise(n = n()/600) %>%
+  rename("Mau" = "n") %>%
+  left_join(data_aux %>%
+              filter(STATUS == "BOM") %>%
+              group_by(range) %>%
+              summarise(n = n()/2400), by = "range") %>%
+  rename("Bom" = "n") %>%
+  left_join(data_aux %>%
+              group_by(range) %>%
+              summarise(n = n()/3000), by = "range") %>%
+  mutate(acumulado_mau = cumsum(Mau),
+         acumulado_bom = cumsum(Bom),
+    KS = round((cumsum(Mau)-cumsum(Bom))*100,0),
+         KS = paste0(KS,"%")) 
+
+linha1 <- data.frame(range = 0, Mau = 0,Bom = 0,n = 0,
+                     acumulado_mau = 0,acumulado_bom = 0, KS = "0%")
+
+tabela_ks <- data.frame(rbind(linha1,tabela_ks))
+tabela_ks$range <- factor(tabela_ks$range,levels = c("0","477","555","602","644","674", "714","755","807","861","1000"))
+tabela_ks$range <- as.numeric(as.character(tabela_ks$range))
+
+#dev.off()
+
+ks_graf <- ggplot(data = tabela_ks,aes(x = range, group = 1)) +
+  geom_line(aes(y = acumulado_mau), color = "red") +
+  geom_line(aes(y = acumulado_bom), color = "blue") +
+  ylab("Frequência acumulada") +
+  labs(title = "Gráfico do KS - 55%") +
+  theme_bw()
+
+ks_graf + roccurve
+
+
+```
+
+Esse resultado de KS de 55%, apesar de ser muito bom, não é visto com frequência no mundo de modalgem de crédito, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou muito bem ajustado.
+
+### Criação de política
+
+Com o modelo ajustado e performance verificada é importante ver como esse modelo irá se comportar dentro de uma política de crédito.
+
+Como o objetivo da livraria é dar crédito sendo justo e não focando exclusivamente no lucro, não vou restringir a política para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfis podemos controlar possíveis perdas limitando o limite a ser financiado e a aumentando a taxa aplicada para esse público.
+
+Analisando os resultados da escoragem optei por um ponto de corte de 602 e para complementar terei limites personalizados para cada perfil de risco seguindo algumas regras:
+
+  - Limite total para clientes com score acima de 807;
+  - Limite máximo de 700 reais para clientes com score de 675 a 807;
+  - Limite máximo de 600 reais para clientes com score de 602 a 674;
+  - Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda;
+  - Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo;
+  - Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos;
+
+Três tipos de taxa serão aplicadas em cima dessa política:
+
+  - Taxa 1: taxa fixa de de 10% em cima do valor da compra;
+  - Taxa 2: taxa variando entre 5%, 10% e 15% no valor da compra de acordo com o perfil do cliente;
+  - Taxa 3: taxa fixa de 4% ao mês;
+  - Taxa 4: taxa variando entre 2,5%, 5% e 7,5% de acordo com o perfil do cliente;
+
+Para verificar qual é a melhor forma de taxar o cliente vou fazer uma simulação sorteando uma amostra aleatória da base de dados original, contendo bons e maus clientes, e atribuindo valores de compra que podem variar de 100 a 1000 reais e parcelas que vão de 2 a 6 vezes.
+
+Após essa amostragem de clientes eu aplico a política e cada uma das taxas para calcular o resultado final. Esse processo eu repito 100 vezes e no final pego a média do lucro total e a média de juros pago por cliente.
+
+```{r echo=F, message = F, warning=F}
+
+lucro_medio <- c(2646,1919,8297,11578)
+juro_medio <- c(51,48,80,96)
+
+final <- data.frame(rbind(lucro_medio,juro_medio))
+
+colnames(final) <- c("Taxa 1","Taxa 2","Taxa 3","Taxa 4")
+
+kbl(final,align = "c", format = "html") %>%
+  kable_paper("hover", full_width = F)
+
+```
+
+A forma de aplicação de taxa que parece ser mais interessante para usar com a política feita é a taxa 4, que aplica taxas de 2,5% até 7,5% ao mês dependendo do perfil do cliente. 
+
+Esse tipo de taxa apresentou a melhor relação entre juros pagos e lucro total. Além disso, premia o melhor cliente com uma taxa menor, fazendo assim ele pagar menos para fazer a compra que deseja. Dessa forma a livraria consegue manter o objetivo de trabalhar com financiamentos justos e para o maior público possível, obtendo um lucro considerável por mês.
+
+### Conclusão
+
+Ao final desse estudo temos um modelo que apresentou uma boa performance, ou seja, consegue dividir bem os clientes que são bons e maus pagadores. Junto desse modelo conseguimos chegar em uma política de crédito interessante, que varia a taxa e o limite aplicado para cada cliente de acordo com perfil de risco, mantém a taxa de reprovação de 30% e fornece um bom lucro para a livraria.
+
+A política final ficou da seguinte forma:
+
+  - Limite total para clientes com score acima de 807;
+  - Limite máximo de 700 reais para clientes com score de 675 a 807;
+  - Limite máximo de 600 reais para clientes com score de 602 a 674;
+  - Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda;
+  - Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo;
+  - Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos;
+  - Taxa variando entre 2,5%, 5% e 7,5% de acordo com o perfil do cliente.
+  
+
+### Referências
+
+SICSU, Abraham Laredo. Credit Scoring: Desenvolvimento, Implantação, Acompanhamento. São Paulo: Blucher, 2010
 
 

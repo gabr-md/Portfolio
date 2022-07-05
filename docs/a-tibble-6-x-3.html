@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Data Sciente e Credit Scoring | Portfólio Gabriel Maciel</title>
+  <title>3 A tibble: 6 x 3 | Portfólio Gabriel Maciel</title>
   <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
 The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Data Sciente e Credit Scoring | Portfólio Gabriel Maciel" />
+  <meta property="og:title" content="3 A tibble: 6 x 3 | Portfólio Gabriel Maciel" />
   <meta property="og:type" content="book" />
   
   
@@ -20,7 +20,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Data Sciente e Credit Scoring | Portfólio Gabriel Maciel" />
+  <meta name="twitter:title" content="3 A tibble: 6 x 3 | Portfólio Gabriel Maciel" />
   
   <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
 set in the _output.yml file.
@@ -37,7 +37,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="data-sciente-e-credit-scoring.html"/>
 
 <script src="libs/header-attrs-2.12/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -165,10 +165,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#banco-de-dados"><i class="fa fa-check"></i><b>2.1</b> Banco de Dados<span></span></a></li>
 <li class="chapter" data-level="2.2" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#análise-descritiva"><i class="fa fa-check"></i><b>2.2</b> Análise Descritiva<span></span></a></li>
-<li class="chapter" data-level="2.3" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#modelagem"><i class="fa fa-check"></i><b>2.3</b> Modelagem<span></span></a></li>
-<li class="chapter" data-level="2.4" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#criação-de-política"><i class="fa fa-check"></i><b>2.4</b> Criação de política<span></span></a></li>
-<li class="chapter" data-level="2.5" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#conclusão"><i class="fa fa-check"></i><b>2.5</b> Conclusão<span></span></a></li>
-<li class="chapter" data-level="2.6" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#referências"><i class="fa fa-check"></i><b>2.6</b> Referências<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="a-tibble-6-x-3.html"><a href="a-tibble-6-x-3.html"><i class="fa fa-check"></i><b>3</b> A tibble: 6 x 3<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="a-tibble-6-x-3.html"><a href="a-tibble-6-x-3.html#modelagem"><i class="fa fa-check"></i><b>3.1</b> Modelagem<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="a-tibble-6-x-3.html"><a href="a-tibble-6-x-3.html#criação-de-política"><i class="fa fa-check"></i><b>3.2</b> Criação de política<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="a-tibble-6-x-3.html"><a href="a-tibble-6-x-3.html#conclusão"><i class="fa fa-check"></i><b>3.3</b> Conclusão<span></span></a></li>
+<li class="chapter" data-level="3.4" data-path="a-tibble-6-x-3.html"><a href="a-tibble-6-x-3.html#referências"><i class="fa fa-check"></i><b>3.4</b> Referências<span></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -190,82 +193,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-sciente-e-credit-scoring" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">2</span> Data Sciente e Credit Scoring<a href="data-sciente-e-credit-scoring.html#data-sciente-e-credit-scoring" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre isso, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre esse tema e no final fornece alguns bancos de dados e um “problema” que pode ser utilizado para colocar em prática o que é aprendido com a leitura. Aproveitei essa oportunidade e usei o problema passado para desenvolver um modelo e uma política de crédito que solucione o caso específico.</p>
-<p>Atividade proposta:</p>
-<p>“Livraria Dorela é uma cadeia de livrarias que tem quiosques nos principais supermercados das grandes capitais brasileiras. A Dorela passou a fazer o financiamento de livros, de acordo com um score definido de forma subjetiva, a taxa de rejeição era de 30% e a taxa aplicada era muito baixa, visto isso, os resultados não eram satisfatórios.</p>
-<p>O novo diretor de crédito da Dorela, que havia atuado como gestor de credito de uma grande cadeira verejista de moda e tinha experiência no uso de modelos estatísticos decidiu desenvolver um modelo para esse caso.</p>
-<p>Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi realizado no período de julho de 2007 a junho de 2008, ele considerou a performance do cliente nos 6 meses seguintes, e classificou como mau cliente aquele que teve qualquer atraso acima de 30 dias, caso contrário era classificado com bom cliente.”</p>
-<p>Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.</p>
-<div id="banco-de-dados" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Banco de Dados<a href="data-sciente-e-credit-scoring.html#banco-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data-sciente-e-credit-scoring.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo dataset</span></span>
-<span id="cb1-2"><a href="data-sciente-e-credit-scoring.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="data-sciente-e-credit-scoring.html#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="st">&quot;351.xls&quot;</span>)</span>
-<span id="cb1-4"><a href="data-sciente-e-credit-scoring.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="data-sciente-e-credit-scoring.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecionando as colunas de interesse</span></span>
-<span id="cb1-6"><a href="data-sciente-e-credit-scoring.html#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="data-sciente-e-credit-scoring.html#cb1-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb1-8"><a href="data-sciente-e-credit-scoring.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICCAO,NAOFICCAO,AUTOAJUDA,CATEG,STATUS)</span>
-<span id="cb1-9"><a href="data-sciente-e-credit-scoring.html#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="data-sciente-e-credit-scoring.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Tipo das colunas da base de dados</span></span>
-<span id="cb1-11"><a href="data-sciente-e-credit-scoring.html#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="data-sciente-e-credit-scoring.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code></pre></div>
-<pre><code>## Rows: 3,000
-## Columns: 12
-## $ IDADE     &lt;dbl&gt; 26, 43, 33, 39, 43, 40, 39, 50, 51, 45, 67, 34, 49, 59, 41, ~
-## $ UNIFED    &lt;chr&gt; &quot;SP&quot;, &quot;SP&quot;, &quot;OUTROS&quot;, &quot;RJ&quot;, &quot;OUTROS&quot;, &quot;RJ&quot;, &quot;SP&quot;, &quot;SP&quot;, &quot;OUT~
-## $ FONE      &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM~
-## $ INSTRU    &lt;chr&gt; &quot;PRIM &amp; SEC&quot;, &quot;SUP&quot;, &quot;SUP&quot;, &quot;MV&quot;, &quot;PRIM &amp; SEC&quot;, &quot;PRIM &amp; SEC&quot;~
-## $ CARTAO    &lt;chr&gt; &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;MV&quot;, &quot;SIM&quot;, &quot;SIM&quot;~
-## $ RESTR     &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM~
-## $ RESID     &lt;chr&gt; &quot;PROP&quot;, &quot;ALUG&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PRO~
-## $ FICCAO    &lt;chr&gt; &quot;SIM&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM~
-## $ NAOFICCAO &lt;chr&gt; &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO~
-## $ AUTOAJUDA &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO~
-## $ CATEG     &lt;dbl&gt; 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, ~
-## $ STATUS    &lt;chr&gt; &quot;MAU&quot;, &quot;MAU&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;MAU&quot;, &quot;BOM&quot;, &quot;BOM~</code></pre>
-<p>Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e aplicar o glimpse para entender as variáveis.</p>
-<p>Entre as variáveis, temos:</p>
-<ul>
-<li>Idade: idade do cliente em anos;</li>
-<li>UNIFED: estado do cliente (SP, RJ e Outros);</li>
-<li>FONE: indica se há presença de telefone fixo ou não;</li>
-<li>INSTRU: nível de escolaridade;</li>
-<li>CARTAO: tem cartão de crédito;</li>
-<li>RESTR: apresenta algum restritivo no mercado;</li>
-<li>RESID: mora em residência própria ou alugada;</li>
-<li>FICCAO: comprou livro de ficção;</li>
-<li>NAOFICCAO: comprou livro de não ficção;</li>
-<li>AUTOAJUDA: comprou livro de autoajuda;</li>
-<li>CATEG: comprou dois livros ou mais;</li>
-<li>STATUS: variável resposta, bom ou mau cliente.</li>
-</ul>
-<p>Com isso já é possível mapear a classe de cada variável, se é numérica, string ou fator, essa diferença entre as classes pode interferir na análise descritiva e na modelagem.</p>
-<p>Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes ou NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados eu vou pular essa parte.</p>
-</div>
-<div id="análise-descritiva" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Análise Descritiva<a href="data-sciente-e-credit-scoring.html#análise-descritiva" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual é a proporção dessa variável, nesse caso, de bons e maus clientes.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-sciente-e-credit-scoring.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Status</span></span>
-<span id="cb3-2"><a href="data-sciente-e-credit-scoring.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="data-sciente-e-credit-scoring.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>STATUS))</span></code></pre></div>
-<pre><code>## 
-## BOM MAU 
-## 0.8 0.2</code></pre>
-<p>Vemos então que de todos os 3000 clientes, 80% são bons e apenas 20% apresentaram atraso maior do que 30 dias.</p>
-<p>Agora vou partir para a análise das variáveis preditoras, começando com a variável númerica idade.</p>
-<pre><code>## # A tibble: 6 x 3
-##   metrica   Bom     Mau     
-##   &lt;chr&gt;     &lt;table&gt; &lt;table&gt; 
-## 1 min       18.00   18.00000
-## 2 1 quartil 34.00   30.00000
-## 3 mediana   41.00   37.00000
-## 4 media     42.72   38.28333
-## 5 3 quartil 49.25   45.00000
-## 6 max       88.00   70.00000</code></pre>
-<p><img src="Grafico%20Idade%20credit.JPG" width="600" /></p>
+<div id="a-tibble-6-x-3" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> A tibble: 6 x 3<a href="a-tibble-6-x-3.html#a-tibble-6-x-3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+metrica Bom Mau<br />
+<chr>
+<table>
+<table>
+<p>1 min 18.00 18.00000
+2 1 quartil 34.00 30.00000
+3 mediana 41.00 37.00000
+4 media 42.72 38.28333
+5 3 quartil 49.25 45.00000
+6 max 88.00 70.00000
+<img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>É possível notar acima que parece haver pouca diferença de idade entre as classes de bons e maus pagadores, a média de idade dos bons pagadores é 4 anos maior que a dos maus pagadores.</p>
 <p>Para analisar as variáveis categóricas eu criei uma pequena função que cria tabelas com a proporção de bons e maus pagadores em cada uma das classes das variáveis.</p>
 <p>Vou começar analisando as variáveis de UNIFED, FONE, INSTRU e CARTAO.</p>
@@ -851,31 +791,30 @@ SIM
 </table>
 <p>A variável CATEG mostra que entre aqueles que compram 2 livros ou mais a inadimplência é menor.</p>
 <p>Já a variável que aponta aqueles clientes que compraram livro de auto ajuda o percentual de maus pagadores é, aproximadamente, 4x maior do que aqueles que não compraram livros de auto ajuda.</p>
-</div>
-<div id="modelagem" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Modelagem<a href="data-sciente-e-credit-scoring.html#modelagem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="modelagem" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Modelagem<a href="a-tibble-6-x-3.html#modelagem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Para fazer a criação do modelo farei a divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.</p>
 <p>Essa divisão é feita para avaliarmos a performance do modelos em uma base que não seja utilizada para o ajuste do modelo.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-sciente-e-credit-scoring.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb6-2"><a href="data-sciente-e-credit-scoring.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb6-3"><a href="data-sciente-e-credit-scoring.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
-<span id="cb6-4"><a href="data-sciente-e-credit-scoring.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="data-sciente-e-credit-scoring.html#cb6-5" aria-hidden="true" tabindex="-1"></a>indice <span class="ot">=</span> <span class="fu">createDataPartition</span>(<span class="at">y=</span>data<span class="sc">$</span>STATUS, <span class="at">p=</span><span class="fl">0.7</span>, <span class="at">list=</span><span class="cn">FALSE</span>)</span>
-<span id="cb6-6"><a href="data-sciente-e-credit-scoring.html#cb6-6" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">=</span> data[indice, ]</span>
-<span id="cb6-7"><a href="data-sciente-e-credit-scoring.html#cb6-7" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">=</span> data[<span class="sc">-</span>indice, ]</span>
-<span id="cb6-8"><a href="data-sciente-e-credit-scoring.html#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="data-sciente-e-credit-scoring.html#cb6-9" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">&lt;-</span> treino <span class="sc">%&gt;%</span> </span>
-<span id="cb6-10"><a href="data-sciente-e-credit-scoring.html#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">STATUS =</span> <span class="fu">ifelse</span>(STATUS <span class="sc">==</span> <span class="st">&#39;BOM&#39;</span>,<span class="st">&quot;0&quot;</span>,<span class="st">&quot;1&quot;</span>),</span>
-<span id="cb6-11"><a href="data-sciente-e-credit-scoring.html#cb6-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">STATUS =</span> <span class="fu">as.numeric</span>(STATUS))</span>
-<span id="cb6-12"><a href="data-sciente-e-credit-scoring.html#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="data-sciente-e-credit-scoring.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Fazendo os modelos</span></span>
-<span id="cb6-14"><a href="data-sciente-e-credit-scoring.html#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="data-sciente-e-credit-scoring.html#cb6-15" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(STATUS <span class="sc">~</span>.,<span class="at">data =</span> treino, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb6-16"><a href="data-sciente-e-credit-scoring.html#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="data-sciente-e-credit-scoring.html#cb6-17" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit1)</span>
-<span id="cb6-18"><a href="data-sciente-e-credit-scoring.html#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-19"><a href="data-sciente-e-credit-scoring.html#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(resultado<span class="sc">$</span>coefficients,<span class="at">align =</span> <span class="st">&quot;c&quot;</span>, <span class="at">format =</span> <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb6-20"><a href="data-sciente-e-credit-scoring.html#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_paper</span>(<span class="st">&quot;hover&quot;</span>, <span class="at">full_width =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="a-tibble-6-x-3.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb5-2"><a href="a-tibble-6-x-3.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-3"><a href="a-tibble-6-x-3.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb5-4"><a href="a-tibble-6-x-3.html#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="a-tibble-6-x-3.html#cb5-5" aria-hidden="true" tabindex="-1"></a>indice <span class="ot">=</span> <span class="fu">createDataPartition</span>(<span class="at">y=</span>data<span class="sc">$</span>STATUS, <span class="at">p=</span><span class="fl">0.7</span>, <span class="at">list=</span><span class="cn">FALSE</span>)</span>
+<span id="cb5-6"><a href="a-tibble-6-x-3.html#cb5-6" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">=</span> data[indice, ]</span>
+<span id="cb5-7"><a href="a-tibble-6-x-3.html#cb5-7" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">=</span> data[<span class="sc">-</span>indice, ]</span>
+<span id="cb5-8"><a href="a-tibble-6-x-3.html#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="a-tibble-6-x-3.html#cb5-9" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">&lt;-</span> treino <span class="sc">%&gt;%</span> </span>
+<span id="cb5-10"><a href="a-tibble-6-x-3.html#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">STATUS =</span> <span class="fu">ifelse</span>(STATUS <span class="sc">==</span> <span class="st">&#39;BOM&#39;</span>,<span class="st">&quot;0&quot;</span>,<span class="st">&quot;1&quot;</span>),</span>
+<span id="cb5-11"><a href="a-tibble-6-x-3.html#cb5-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">STATUS =</span> <span class="fu">as.numeric</span>(STATUS))</span>
+<span id="cb5-12"><a href="a-tibble-6-x-3.html#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="a-tibble-6-x-3.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Fazendo os modelos</span></span>
+<span id="cb5-14"><a href="a-tibble-6-x-3.html#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="a-tibble-6-x-3.html#cb5-15" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(STATUS <span class="sc">~</span>.,<span class="at">data =</span> treino, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb5-16"><a href="a-tibble-6-x-3.html#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="a-tibble-6-x-3.html#cb5-17" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit1)</span>
+<span id="cb5-18"><a href="a-tibble-6-x-3.html#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="a-tibble-6-x-3.html#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(resultado<span class="sc">$</span>coefficients,<span class="at">align =</span> <span class="st">&quot;c&quot;</span>, <span class="at">format =</span> <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-20"><a href="a-tibble-6-x-3.html#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_paper</span>(<span class="st">&quot;hover&quot;</span>, <span class="at">full_width =</span> F)</span></code></pre></div>
 <table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1381,11 +1320,11 @@ CATEG
 </tbody>
 </table>
 <p>Agora vejo que todas as variáveis são influentes. Posso prosseguir a análise fazendo a escoragem e analisando a performance do modelo feito na base de teste. Para avaliar o modelo vou utilizar o KS (maior diferença entre a frquência acumulada de bons e maus pagadores) e o AUC (área abaixo da curva) com curva ROC.</p>
-<p><img src="Grafico%20performance%20modelo.JPG" width="600" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Esse resultado de KS de 55%, apesar de ser muito bom, não é visto com frequência no mundo de modalgem de crédito, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou muito bem ajustado.</p>
 </div>
-<div id="criação-de-política" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> Criação de política<a href="data-sciente-e-credit-scoring.html#criação-de-política" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="criação-de-política" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Criação de política<a href="a-tibble-6-x-3.html#criação-de-política" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Com o modelo ajustado e performance verificada é importante ver como esse modelo irá se comportar dentro de uma política de crédito.</p>
 <p>Como o objetivo da livraria é dar crédito sendo justo e não focando exclusivamente no lucro, não vou colocar restrição na política de crédito para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfi. Para controlar possíveis perdas vou utilizar limite a ser financiado variavel de acordo com cada perfil e com uma taxa que acompanha o risco do cliente.</p>
 <p>Analisando os resultados da escoragem optei por um ponto de corte de 602 e para complementar terei limites personalizados para cada perfil de risco seguindo algumas regras:</p>
@@ -1465,8 +1404,8 @@ juro_medio
 <p>A forma de aplicação de taxa que parece ser mais interessante para usar com a política feita é a taxa 4, que aplica taxas de 2,5% até 7,5% ao mês dependendo do perfil do cliente.</p>
 <p>Esse tipo de taxa apresentou a melhor relação entre juros pagos e lucro total. Além disso, premia o melhor cliente com uma taxa menor, fazendo assim ele pagar menos para fazer a compra que deseja. Dessa forma a livraria consegue manter o objetivo de trabalhar com financiamentos justos e para o maior público possível, obtendo um lucro considerável por mês.</p>
 </div>
-<div id="conclusão" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> Conclusão<a href="data-sciente-e-credit-scoring.html#conclusão" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conclusão" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Conclusão<a href="a-tibble-6-x-3.html#conclusão" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ao final desse estudo temos um modelo que apresentou uma boa performance, ou seja, consegue dividir bem os clientes que são bons e maus pagadores. Junto desse modelo conseguimos chegar em uma política de crédito interessante, que varia a taxa e o limite aplicado para cada cliente de acordo com perfil de risco, mantém a taxa de reprovação de 30% e fornece um bom lucro para a livraria.</p>
 <p>A política final ficou da seguinte forma:</p>
 <ul>
@@ -1479,8 +1418,8 @@ juro_medio
 <li>Taxa variando entre 2,5%, 5% e 7,5% de acordo com o perfil do cliente.</li>
 </ul>
 </div>
-<div id="referências" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> Referências<a href="data-sciente-e-credit-scoring.html#referências" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="referências" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Referências<a href="a-tibble-6-x-3.html#referências" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>SICSU, Abraham Laredo. Credit Scoring: Desenvolvimento, Implantação, Acompanhamento. São Paulo: Blucher, 2010</p>
 
 </div>
@@ -1490,7 +1429,7 @@ juro_medio
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-sciente-e-credit-scoring.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

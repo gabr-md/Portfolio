@@ -114,9 +114,11 @@ graf_barras <- data %>%
   geom_histogram() +
   theme_bw()
 
-plot(graf_barras)
+#plot(graf_barras)
 
 ```
+
+![](C:/Users/gabri/Documents/Projetos/Portfolio/Grafico Idade credit.jpg){width=600px}
 
 É possível notar acima que parece haver pouca diferença de idade entre as classes de bons e maus pagadores, a média de idade dos bons pagadores é 4 anos maior que a dos maus pagadores.
 
@@ -360,12 +362,12 @@ ks_graf <- ggplot(data = tabela_ks,aes(x = range, group = 1)) +
   labs(title = "Gráfico do KS - 55%") +
   theme_bw()
 
-plot(ks_graf + roccurve)
+#plot(ks_graf + roccurve)
 
 
 ```
 
-
+![](C:/Users/gabri/Documents/Projetos/Portfolio/Grafico performance modelo.jpg){width=600px}
 
 
 Esse resultado de KS de 55%, apesar de ser muito bom, não é visto com frequência no mundo de modalgem de crédito, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou muito bem ajustado.

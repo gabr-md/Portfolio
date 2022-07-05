@@ -92,7 +92,7 @@ Vemos então que de todos os 3000 clientes, 80% são bons e apenas 20% apresenta
 Agora vou partir para a análise das variáveis preditoras, começando com a variável númerica idade. 
 
 
-```{r echo=FALSE, message=FALSE,warning=FALSE,fig.cap = 'Gráfico de Idade', fig.keep='all'}
+```{r echo=FALSE, message=FALSE,warning=FALSE,fig.cap = 'Gráfico de Idade', fig.keep='all',fig.show='asis'}
 
 # Descrição com dados simples
 

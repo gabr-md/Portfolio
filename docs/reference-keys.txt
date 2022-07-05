@@ -9,15 +9,10 @@ banco-bs2
 banco-semear
 sua-rua
 habilidades
-projetos
-banco-iris
-análise-descritiva
-análise-de-regressão
-conclusão
 data-sciente-e-credit-scoring
 banco-de-dados
-análise-descritiva-1
+análise-descritiva
 modelagem
 criação-de-política
-conclusão-1
+conclusão
 referências

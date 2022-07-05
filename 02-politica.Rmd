@@ -1,6 +1,6 @@
 
 
-## Data Sciente e Credit Scoring
+# Data Sciente e Credit Scoring
 
 Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre isso, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre esse tema e no final fornece alguns bancos de dados e um "problema" que pode ser utilizado para colocar em prática o que é aprendido com a leitura. Aproveitei essa oportunidade e usei o problema passado para desenvolver um modelo e uma política de crédito que solucione o caso específico.
 
@@ -35,7 +35,7 @@ set.seed(12345)
 
 ```
 
-### Banco de Dados
+## Banco de Dados
 
 ```{r, warning=F,message=F}
 
@@ -75,7 +75,7 @@ Com isso já é possível mapear a classe de cada variável, se é numérica, st
 
 Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes ou NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados eu vou pular essa parte.
 
-### Análise Descritiva
+## Análise Descritiva
 
 Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual é a proporção dessa variável, nesse caso, de bons e maus clientes.
 
@@ -193,7 +193,7 @@ kbl(list(tabela_cartao,tabela_instru),align = "c",format = "html") %>%
 ```
 
 
-A primeira tabela é da variável FONE, para a safra da base de dados era esperado que essa variável apresentasse uma diferença maior na distribuição de bons e maus clientes entre as classes, entretando vimos que a proporção de clientes bons e maus é semelhante, ficando próximo dos 80% de bons.
+A primeira tabela é da variável FONE, pelo o ano da base de dados era esperado que essa variável apresentasse uma diferença maior na distribuição de bons e maus clientes entre as classes, entretando, vimos que a proporção de clientes bons e maus é semelhante, ficando próximo dos 80% de bons.
 
 Já na tabela da variável UNIFED é possível notar que os clientes do RJ apresentam uma taxa menor de maus clientes, podendo ser um fator importante para a variável.
 
@@ -215,7 +215,7 @@ A variável RESTR, como esperado, ela segmenta bem a base de clientes, dentre os
 
 Na variável RESID a proporção de bons clientes é maior para os clientes que têm casa própria.
 
-Na variável FICCAO, que fala se o cliente comprou livro de ficção, vemos que entre os que compram livro de ficção a proporção de bons clientes é maior do que entre os que não compraram.
+Na variável FICCAO, que fala se o cliente comprou livro de ficção, vemos que entre os que compram este tipo de livro proporção de bons clientes é maior do que entre os que não compraram.
 
 Já na variável de NAOFICCAO não vemos uma diferença entre os níveis dela.
 
@@ -225,11 +225,11 @@ kbl(list(tabela_categ,tabela_autoajuda),align = "c", format = "html") %>%
   kable_paper("hover", full_width = F)
 
 ```
-A variável CATEG mostra que entre aqueles que compram 2 livrous ou mais a inadimplência é menor.
+A variável CATEG mostra que entre aqueles que compram 2 livros ou mais a inadimplência é menor.
 
-Já a variável que aponta aqueles clientes que compraram livro de auto ajuda o percentual de maus pagadores é aproximadamente 4x maior do que aqueles que não compraram livros de auto ajuda.
+Já a variável que aponta aqueles clientes que compraram livro de auto ajuda o percentual de maus pagadores é, aproximadamente, 4x maior do que aqueles que não compraram livros de auto ajuda.
 
-### Modelagem
+## Modelagem
 
 Para fazer a criação do modelo farei a divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.
 
@@ -365,11 +365,11 @@ ks_graf + roccurve
 
 Esse resultado de KS de 55%, apesar de ser muito bom, não é visto com frequência no mundo de modalgem de crédito, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou muito bem ajustado.
 
-### Criação de política
+## Criação de política
 
 Com o modelo ajustado e performance verificada é importante ver como esse modelo irá se comportar dentro de uma política de crédito.
 
-Como o objetivo da livraria é dar crédito sendo justo e não focando exclusivamente no lucro, não vou restringir a política para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfis podemos controlar possíveis perdas limitando o limite a ser financiado e a aumentando a taxa aplicada para esse público.
+Como o objetivo da livraria é dar crédito sendo justo e não focando exclusivamente no lucro, não vou colocar restrição na política de crédito para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfi. Para controlar possíveis perdas vou utilizar limite a ser financiado variavel de acordo com cada perfil e com uma taxa que acompanha o risco do cliente.
 
 Analisando os resultados da escoragem optei por um ponto de corte de 602 e para complementar terei limites personalizados para cada perfil de risco seguindo algumas regras:
 
@@ -385,7 +385,7 @@ Três tipos de taxa serão aplicadas em cima dessa política:
   - Taxa 1: taxa fixa de de 10% em cima do valor da compra;
   - Taxa 2: taxa variando entre 5%, 10% e 15% no valor da compra de acordo com o perfil do cliente;
   - Taxa 3: taxa fixa de 4% ao mês;
-  - Taxa 4: taxa variando entre 2,5%, 5% e 7,5% de acordo com o perfil do cliente;
+  - Taxa 4: taxa variando entre 2,5%, 5% e 7,5% ao mês de acordo com o perfil do cliente;
 
 Para verificar qual é a melhor forma de taxar o cliente vou fazer uma simulação sorteando uma amostra aleatória da base de dados original, contendo bons e maus clientes, e atribuindo valores de compra que podem variar de 100 a 1000 reais e parcelas que vão de 2 a 6 vezes.
 
@@ -409,7 +409,7 @@ A forma de aplicação de taxa que parece ser mais interessante para usar com a 
 
 Esse tipo de taxa apresentou a melhor relação entre juros pagos e lucro total. Além disso, premia o melhor cliente com uma taxa menor, fazendo assim ele pagar menos para fazer a compra que deseja. Dessa forma a livraria consegue manter o objetivo de trabalhar com financiamentos justos e para o maior público possível, obtendo um lucro considerável por mês.
 
-### Conclusão
+## Conclusão
 
 Ao final desse estudo temos um modelo que apresentou uma boa performance, ou seja, consegue dividir bem os clientes que são bons e maus pagadores. Junto desse modelo conseguimos chegar em uma política de crédito interessante, que varia a taxa e o limite aplicado para cada cliente de acordo com perfil de risco, mantém a taxa de reprovação de 30% e fornece um bom lucro para a livraria.
 
@@ -424,7 +424,7 @@ A política final ficou da seguinte forma:
   - Taxa variando entre 2,5%, 5% e 7,5% de acordo com o perfil do cliente.
   
 
-### Referências
+## Referências
 
 SICSU, Abraham Laredo. Credit Scoring: Desenvolvimento, Implantação, Acompanhamento. São Paulo: Blucher, 2010
 

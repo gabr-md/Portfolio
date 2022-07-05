@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Data Sciente e Credit Scoring | Portfólio Gabriel Maciel</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Data Sciente e Credit Scoring | Portfólio Gabriel Maciel" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Data Sciente e Credit Scoring | Portfólio Gabriel Maciel" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+set in the _output.yml file.
+The HTML output format for this example is bookdown::gitbook,</p>" />
+  
+
+<meta name="author" content="Gabriel Maciel" />
+
+
+<meta name="date" content="2022-07-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/header-attrs-2.12/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Portfólio Gabriel Maciel</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre Mim<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quem-sou-eu"><i class="fa fa-check"></i><b>1.1</b> Quem sou eu?<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#formação"><i class="fa fa-check"></i><b>1.2</b> Formação<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#experiência-profissional"><i class="fa fa-check"></i><b>1.3</b> Experiência Profissional<span></span></a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="index.html"><a href="index.html#hospital-odilon-behrens"><i class="fa fa-check"></i><b>1.3.1</b> Hospital Odilon Behrens<span></span></a></li>
+<li class="chapter" data-level="1.3.2" data-path="index.html"><a href="index.html#prograd-ufmg"><i class="fa fa-check"></i><b>1.3.2</b> Prograd UFMG<span></span></a></li>
+<li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#banco-de-desenvolvimento-de-minas-gerais---bdmg"><i class="fa fa-check"></i><b>1.3.3</b> Banco de Desenvolvimento de Minas Gerais - BDMG<span></span></a></li>
+<li class="chapter" data-level="1.3.4" data-path="index.html"><a href="index.html#banco-bs2"><i class="fa fa-check"></i><b>1.3.4</b> Banco BS2<span></span></a></li>
+<li class="chapter" data-level="1.3.5" data-path="index.html"><a href="index.html#banco-semear"><i class="fa fa-check"></i><b>1.3.5</b> Banco Semear<span></span></a></li>
+<li class="chapter" data-level="1.3.6" data-path="index.html"><a href="index.html#sua-rua"><i class="fa fa-check"></i><b>1.3.6</b> Sua Rua<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#habilidades"><i class="fa fa-check"></i><b>1.4</b> Habilidades<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html"><i class="fa fa-check"></i><b>2</b> Data Sciente e Credit Scoring<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#banco-de-dados"><i class="fa fa-check"></i><b>2.1</b> Banco de Dados<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#análise-descritiva"><i class="fa fa-check"></i><b>2.2</b> Análise Descritiva<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#modelagem"><i class="fa fa-check"></i><b>2.3</b> Modelagem<span></span></a></li>
+<li class="chapter" data-level="2.4" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#criação-de-política"><i class="fa fa-check"></i><b>2.4</b> Criação de política<span></span></a></li>
+<li class="chapter" data-level="2.5" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#conclusão"><i class="fa fa-check"></i><b>2.5</b> Conclusão<span></span></a></li>
+<li class="chapter" data-level="2.6" data-path="data-sciente-e-credit-scoring.html"><a href="data-sciente-e-credit-scoring.html#referências"><i class="fa fa-check"></i><b>2.6</b> Referências<span></span></a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Portfólio Gabriel Maciel</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-sciente-e-credit-scoring" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Data Sciente e Credit Scoring<a href="data-sciente-e-credit-scoring.html#data-sciente-e-credit-scoring" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre isso, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre esse tema e no final fornece alguns bancos de dados e um “problema” que pode ser utilizado para colocar em prática o que é aprendido com a leitura. Aproveitei essa oportunidade e usei o problema passado para desenvolver um modelo e uma política de crédito que solucione o caso específico.</p>
+<p>Atividade proposta:</p>
+<p>“Livraria Dorela é uma cadeia de livrarias que tem quiosques nos principais supermercados das grandes capitais brasileiras. A Dorela passou a fazer o financiamento de livros, de acordo com um score definido de forma subjetiva, a taxa de rejeição era de 30% e a taxa aplicada era muito baixa, visto isso, os resultados não eram satisfatórios.</p>
+<p>O novo diretor de crédito da Dorela, que havia atuado como gestor de credito de uma grande cadeira verejista de moda e tinha experiência no uso de modelos estatísticos decidiu desenvolver um modelo para esse caso.</p>
+<p>Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi realizado no período de julho de 2007 a junho de 2008, ele considerou a performance do cliente nos 6 meses seguintes, e classificou como mau cliente aquele que teve qualquer atraso acima de 30 dias, caso contrário era classificado com bom cliente.”</p>
+<p>Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.</p>
+<div id="banco-de-dados" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Banco de Dados<a href="data-sciente-e-credit-scoring.html#banco-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data-sciente-e-credit-scoring.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lendo dataset</span></span>
+<span id="cb1-2"><a href="data-sciente-e-credit-scoring.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="data-sciente-e-credit-scoring.html#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xls</span>(<span class="st">&quot;351.xls&quot;</span>)</span>
+<span id="cb1-4"><a href="data-sciente-e-credit-scoring.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="data-sciente-e-credit-scoring.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Selecionando as colunas de interesse</span></span>
+<span id="cb1-6"><a href="data-sciente-e-credit-scoring.html#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="data-sciente-e-credit-scoring.html#cb1-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a href="data-sciente-e-credit-scoring.html#cb1-8" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(IDADE,UNIFED,FONE,INSTRU,CARTAO,RESTR,RESID,FICCAO,NAOFICCAO,AUTOAJUDA,CATEG,STATUS)</span>
+<span id="cb1-9"><a href="data-sciente-e-credit-scoring.html#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="data-sciente-e-credit-scoring.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Tipo das colunas da base de dados</span></span>
+<span id="cb1-11"><a href="data-sciente-e-credit-scoring.html#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="data-sciente-e-credit-scoring.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(data)</span></code></pre></div>
+<pre><code>## Rows: 3,000
+## Columns: 12
+## $ IDADE     &lt;dbl&gt; 26, 43, 33, 39, 43, 40, 39, 50, 51, 45, 67, 34, 49, 59, 41, ~
+## $ UNIFED    &lt;chr&gt; &quot;SP&quot;, &quot;SP&quot;, &quot;OUTROS&quot;, &quot;RJ&quot;, &quot;OUTROS&quot;, &quot;RJ&quot;, &quot;SP&quot;, &quot;SP&quot;, &quot;OUT~
+## $ FONE      &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM~
+## $ INSTRU    &lt;chr&gt; &quot;PRIM &amp; SEC&quot;, &quot;SUP&quot;, &quot;SUP&quot;, &quot;MV&quot;, &quot;PRIM &amp; SEC&quot;, &quot;PRIM &amp; SEC&quot;~
+## $ CARTAO    &lt;chr&gt; &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;MV&quot;, &quot;SIM&quot;, &quot;SIM&quot;~
+## $ RESTR     &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM~
+## $ RESID     &lt;chr&gt; &quot;PROP&quot;, &quot;ALUG&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PROP&quot;, &quot;PRO~
+## $ FICCAO    &lt;chr&gt; &quot;SIM&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM&quot;, &quot;SIM~
+## $ NAOFICCAO &lt;chr&gt; &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO~
+## $ AUTOAJUDA &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO~
+## $ CATEG     &lt;dbl&gt; 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, ~
+## $ STATUS    &lt;chr&gt; &quot;MAU&quot;, &quot;MAU&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;MAU&quot;, &quot;BOM&quot;, &quot;BOM~</code></pre>
+<p>Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e aplicar o glimpse para entender as variáveis.</p>
+<p>Entre as variáveis, temos:</p>
+<ul>
+<li>Idade: idade do cliente em anos;</li>
+<li>UNIFED: estado do cliente (SP, RJ e Outros);</li>
+<li>FONE: indica se há presença de telefone fixo ou não;</li>
+<li>INSTRU: nível de escolaridade;</li>
+<li>CARTAO: tem cartão de crédito;</li>
+<li>RESTR: apresenta algum restritivo no mercado;</li>
+<li>RESID: mora em residência própria ou alugada;</li>
+<li>FICCAO: comprou livro de ficção;</li>
+<li>NAOFICCAO: comprou livro de não ficção;</li>
+<li>AUTOAJUDA: comprou livro de autoajuda;</li>
+<li>CATEG: comprou dois livros ou mais;</li>
+<li>STATUS: variável resposta, bom ou mau cliente.</li>
+</ul>
+<p>Com isso já é possível mapear a classe de cada variável, se é numérica, string ou fator, essa diferença entre as classes pode interferir na análise descritiva e na modelagem.</p>
+<p>Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes ou NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados eu vou pular essa parte.</p>
+</div>
+<div id="análise-descritiva" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Análise Descritiva<a href="data-sciente-e-credit-scoring.html#análise-descritiva" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual é a proporção dessa variável, nesse caso, de bons e maus clientes.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-sciente-e-credit-scoring.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Status</span></span>
+<span id="cb3-2"><a href="data-sciente-e-credit-scoring.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="data-sciente-e-credit-scoring.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>STATUS))</span></code></pre></div>
+<pre><code>## 
+## BOM MAU 
+## 0.8 0.2</code></pre>
+<p>Vemos então que de todos os 3000 clientes, 80% são bons e apenas 20% apresentaram atraso maior do que 30 dias.</p>
+<p>Agora vou partir para a análise das variáveis preditoras, começando com a variável númerica idade</p>
+<pre><code>## # A tibble: 6 x 3
+##   metrica   Bom     Mau     
+##   &lt;chr&gt;     &lt;table&gt; &lt;table&gt; 
+## 1 min       18.00   18.00000
+## 2 1 quartil 34.00   30.00000
+## 3 mediana   41.00   37.00000
+## 4 media     42.72   38.28333
+## 5 3 quartil 49.25   45.00000
+## 6 max       88.00   70.00000</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>É possível notar acima que parece haver pouca diferença de idade entre as classes de bons e maus pagadores, a média de idade dos bons pagadores é 4 anos maior que a dos maus pagadores.</p>
+<p>Para analisar as variáveis categóricas eu criei uma pequena função que cria tabelas com a proporção de bons e maus pagadores em cada uma das classes das variáveis.</p>
+<p>Vou começar analisando as variáveis de UNIFED, FONE, INSTRU e CARTAO.</p>
+<table class="kable_wrapper lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+FONE
+</th>
+<th style="text-align:center;">
+perc.bom
+</th>
+<th style="text-align:center;">
+perc.mau
+</th>
+<th style="text-align:center;">
+perc.total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+NÃO
+</td>
+<td style="text-align:center;">
+81.69%
+</td>
+<td style="text-align:center;">
+18.31%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+SIM
+</td>
+<td style="text-align:center;">
+79.82%
+</td>
+<td style="text-align:center;">
+20.18%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+UNIFED
+</th>
+<th style="text-align:center;">
+perc.bom
+</th>
+<th style="text-align:center;">
+perc.mau
+</th>
+<th style="text-align:center;">
+perc.total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+OUTROS
+</td>
+<td style="text-align:center;">
+72.63%
+</td>
+<td style="text-align:center;">
+27.37%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+RJ
+</td>
+<td style="text-align:center;">
+88.33%
+</td>
+<td style="text-align:center;">
+11.67%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+SP
+</td>
+<td style="text-align:center;">
+76.81%
+</td>
+<td style="text-align:center;">
+23.19%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="kable_wrapper lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+CARTAO
+</th>
+<th style="text-align:center;">
+perc.bom
+</th>
+<th style="text-align:center;">
+perc.mau
+</th>
+<th style="text-align:center;">
+perc.total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+MV
+</td>
+<td style="text-align:center;">
+71.79%
+</td>
+<td style="text-align:center;">
+28.21%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+NAO
+</td>
+<td style="text-align:center;">
+74.39%
+</td>
+<td style="text-align:center;">
+25.61%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+SIM
+</td>
+<td style="text-align:center;">
+81.91%
+</td>
+<td style="text-align:center;">
+18.09%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+INSTRU
+</th>
+<th style="text-align:center;">
+perc.bom
+</th>
+<th style="text-align:center;">
+perc.mau
+</th>
+<th style="text-align:center;">
+perc.total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+MV
+</td>
+<td style="text-align:center;">
+82.83%
+</td>
+<td style="text-align:center;">
+17.17%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+PRIM &amp; SEC
+</td>
+<td style="text-align:center;">
+70.82%
+</td>
+<td style="text-align:center;">
+29.18%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+SUP
+</td>
+<td style="text-align:center;">
+83.61%
+</td>
+<td style="text-align:center;">
+16.39%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>A primeira tabela é da variável FONE, pelo o ano da base de dados era esperado que essa variável apresentasse uma diferença maior na distribuição de bons e maus clientes entre as classes, entretando, vimos que a proporção de clientes bons e maus é semelhante, ficando próximo dos 80% de bons.</p>
+<p>Já na tabela da variável UNIFED é possível notar que os clientes do RJ apresentam uma taxa menor de maus clientes, podendo ser um fator importante para a variável.</p>
+<p>Na tabela de CARTAO, aqueles que previamente já tinham um cartão apresentaram uma taxa menor de inadimplência e os clientes sem cartão e sem informação (MV) apresentaram uma distribuição semelhante de maus clientes, não farei nenhuma junção de classe considerando MV como um fator.</p>
+<p>Na variável INSTRU, aqueles que têm nível PRIM E SEC mostraram uma distribuição de bons e maus clientes diferente das classes SUP e de MV, que tiveram uma distribuição semelhante, nesse caso também não vou fazer nenhuma junção de níveis, mantendo o MV.</p>
+<table class="kable_wrapper lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+RESTR
+</th>
+<th style="text-align:center;">
+perc.bom
+</th>
+<th style="text-align:center;">
+perc.mau
+</th>
+<th style="text-align:center;">
+perc.total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+NAO
+</td>
+<td style="text-align:center;">
+84.93%
+</td>
+<td style="text-align:center;">
+15.07%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+SIM
+</td>
+<td style="text-align:center;">
+51.14%
+</td>
+<td style="text-align:center;">
+48.86%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+RESID
+</th>
+<th style="text-align:center;">
+perc.bom
+</th>
+<th style="text-align:center;">
+perc.mau
+</th>
+<th style="text-align:center;">
+perc.total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+ALUG
+</td>
+<td style="text-align:center;">
+72.92%
+</td>
+<td style="text-align:center;">
+27.08%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+PROP
+</td>
+<td style="text-align:center;">
+81.04%
+</td>
+<td style="text-align:center;">
+18.96%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="kable_wrapper lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+FICCAO
+</th>
+<th style="text-align:center;">
+perc.bom
+</th>
+<th style="text-align:center;">
+perc.mau
+</th>
+<th style="text-align:center;">
+perc.total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+NAO
+</td>
+<td style="text-align:center;">
+73.66%
+</td>
+<td style="text-align:center;">
+26.34%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+SIM
+</td>
+<td style="text-align:center;">
+83.38%
+</td>
+<td style="text-align:center;">
+16.62%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+NAOFICCAO
+</th>
+<th style="text-align:center;">
+perc.bom
+</th>
+<th style="text-align:center;">
+perc.mau
+</th>
+<th style="text-align:center;">
+perc.total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+NAO
+</td>
+<td style="text-align:center;">
+79.94%
+</td>
+<td style="text-align:center;">
+20.06%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+SIM
+</td>
+<td style="text-align:center;">
+81.08%
+</td>
+<td style="text-align:center;">
+18.92%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>A variável RESTR, como esperado, ela segmenta bem a base de clientes, dentre os que apresentam restritivos, 49% são maus clientes, e entre os que não tem restritivos 84% são bons clientes.</p>
+<p>Na variável RESID a proporção de bons clientes é maior para os clientes que têm casa própria.</p>
+<p>Na variável FICCAO, que fala se o cliente comprou livro de ficção, vemos que entre os que compram este tipo de livro proporção de bons clientes é maior do que entre os que não compraram.</p>
+<p>Já na variável de NAOFICCAO não vemos uma diferença entre os níveis dela.</p>
+<table class="kable_wrapper lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+CATEG
+</th>
+<th style="text-align:center;">
+perc.bom
+</th>
+<th style="text-align:center;">
+perc.mau
+</th>
+<th style="text-align:center;">
+perc.total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+0
+</td>
+<td style="text-align:center;">
+74.57%
+</td>
+<td style="text-align:center;">
+25.43%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+85.01%
+</td>
+<td style="text-align:center;">
+14.99%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+AUTOAJUDA
+</th>
+<th style="text-align:center;">
+perc.bom
+</th>
+<th style="text-align:center;">
+perc.mau
+</th>
+<th style="text-align:center;">
+perc.total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+NAO
+</td>
+<td style="text-align:center;">
+90.06%
+</td>
+<td style="text-align:center;">
+9.94%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+SIM
+</td>
+<td style="text-align:center;">
+63.56%
+</td>
+<td style="text-align:center;">
+36.44%
+</td>
+<td style="text-align:center;">
+100%
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p>A variável CATEG mostra que entre aqueles que compram 2 livros ou mais a inadimplência é menor.</p>
+<p>Já a variável que aponta aqueles clientes que compraram livro de auto ajuda o percentual de maus pagadores é, aproximadamente, 4x maior do que aqueles que não compraram livros de auto ajuda.</p>
+</div>
+<div id="modelagem" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Modelagem<a href="data-sciente-e-credit-scoring.html#modelagem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Para fazer a criação do modelo farei a divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.</p>
+<p>Essa divisão é feita para avaliarmos a performance do modelos em uma base que não seja utilizada para o ajuste do modelo.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-sciente-e-credit-scoring.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb6-2"><a href="data-sciente-e-credit-scoring.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb6-3"><a href="data-sciente-e-credit-scoring.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb6-4"><a href="data-sciente-e-credit-scoring.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="data-sciente-e-credit-scoring.html#cb6-5" aria-hidden="true" tabindex="-1"></a>indice <span class="ot">=</span> <span class="fu">createDataPartition</span>(<span class="at">y=</span>data<span class="sc">$</span>STATUS, <span class="at">p=</span><span class="fl">0.7</span>, <span class="at">list=</span><span class="cn">FALSE</span>)</span>
+<span id="cb6-6"><a href="data-sciente-e-credit-scoring.html#cb6-6" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">=</span> data[indice, ]</span>
+<span id="cb6-7"><a href="data-sciente-e-credit-scoring.html#cb6-7" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">=</span> data[<span class="sc">-</span>indice, ]</span>
+<span id="cb6-8"><a href="data-sciente-e-credit-scoring.html#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="data-sciente-e-credit-scoring.html#cb6-9" aria-hidden="true" tabindex="-1"></a>treino <span class="ot">&lt;-</span> treino <span class="sc">%&gt;%</span> </span>
+<span id="cb6-10"><a href="data-sciente-e-credit-scoring.html#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">STATUS =</span> <span class="fu">ifelse</span>(STATUS <span class="sc">==</span> <span class="st">&#39;BOM&#39;</span>,<span class="st">&quot;0&quot;</span>,<span class="st">&quot;1&quot;</span>),</span>
+<span id="cb6-11"><a href="data-sciente-e-credit-scoring.html#cb6-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">STATUS =</span> <span class="fu">as.numeric</span>(STATUS))</span>
+<span id="cb6-12"><a href="data-sciente-e-credit-scoring.html#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="data-sciente-e-credit-scoring.html#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Fazendo os modelos</span></span>
+<span id="cb6-14"><a href="data-sciente-e-credit-scoring.html#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="data-sciente-e-credit-scoring.html#cb6-15" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(STATUS <span class="sc">~</span>.,<span class="at">data =</span> treino, <span class="at">family =</span> <span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb6-16"><a href="data-sciente-e-credit-scoring.html#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="data-sciente-e-credit-scoring.html#cb6-17" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">summary</span>(fit1)</span>
+<span id="cb6-18"><a href="data-sciente-e-credit-scoring.html#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="data-sciente-e-credit-scoring.html#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(resultado<span class="sc">$</span>coefficients,<span class="at">align =</span> <span class="st">&quot;c&quot;</span>, <span class="at">format =</span> <span class="st">&quot;html&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-20"><a href="data-sciente-e-credit-scoring.html#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_paper</span>(<span class="st">&quot;hover&quot;</span>, <span class="at">full_width =</span> F)</span></code></pre></div>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Estimate
+</th>
+<th style="text-align:center;">
+Std. Error
+</th>
+<th style="text-align:center;">
+z value
+</th>
+<th style="text-align:center;">
+Pr(&gt;|z|)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+-0.5500702
+</td>
+<td style="text-align:center;">
+0.5833602
+</td>
+<td style="text-align:center;">
+-0.9429340
+</td>
+<td style="text-align:center;">
+0.3457146
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IDADE
+</td>
+<td style="text-align:center;">
+-0.0263951
+</td>
+<td style="text-align:center;">
+0.0057399
+</td>
+<td style="text-align:center;">
+-4.5985591
+</td>
+<td style="text-align:center;">
+0.0000043
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UNIFEDRJ
+</td>
+<td style="text-align:center;">
+-0.8800942
+</td>
+<td style="text-align:center;">
+0.1781381
+</td>
+<td style="text-align:center;">
+-4.9405172
+</td>
+<td style="text-align:center;">
+0.0000008
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UNIFEDSP
+</td>
+<td style="text-align:center;">
+-0.0005601
+</td>
+<td style="text-align:center;">
+0.1577207
+</td>
+<td style="text-align:center;">
+-0.0035514
+</td>
+<td style="text-align:center;">
+0.9971664
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FONESIM
+</td>
+<td style="text-align:center;">
+0.2029430
+</td>
+<td style="text-align:center;">
+0.2381533
+</td>
+<td style="text-align:center;">
+0.8521526
+</td>
+<td style="text-align:center;">
+0.3941294
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+INSTRUPRIM &amp; SEC
+</td>
+<td style="text-align:center;">
+0.8644363
+</td>
+<td style="text-align:center;">
+0.1871078
+</td>
+<td style="text-align:center;">
+4.6199896
+</td>
+<td style="text-align:center;">
+0.0000038
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+INSTRUSUP
+</td>
+<td style="text-align:center;">
+0.0818779
+</td>
+<td style="text-align:center;">
+0.1751249
+</td>
+<td style="text-align:center;">
+0.4675398
+</td>
+<td style="text-align:center;">
+0.6401137
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CARTAONAO
+</td>
+<td style="text-align:center;">
+-0.6621534
+</td>
+<td style="text-align:center;">
+0.4055050
+</td>
+<td style="text-align:center;">
+-1.6329108
+</td>
+<td style="text-align:center;">
+0.1024878
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CARTAOSIM
+</td>
+<td style="text-align:center;">
+-1.2483886
+</td>
+<td style="text-align:center;">
+0.3943353
+</td>
+<td style="text-align:center;">
+-3.1658046
+</td>
+<td style="text-align:center;">
+0.0015465
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RESTRSIM
+</td>
+<td style="text-align:center;">
+1.6857027
+</td>
+<td style="text-align:center;">
+0.1649983
+</td>
+<td style="text-align:center;">
+10.2164841
+</td>
+<td style="text-align:center;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RESIDPROP
+</td>
+<td style="text-align:center;">
+-0.2427704
+</td>
+<td style="text-align:center;">
+0.1899731
+</td>
+<td style="text-align:center;">
+-1.2779196
+</td>
+<td style="text-align:center;">
+0.2012778
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FICCAOSIM
+</td>
+<td style="text-align:center;">
+0.8406594
+</td>
+<td style="text-align:center;">
+0.1682863
+</td>
+<td style="text-align:center;">
+4.9954122
+</td>
+<td style="text-align:center;">
+0.0000006
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+NAOFICCAOSIM
+</td>
+<td style="text-align:center;">
+0.2916317
+</td>
+<td style="text-align:center;">
+0.3035979
+</td>
+<td style="text-align:center;">
+0.9605852
+</td>
+<td style="text-align:center;">
+0.3367608
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUTOAJUDASIM
+</td>
+<td style="text-align:center;">
+2.9919784
+</td>
+<td style="text-align:center;">
+0.1995661
+</td>
+<td style="text-align:center;">
+14.9924165
+</td>
+<td style="text-align:center;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CATEG
+</td>
+<td style="text-align:center;">
+-2.3008406
+</td>
+<td style="text-align:center;">
+0.2046361
+</td>
+<td style="text-align:center;">
+-11.2435719
+</td>
+<td style="text-align:center;">
+0.0000000
+</td>
+</tr>
+</tbody>
+</table>
+<p>No resultado do modelo vemos que algumas variáveis não foram significativas, visto isso, vou fazer uma nova modelagem sem essas variáveis.</p>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Estimate
+</th>
+<th style="text-align:center;">
+Std. Error
+</th>
+<th style="text-align:center;">
+z value
+</th>
+<th style="text-align:center;">
+Pr(&gt;|z|)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+-0.6160197
+</td>
+<td style="text-align:center;">
+0.5139124
+</td>
+<td style="text-align:center;">
+-1.1986862
+</td>
+<td style="text-align:center;">
+0.2306500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IDADE
+</td>
+<td style="text-align:center;">
+-0.0263839
+</td>
+<td style="text-align:center;">
+0.0056977
+</td>
+<td style="text-align:center;">
+-4.6306058
+</td>
+<td style="text-align:center;">
+0.0000036
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UNIFEDRJ
+</td>
+<td style="text-align:center;">
+-0.8615245
+</td>
+<td style="text-align:center;">
+0.1776068
+</td>
+<td style="text-align:center;">
+-4.8507402
+</td>
+<td style="text-align:center;">
+0.0000012
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+UNIFEDSP
+</td>
+<td style="text-align:center;">
+0.0155509
+</td>
+<td style="text-align:center;">
+0.1571826
+</td>
+<td style="text-align:center;">
+0.0989354
+</td>
+<td style="text-align:center;">
+0.9211896
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+INSTRUPRIM &amp; SEC
+</td>
+<td style="text-align:center;">
+0.8770520
+</td>
+<td style="text-align:center;">
+0.1863918
+</td>
+<td style="text-align:center;">
+4.7054204
+</td>
+<td style="text-align:center;">
+0.0000025
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+INSTRUSUP
+</td>
+<td style="text-align:center;">
+0.0904156
+</td>
+<td style="text-align:center;">
+0.1731469
+</td>
+<td style="text-align:center;">
+0.5221902
+</td>
+<td style="text-align:center;">
+0.6015379
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CARTAONAO
+</td>
+<td style="text-align:center;">
+-0.6150139
+</td>
+<td style="text-align:center;">
+0.4048910
+</td>
+<td style="text-align:center;">
+-1.5189616
+</td>
+<td style="text-align:center;">
+0.1287722
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CARTAOSIM
+</td>
+<td style="text-align:center;">
+-1.2139085
+</td>
+<td style="text-align:center;">
+0.3937900
+</td>
+<td style="text-align:center;">
+-3.0826289
+</td>
+<td style="text-align:center;">
+0.0020518
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+RESTRSIM
+</td>
+<td style="text-align:center;">
+1.6854795
+</td>
+<td style="text-align:center;">
+0.1636982
+</td>
+<td style="text-align:center;">
+10.2962634
+</td>
+<td style="text-align:center;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+FICCAOSIM
+</td>
+<td style="text-align:center;">
+0.8471162
+</td>
+<td style="text-align:center;">
+0.1680679
+</td>
+<td style="text-align:center;">
+5.0403196
+</td>
+<td style="text-align:center;">
+0.0000005
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUTOAJUDASIM
+</td>
+<td style="text-align:center;">
+2.9931425
+</td>
+<td style="text-align:center;">
+0.1994726
+</td>
+<td style="text-align:center;">
+15.0052828
+</td>
+<td style="text-align:center;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CATEG
+</td>
+<td style="text-align:center;">
+-2.3113245
+</td>
+<td style="text-align:center;">
+0.2046182
+</td>
+<td style="text-align:center;">
+-11.2957927
+</td>
+<td style="text-align:center;">
+0.0000000
+</td>
+</tr>
+</tbody>
+</table>
+<p>Agora vejo que todas as variáveis são influentes. Posso prosseguir a análise fazendo a escoragem e analisando a performance do modelo feito na base de teste. Para avaliar o modelo vou utilizar o KS (maior diferença entre a frquência acumulada de bons e maus pagadores) e o AUC (área abaixo da curva) com curva ROC.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Esse resultado de KS de 55%, apesar de ser muito bom, não é visto com frequência no mundo de modalgem de crédito, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou muito bem ajustado.</p>
+</div>
+<div id="criação-de-política" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Criação de política<a href="data-sciente-e-credit-scoring.html#criação-de-política" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Com o modelo ajustado e performance verificada é importante ver como esse modelo irá se comportar dentro de uma política de crédito.</p>
+<p>Como o objetivo da livraria é dar crédito sendo justo e não focando exclusivamente no lucro, não vou colocar restrição na política de crédito para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfi. Para controlar possíveis perdas vou utilizar limite a ser financiado variavel de acordo com cada perfil e com uma taxa que acompanha o risco do cliente.</p>
+<p>Analisando os resultados da escoragem optei por um ponto de corte de 602 e para complementar terei limites personalizados para cada perfil de risco seguindo algumas regras:</p>
+<ul>
+<li>Limite total para clientes com score acima de 807;</li>
+<li>Limite máximo de 700 reais para clientes com score de 675 a 807;</li>
+<li>Limite máximo de 600 reais para clientes com score de 602 a 674;</li>
+<li>Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda;</li>
+<li>Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo;</li>
+<li>Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos;</li>
+</ul>
+<p>Três tipos de taxa serão aplicadas em cima dessa política:</p>
+<ul>
+<li>Taxa 1: taxa fixa de de 10% em cima do valor da compra;</li>
+<li>Taxa 2: taxa variando entre 5%, 10% e 15% no valor da compra de acordo com o perfil do cliente;</li>
+<li>Taxa 3: taxa fixa de 4% ao mês;</li>
+<li>Taxa 4: taxa variando entre 2,5%, 5% e 7,5% ao mês de acordo com o perfil do cliente;</li>
+</ul>
+<p>Para verificar qual é a melhor forma de taxar o cliente vou fazer uma simulação sorteando uma amostra aleatória da base de dados original, contendo bons e maus clientes, e atribuindo valores de compra que podem variar de 100 a 1000 reais e parcelas que vão de 2 a 6 vezes.</p>
+<p>Após essa amostragem de clientes eu aplico a política e cada uma das taxas para calcular o resultado final. Esse processo eu repito 100 vezes e no final pego a média do lucro total e a média de juros pago por cliente.</p>
+<table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Taxa 1
+</th>
+<th style="text-align:center;">
+Taxa 2
+</th>
+<th style="text-align:center;">
+Taxa 3
+</th>
+<th style="text-align:center;">
+Taxa 4
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+lucro_medio
+</td>
+<td style="text-align:center;">
+2646
+</td>
+<td style="text-align:center;">
+1919
+</td>
+<td style="text-align:center;">
+8297
+</td>
+<td style="text-align:center;">
+11578
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+juro_medio
+</td>
+<td style="text-align:center;">
+51
+</td>
+<td style="text-align:center;">
+48
+</td>
+<td style="text-align:center;">
+80
+</td>
+<td style="text-align:center;">
+96
+</td>
+</tr>
+</tbody>
+</table>
+<p>A forma de aplicação de taxa que parece ser mais interessante para usar com a política feita é a taxa 4, que aplica taxas de 2,5% até 7,5% ao mês dependendo do perfil do cliente.</p>
+<p>Esse tipo de taxa apresentou a melhor relação entre juros pagos e lucro total. Além disso, premia o melhor cliente com uma taxa menor, fazendo assim ele pagar menos para fazer a compra que deseja. Dessa forma a livraria consegue manter o objetivo de trabalhar com financiamentos justos e para o maior público possível, obtendo um lucro considerável por mês.</p>
+</div>
+<div id="conclusão" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Conclusão<a href="data-sciente-e-credit-scoring.html#conclusão" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ao final desse estudo temos um modelo que apresentou uma boa performance, ou seja, consegue dividir bem os clientes que são bons e maus pagadores. Junto desse modelo conseguimos chegar em uma política de crédito interessante, que varia a taxa e o limite aplicado para cada cliente de acordo com perfil de risco, mantém a taxa de reprovação de 30% e fornece um bom lucro para a livraria.</p>
+<p>A política final ficou da seguinte forma:</p>
+<ul>
+<li>Limite total para clientes com score acima de 807;</li>
+<li>Limite máximo de 700 reais para clientes com score de 675 a 807;</li>
+<li>Limite máximo de 600 reais para clientes com score de 602 a 674;</li>
+<li>Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda;</li>
+<li>Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo;</li>
+<li>Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos;</li>
+<li>Taxa variando entre 2,5%, 5% e 7,5% de acordo com o perfil do cliente.</li>
+</ul>
+</div>
+<div id="referências" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Referências<a href="data-sciente-e-credit-scoring.html#referências" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>SICSU, Abraham Laredo. Credit Scoring: Desenvolvimento, Implantação, Acompanhamento. São Paulo: Blucher, 2010</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-politica.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -255,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## BOM MAU 
 ## 0.8 0.2</code></pre>
 <p>Vemos então que de todos os 3000 clientes, 80% são bons e apenas 20% apresentaram atraso maior do que 30 dias.</p>
-<p>Agora vou partir para a análise das variáveis preditoras, começando com a variável númerica idade</p>
+<p>Agora vou partir para a análise das variáveis preditoras, começando com a variável númerica idade.</p>
 <pre><code>## # A tibble: 6 x 3
 ##   metrica   Bom     Mau     
 ##   &lt;chr&gt;     &lt;table&gt; &lt;table&gt; 
@@ -265,7 +265,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 media     42.72   38.28333
 ## 5 3 quartil 49.25   45.00000
 ## 6 max       88.00   70.00000</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="_main_files/figure-html/unnamed-chunk-4-1.png" alt="Gráfico de Idade" width="672" />
+<p class="caption">
+Figure 2.1: Gráfico de Idade
+</p>
+</div>
 <p>É possível notar acima que parece haver pouca diferença de idade entre as classes de bons e maus pagadores, a média de idade dos bons pagadores é 4 anos maior que a dos maus pagadores.</p>
 <p>Para analisar as variáveis categóricas eu criei uma pequena função que cria tabelas com a proporção de bons e maus pagadores em cada uma das classes das variáveis.</p>
 <p>Vou começar analisando as variáveis de UNIFED, FONE, INSTRU e CARTAO.</p>

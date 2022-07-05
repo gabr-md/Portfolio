@@ -89,10 +89,10 @@ prop.table(table(data$STATUS))
 
 Vemos então que de todos os 3000 clientes, 80% são bons e apenas 20% apresentaram atraso maior do que 30 dias.
 
-Agora vou partir para a análise das variáveis preditoras, começando com a variável númerica idade 
+Agora vou partir para a análise das variáveis preditoras, começando com a variável númerica idade. 
 
 
-```{r echo=FALSE, message=FALSE,warning=FALSE, fig.show='hold'}
+```{r echo=FALSE, message=FALSE,warning=FALSE,fig.cap = 'Gráfico de Idade', fig.keep='all'}
 
 # Descrição com dados simples
 

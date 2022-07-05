@@ -109,10 +109,12 @@ data %>%
               select(metrica,everything()), by = "metrica") %>%
   rename("Mau" = "summary(IDADE)")
 
-data %>%
+graf_barras <- data %>%
   ggplot(aes(x = IDADE, fill = STATUS)) +
   geom_histogram() +
   theme_bw()
+
+plot(graf_barras)
 
 ```
 
@@ -275,7 +277,7 @@ kbl(resultado$coefficients,align = "c", format = "html") %>%
 
 Agora vejo que todas as variáveis são influentes. Posso prosseguir a análise fazendo a escoragem e analisando a performance do modelo feito na base de teste. Para avaliar o modelo vou utilizar o KS (maior diferença entre a frquência acumulada de bons e maus pagadores) e o AUC (área abaixo da curva) com curva ROC.
 
-```{r echo=F, message = F, warning=F, results='asis',eval = T}
+```{r echo=F, message = F, warning=F, results='asis',eval = T,fig.cap = 'Performance modelo'}
 
 predito_fit2_restr <- predict(fit2, newdata = teste,type = "response")
 
@@ -358,10 +360,13 @@ ks_graf <- ggplot(data = tabela_ks,aes(x = range, group = 1)) +
   labs(title = "Gráfico do KS - 55%") +
   theme_bw()
 
-ks_graf + roccurve
+plot(ks_graf + roccurve)
 
 
 ```
+
+
+
 
 Esse resultado de KS de 55%, apesar de ser muito bom, não é visto com frequência no mundo de modalgem de crédito, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou muito bem ajustado.
 

@@ -2,17 +2,17 @@
 
 # Data Sciente e Credit Scoring
 
-Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre isso, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre esse tema e no final fornece alguns bancos de dados e um "problema" que pode ser utilizado para colocar em prática o que é aprendido com a leitura. Aproveitei essa oportunidade e usei o problema passado para desenvolver um modelo e uma política de crédito que solucione o caso específico.
+Como grande entusiasta de modelos estatísticos e de crédito, busco sempre reter mais conhecimento sobre a área, nas últimas semanas venho lendo o livro Credit Scoring do Abharam Laredo. Nele o autor passa toda sua experiência sobre o tema e no final fornece alguns bancos de dados e um "problema" que pode ser utilizado para colocar em prática tudo o que é ensinado durante a leitura. Aproveitei essa oportunidade e usei o problema proposto para desenvolver um modelo e uma política de crédito que solucione o caso em questão.
 
 Atividade proposta:
 
-"Livraria Dorela é uma cadeia de livrarias que tem quiosques nos principais supermercados das grandes capitais brasileiras. A Dorela passou a fazer o financiamento de livros, de acordo com um score definido de forma subjetiva, a taxa de rejeição era de 30% e a taxa aplicada era muito baixa, visto isso, os resultados não eram satisfatórios.
+"Livraria Dorela é uma cadeia de livrarias que tem quiosques nos principais supermercados das grandes capitais brasileiras. A Dorela passou a fazer o financiamento de livros de acordo com um score definido de forma subjetiva, a taxa de rejeição era de 30% e a taxa aplicada era muito baixa, visto isso, os resultados não eram satisfatórios.
 
-O novo diretor de crédito da Dorela, que havia atuado como gestor de credito de uma grande cadeira verejista de moda e tinha experiência no uso de modelos estatísticos decidiu desenvolver um modelo para esse caso.
+O novo diretor de crédito da Dorela, que havia atuado como gestor de credito de uma grande cadeira verejista de moda e tinha experiência no uso de modelos estatísticos, decidiu desenvolver um modelo para esse caso.
 
 Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi realizado no período de julho de 2007 a junho de 2008, ele considerou a performance do cliente nos 6 meses seguintes, e classificou como mau cliente aquele que teve qualquer atraso acima de 30 dias, caso contrário era classificado com bom cliente."
 
-Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo e política que atenda a necessidade da livraria Dorela.
+Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo de crédito e política que atenda a necessidade da livraria Dorela.
 
 ```{r, eval=T, echo = F, warning=F, message = F}
 
@@ -54,7 +54,7 @@ glimpse(data)
 
 ```
 
-Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e aplicar o glimpse para entender as variáveis.
+Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e aplicar a função "glimpse" para entender as variáveis do banco de dados.
 
 Entre as variáveis, temos:
 
@@ -71,9 +71,9 @@ Entre as variáveis, temos:
 - CATEG: comprou dois livros ou mais;
 - STATUS: variável resposta, bom ou mau cliente.
 
-Com isso já é possível mapear a classe de cada variável, se é numérica, string ou fator, essa diferença entre as classes pode interferir na análise descritiva e na modelagem.
+Com isso já é possível mapear a classe de cada variável, se é numérica, string ou fator. Essa diferença entre as classes das varáveis pode interferir na análise descritiva e na modelagem.
 
-Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes ou NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados eu vou pular essa parte.
+Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes (missing), NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados eu vou pular essa parte.
 
 ## Análise Descritiva
 
@@ -87,10 +87,9 @@ prop.table(table(data$STATUS))
 
 ```
 
-Vemos então que de todos os 3000 clientes, 80% são bons e apenas 20% apresentaram atraso maior do que 30 dias.
+Vemos então que de todos os 3.000 clientes, 80% são bons e 20% apresentaram atraso maior do que 30 dias.
 
-Agora vou partir para a análise das variáveis preditoras, começando com a variável númerica idade. 
-
+Agora posso seguir a análise das variáveis preditoras, começando com a variável numérica idade.
 
 ```{r echo=FALSE, message=FALSE,warning=FALSE,fig.cap = 'Gráfico de Idade', fig.keep='all',fig.show='asis'}
 
@@ -120,7 +119,7 @@ graf_barras <- data %>%
 
 ![](C:/Users/gabri/Documents/Projetos/Portfolio/Grafico Idade credit.jpg){width=600px}
 
-É possível notar acima que parece haver pouca diferença de idade entre as classes de bons e maus pagadores, a média de idade dos bons pagadores é 4 anos maior que a dos maus pagadores.
+Nota-se acima que aparenta ter pouca diferença de idade entre as classes de bons e maus pagadores, a média de idade dos bons pagadores é 4 anos maior que a dos maus pagadores.
 
 Para analisar as variáveis categóricas eu criei uma pequena função que cria tabelas com a proporção de bons e maus pagadores em cada uma das classes das variáveis.
 
@@ -196,8 +195,7 @@ kbl(list(tabela_cartao,tabela_instru),align = "c",format = "html") %>%
 
 ```
 
-
-A primeira tabela é da variável FONE, pelo o ano da base de dados era esperado que essa variável apresentasse uma diferença maior na distribuição de bons e maus clientes entre as classes, entretando, vimos que a proporção de clientes bons e maus é semelhante, ficando próximo dos 80% de bons.
+Como a base de dados é de uma época em que telefones fixos eram mais utilizados, era esperado que a variável FONE apresentasse uma diferença maior na distribuição de bons e maus clientes entre as classes, entretando, vimos que a proporção de clientes bons e maus é semelhante, ficando próximo dos 80% de bons pagadores.
 
 Já na tabela da variável UNIFED é possível notar que os clientes do RJ apresentam uma taxa menor de maus clientes, podendo ser um fator importante para a variável.
 
@@ -215,11 +213,11 @@ kbl(list(tabela_ficcao,tabela_nficcao),align = "c",format = "html") %>%
 
 ```
 
-A variável RESTR, como esperado, ela segmenta bem a base de clientes, dentre os que apresentam restritivos, 49% são maus clientes, e entre os que não tem restritivos 84% são bons clientes.
+A variável RESTR, como esperado, segmenta bem a base de clientes, dentre os que apresentam restritivos, 49% são maus clientes e entre os que não tem restritivos, 84% são bons clientes.
 
 Na variável RESID a proporção de bons clientes é maior para os clientes que têm casa própria.
 
-Na variável FICCAO, que fala se o cliente comprou livro de ficção, vemos que entre os que compram este tipo de livro proporção de bons clientes é maior do que entre os que não compraram.
+Na variável FICCAO, que informa se o cliente comprou livro de ficção, vemos que entre os que compram este tipo de livro a proporção de bons clientes é maior do que entre os que não compraram.
 
 Já na variável de NAOFICCAO não vemos uma diferença entre os níveis dela.
 
@@ -229,7 +227,8 @@ kbl(list(tabela_categ,tabela_autoajuda),align = "c", format = "html") %>%
   kable_paper("hover", full_width = F)
 
 ```
-A variável CATEG mostra que entre aqueles que compram 2 livros ou mais a inadimplência é menor.
+
+A variável CATEG mostra que entre aqueles que compram 2 livros ou mais, a inadimplência é menor.
 
 Já a variável que aponta aqueles clientes que compraram livro de auto ajuda o percentual de maus pagadores é, aproximadamente, 4x maior do que aqueles que não compraram livros de auto ajuda.
 
@@ -237,7 +236,7 @@ Já a variável que aponta aqueles clientes que compraram livro de auto ajuda o 
 
 Para fazer a criação do modelo farei a divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.
 
-Essa divisão é feita para avaliarmos a performance do modelos em uma base que não seja utilizada para o ajuste do modelo.
+Fazendo isso podemos avaliarmos a performance do modelos em uma base que não seja utilizada para o ajuste do modelo.
 
 ```{r message = F,warning = FALSE}
 
@@ -369,14 +368,13 @@ ks_graf <- ggplot(data = tabela_ks,aes(x = range, group = 1)) +
 
 ![](C:/Users/gabri/Documents/Projetos/Portfolio/Grafico performance modelo.jpg){width=600px}
 
-
-Esse resultado de KS de 55%, apesar de ser muito bom, não é visto com frequência no mundo de modalgem de crédito, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou muito bem ajustado.
+O KS resultante de 55%, apesar de ser muito bom, não é visto com frequência no mundo de modelagem de crédito, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou bem ajustado.
 
 ## Criação de política
 
 Com o modelo ajustado e performance verificada é importante ver como esse modelo irá se comportar dentro de uma política de crédito.
 
-Como o objetivo da livraria é dar crédito sendo justo e não focando exclusivamente no lucro, não vou colocar restrição na política de crédito para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfi. Para controlar possíveis perdas vou utilizar limite a ser financiado variavel de acordo com cada perfil e com uma taxa que acompanha o risco do cliente.
+Como o objetivo da livraria é dar crédito sendo justo e não focando exclusivamente no lucro, não vou colocar impedimentos na política de crédito para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfis. Para controlar possíveis perdas vou utilizar limite a ser financiado variavel de acordo com cada perfil e com uma taxa que acompanha o risco do cliente.
 
 Analisando os resultados da escoragem optei por um ponto de corte de 602 e para complementar terei limites personalizados para cada perfil de risco seguindo algumas regras:
 
@@ -400,8 +398,8 @@ Após essa amostragem de clientes eu aplico a política e cada uma das taxas par
 
 ```{r echo=F, message = F, warning=F}
 
-lucro_medio <- c(2646,1919,8297,11578)
-juro_medio <- c(51,48,80,96)
+lucro_medio <- c("R$ 2.646,00","R$ 1.919,00","R$ 8.297,00","R$ 11.578,00")
+juro_medio <- c("R$ 51,00","R$ 48,00","R$ 80,00","R$ 96,00")
 
 final <- data.frame(rbind(lucro_medio,juro_medio))
 

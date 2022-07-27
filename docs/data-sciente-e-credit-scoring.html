@@ -30,7 +30,7 @@ The HTML output format for this example is bookdown::gitbook,</p>" />
 <meta name="author" content="Gabriel Maciel" />
 
 
-<meta name="date" content="2022-07-25" />
+<meta name="date" content="2022-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -146,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Portfólio Gabriel Maciel</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre Mim<span></span></a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Currículo<span></span></a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#quem-sou-eu"><i class="fa fa-check"></i><b>1.1</b> Quem sou eu?<span></span></a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#formação"><i class="fa fa-check"></i><b>1.2</b> Formação<span></span></a></li>
@@ -226,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ AUTOAJUDA &lt;chr&gt; &quot;SIM&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;SIM&quot;, &quot;NAO&quot;, &quot;NAO&quot;, &quot;NAO~
 ## $ CATEG     &lt;dbl&gt; 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, ~
 ## $ STATUS    &lt;chr&gt; &quot;MAU&quot;, &quot;MAU&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;BOM&quot;, &quot;MAU&quot;, &quot;BOM&quot;, &quot;BOM~</code></pre>
-<p>Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e aplicar a função “glimpse” para entender as variáveis do banco de dados.</p>
+<p>Primeiro passo foi abrir a base de dados, selecionar as colunas que são interessantes para o estudo e aplicar a função “glimpse” para entender as variáveis do banco de dados.</p>
 <p>Entre as variáveis, temos:</p>
 <ul>
 <li>Idade: idade do cliente em anos;</li>
@@ -242,20 +242,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>CATEG: comprou dois livros ou mais;</li>
 <li>STATUS: variável resposta, bom ou mau cliente.</li>
 </ul>
-<p>Com isso já é possível mapear a classe de cada variável, se é numérica, string ou fator. Essa diferença entre as classes das varáveis pode interferir na análise descritiva e na modelagem.</p>
-<p>Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes (missing), NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados eu vou pular essa parte.</p>
+<p>Com isso é possível mapear se aclasse de cada variável é numérica, string ou fator. Essa diferença entre as classes das varáveis pode interferir na análise descritiva e na modelagem.</p>
+<p>Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes (missing), NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados não foi dado tanto foco para essa.</p>
 </div>
 <div id="análise-descritiva" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Análise Descritiva<a href="data-sciente-e-credit-scoring.html#análise-descritiva" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual é a proporção dessa variável, nesse caso, de bons e maus clientes.</p>
+<p>Ao trabalhar com uma base de dados de variável resposta binária é importante ver qual é a proporção dessa variável, nesse caso, de bons e maus clientes.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-sciente-e-credit-scoring.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Status</span></span>
 <span id="cb3-2"><a href="data-sciente-e-credit-scoring.html#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="data-sciente-e-credit-scoring.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data<span class="sc">$</span>STATUS))</span></code></pre></div>
 <pre><code>## 
 ## BOM MAU 
 ## 0.8 0.2</code></pre>
-<p>Vemos então que de todos os 3.000 clientes, 80% são bons e 20% apresentaram atraso maior do que 30 dias.</p>
-<p>Agora posso seguir a análise das variáveis preditoras, começando com a variável numérica idade.</p>
+<p>NOta-se então que de todos os 3.000 clientes, 80% são bons e 20% apresentaram atraso maior do que 30 dias.</p>
+<p>Após esse passo é possível seguir com a análise das variáveis preditoras, começando com a variável numérica idade.</p>
 <pre><code>## # A tibble: 6 x 3
 ##   metrica   Bom     Mau     
 ##   &lt;chr&gt;     &lt;table&gt; &lt;table&gt; 
@@ -268,7 +268,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Grafico%20Idade%20credit.JPG" width="600" /></p>
 <p>Nota-se acima que aparenta ter pouca diferença de idade entre as classes de bons e maus pagadores, a média de idade dos bons pagadores é 4 anos maior que a dos maus pagadores.</p>
 <p>Para analisar as variáveis categóricas eu criei uma pequena função que cria tabelas com a proporção de bons e maus pagadores em cada uma das classes das variáveis.</p>
-<p>Vou começar analisando as variáveis de UNIFED, FONE, INSTRU e CARTAO.</p>
+<p>Serão analisadas primeiramente as variáveis de UNIFED, FONE, INSTRU e CARTAO.</p>
 <table class="kable_wrapper lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <tbody>
 <tr>
@@ -525,8 +525,8 @@ SUP
 </table>
 <p>Como a base de dados é de uma época em que telefones fixos eram mais utilizados, era esperado que a variável FONE apresentasse uma diferença maior na distribuição de bons e maus clientes entre as classes, entretando, vimos que a proporção de clientes bons e maus é semelhante, ficando próximo dos 80% de bons pagadores.</p>
 <p>Já na tabela da variável UNIFED é possível notar que os clientes do RJ apresentam uma taxa menor de maus clientes, podendo ser um fator importante para a variável.</p>
-<p>Na tabela de CARTAO, aqueles que previamente já tinham um cartão apresentaram uma taxa menor de inadimplência e os clientes sem cartão e sem informação (MV) apresentaram uma distribuição semelhante de maus clientes, não farei nenhuma junção de classe considerando MV como um fator.</p>
-<p>Na variável INSTRU, aqueles que têm nível PRIM E SEC mostraram uma distribuição de bons e maus clientes diferente das classes SUP e de MV, que tiveram uma distribuição semelhante, nesse caso também não vou fazer nenhuma junção de níveis, mantendo o MV.</p>
+<p>Na tabela de CARTAO, aqueles que previamente já tinham um cartão apresentaram uma taxa menor de inadimplência e os clientes sem cartão e sem informação (MV) apresentaram uma distribuição semelhante de maus clientes, não foi nenhuma junção de classe considerando MV como um fator.</p>
+<p>Na variável INSTRU, aqueles que têm nível PRIM E SEC mostraram uma distribuição de bons e maus clientes diferente das classes SUP e de MV, que tiveram uma distribuição semelhante, nesse caso também não foi feito junção de níveis, mantendo o MV.</p>
 <table class="kable_wrapper lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <tbody>
 <tr>
@@ -854,8 +854,8 @@ SIM
 </div>
 <div id="modelagem" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Modelagem<a href="data-sciente-e-credit-scoring.html#modelagem" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Para fazer a criação do modelo farei a divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.</p>
-<p>Fazendo isso podemos avaliarmos a performance do modelos em uma base que não seja utilizada para o ajuste do modelo.</p>
+<p>Para fazer a criação do modelo é feito uma divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.</p>
+<p>Fazendo isso pode-se avaliar a performance do modelos em uma base que não seja utilizada para o ajuste do modelo.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-sciente-e-credit-scoring.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
 <span id="cb6-2"><a href="data-sciente-e-credit-scoring.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb6-3"><a href="data-sciente-e-credit-scoring.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
@@ -1153,7 +1153,7 @@ CATEG
 </tr>
 </tbody>
 </table>
-<p>No resultado do modelo vemos que algumas variáveis não foram significativas, visto isso, vou fazer uma nova modelagem sem essas variáveis.</p>
+<p>No resultado do modelo há algumas variáveis que não foram significativas, pois o resultado do P-Valor está abaixo de 0,05 (nível de significância), visto isso, elas serão retiradas e uma nova modelagem sem essas variáveis será feita.</p>
 <table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1380,103 +1380,113 @@ CATEG
 </tr>
 </tbody>
 </table>
-<p>Agora vejo que todas as variáveis são influentes. Posso prosseguir a análise fazendo a escoragem e analisando a performance do modelo feito na base de teste. Para avaliar o modelo vou utilizar o KS (maior diferença entre a frquência acumulada de bons e maus pagadores) e o AUC (área abaixo da curva) com curva ROC.</p>
+<p>Agora todas as variáveis foram influentes, então é possível prosseguir a análise fazendo a escoragem e analisando a performance do modelo feito na base de teste. Para avaliar o modelo foi utilizado o KS (maior diferença entre a frquência acumulada de bons e maus pagadores) e o AUC (área abaixo da curva) com curva ROC.</p>
 <p><img src="Grafico%20performance%20modelo.JPG" width="600" /></p>
-<p>O KS resultante de 55%, apesar de ser muito bom, não é visto com frequência no mundo de modelagem de crédito, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou bem ajustado.</p>
+<p>O KS resultante de 55%, apesar de ser muito bom, não é visto com frequência em uma modelagem de crédito real, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou bem ajustado.</p>
 </div>
 <div id="criação-de-política" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Criação de política<a href="data-sciente-e-credit-scoring.html#criação-de-política" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Com o modelo ajustado e performance verificada é importante ver como esse modelo irá se comportar dentro de uma política de crédito.</p>
-<p>Como o objetivo da livraria é dar crédito sendo justo e não focando exclusivamente no lucro, não vou colocar impedimentos na política de crédito para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfis. Para controlar possíveis perdas vou utilizar limite a ser financiado variavel de acordo com cada perfil e com uma taxa que acompanha o risco do cliente.</p>
-<p>Analisando os resultados da escoragem optei por um ponto de corte de 602 e para complementar terei limites personalizados para cada perfil de risco seguindo algumas regras:</p>
+<p>Como o objetivo da livraria é dar crédito sendo justa e não focando exclusivamente no lucro, não haverá colocar impedimentos na política de crédito para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfis. Para controlar possíveis perdas, o e as taxas aplicadas irão variar de acordo com cada perfil, as taxas utilizadas são 2,5%, 5% e 7,5%.</p>
+<p>Serão financiados compras de livros que fiquem na faixa de 100 à 1000 reais com planos que variam de 2 a 6 vezes, aplicando um limite que dependerá do tipo de livro comprado e da presença de restritivos ou não. Abaixo há a regra que será aplicada independente do ponto de corte a ser escolhido:</p>
 <ul>
-<li>Limite total para clientes com score acima de 807;</li>
-<li>Limite máximo de 700 reais para clientes com score de 675 a 807;</li>
-<li>Limite máximo de 600 reais para clientes com score de 602 a 674;</li>
 <li>Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda;</li>
 <li>Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo;</li>
 <li>Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos;</li>
 </ul>
-<p>Três tipos de taxa serão aplicadas em cima dessa política:</p>
+<p>Para escolher o ponto de corte ideal para essa operação uma simulação será feita com diferentes limiares de corte. Em cada simulação uma amostra da base original será sorteada aleatoriamente contendo bons e maus clientes. Em seguida é feita uma atribuição de valores de compra e plano escolhidos a partir daqueles que serão utilizados na operação. Ao final de cada simulação será registrado a inadimplência, produção e aprovação. Com esses KPI’s (Key Performance Indicators) será possível escolher o valor de score que maximiza a produção da livraria com uma taxa de aprovação que seja considerada boa e uma baixa inadimplência.</p>
+<p>Os pontos de corte que serão testados são: 516, 602, 644 e 734. Esses limiares em específico foram escolhidos pois acima deles a uma mudança na taxa de maus clientes.</p>
 <ul>
-<li>Taxa 1: taxa fixa de de 10% em cima do valor da compra;</li>
-<li>Taxa 2: taxa variando entre 5%, 10% e 15% no valor da compra de acordo com o perfil do cliente;</li>
-<li>Taxa 3: taxa fixa de 4% ao mês;</li>
-<li>Taxa 4: taxa variando entre 2,5%, 5% e 7,5% ao mês de acordo com o perfil do cliente;</li>
+<li>Acima de 516 pontos não há uma taxa de maus clientes por range de score acima de 10%;</li>
+<li>Acima de 602 pontos não há uma taxa de maus clientes por range de score acima de 5,5%;</li>
+<li>Acima de 644 pontos não há uma taxa de maus clientes por range de score acima de 4%%;</li>
+<li>Acima de 734 pontos não há uma taxa de maus clientes por range de score acima de 1,5%%;</li>
 </ul>
-<p>Para verificar qual é a melhor forma de taxar o cliente vou fazer uma simulação sorteando uma amostra aleatória da base de dados original, contendo bons e maus clientes, e atribuindo valores de compra que podem variar de 100 a 1000 reais e parcelas que vão de 2 a 6 vezes.</p>
-<p>Após essa amostragem de clientes eu aplico a política e cada uma das taxas para calcular o resultado final. Esse processo eu repito 100 vezes e no final pego a média do lucro total e a média de juros pago por cliente.</p>
 <table class=" lightable-paper lightable-hover" style="font-family: &quot;Arial Narrow&quot;, arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:center;">
-Taxa 1
+Corte 516
 </th>
 <th style="text-align:center;">
-Taxa 2
+Corte 602
 </th>
 <th style="text-align:center;">
-Taxa 3
+Corte 644
 </th>
 <th style="text-align:center;">
-Taxa 4
+Corte 734
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-lucro_medio
+produção_media
 </td>
 <td style="text-align:center;">
-R$ 2.646,00
+R$ 128.494,20
 </td>
 <td style="text-align:center;">
-R$ 1.919,00
+R$ 108.390,00
 </td>
 <td style="text-align:center;">
-R$ 8.297,00
+R$ 94.246,07
 </td>
 <td style="text-align:center;">
-R$ 11.578,00
+R$ 55.679,61
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-juro_medio
+aprovação_media
 </td>
 <td style="text-align:center;">
-R$ 51,00
+85,07%
 </td>
 <td style="text-align:center;">
-R$ 48,00
+69,4%
 </td>
 <td style="text-align:center;">
-R$ 80,00
+59,84%
 </td>
 <td style="text-align:center;">
-R$ 96,00
+34,55%
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+inadimplencia_media
+</td>
+<td style="text-align:center;">
+10,15%
+</td>
+<td style="text-align:center;">
+4,86%
+</td>
+<td style="text-align:center;">
+3,05%
+</td>
+<td style="text-align:center;">
+0,66%
 </td>
 </tr>
 </tbody>
 </table>
-<p>A forma de aplicação de taxa que parece ser mais interessante para usar com a política feita é a taxa 4, que aplica taxas de 2,5% até 7,5% ao mês dependendo do perfil do cliente.</p>
-<p>Esse tipo de taxa apresentou a melhor relação entre juros pagos e lucro total. Além disso, premia o melhor cliente com uma taxa menor, fazendo assim ele pagar menos para fazer a compra que deseja. Dessa forma a livraria consegue manter o objetivo de trabalhar com financiamentos justos e para o maior público possível, obtendo um lucro considerável por mês.</p>
+<p>Analisando os resultados da escoragem o ponto de corte escolhido foi o de 602. O ponto de score 516, apesar de ter a maior podução, resulta em 10% de inadimplência. Já o ponto de score de 734, que tem a menor taxa de inadimplência, resulta em uma produção baixa quando comparada com os outros pontos.</p>
+<p>Visando alta aprovação, baixa inadimplência e uma produção com volume, será utilizado o ponto de corte de 602 pontos.</p>
 </div>
 <div id="conclusão" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Conclusão<a href="data-sciente-e-credit-scoring.html#conclusão" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Ao final desse estudo temos um modelo que apresentou uma boa performance, ou seja, consegue dividir bem os clientes que são bons e maus pagadores. Junto desse modelo conseguimos chegar em uma política de crédito interessante, que varia a taxa e o limite aplicado para cada cliente de acordo com perfil de risco, mantém a taxa de reprovação de 30% e fornece um bom lucro para a livraria.</p>
+<p>O modelo logístico aplicado aos dados apresentados conseguiu uma boa performance, ou seja, consegue dividir bem os clientes que são bons e maus pagadores. Com ajuda do modelo e um conhecimento prévio da operação e de crédito foi possível chegar em uma política de crédito interessante, que varia a taxa e o limite aplicado para cada cliente de acordo com perfil de risco, mantendo a taxa de aprovação alta e uma baixa inadimplência.</p>
 <p>A política final ficou da seguinte forma:</p>
 <ul>
-<li>Limite total para clientes com score acima de 807;</li>
-<li>Limite máximo de 700 reais para clientes com score de 675 a 807;</li>
-<li>Limite máximo de 600 reais para clientes com score de 602 a 674;</li>
-<li>Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda;</li>
-<li>Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo;</li>
-<li>Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos;</li>
-<li>Taxa variando entre 2,5%, 5% e 7,5% de acordo com o perfil do cliente.</li>
+<li>Limite total para clientes com score acima de 602 e taxa de 2,5%;</li>
+<li>Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda e taxa de 5%;</li>
+<li>Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo e taxa de 7,5%;</li>
+<li>Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos e taxa de 7,5%;</li>
 </ul>
 </div>
 <div id="referências" class="section level2 hasAnchor" number="2.6">

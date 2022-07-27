@@ -54,7 +54,7 @@ glimpse(data)
 
 ```
 
-Primeiro passo foi abrir a base de dados, selecionar as colunas que são do meu interesse e aplicar a função "glimpse" para entender as variáveis do banco de dados.
+Primeiro passo foi abrir a base de dados, selecionar as colunas que são interessantes para o estudo e aplicar a função "glimpse" para entender as variáveis do banco de dados.
 
 Entre as variáveis, temos:
 
@@ -71,13 +71,13 @@ Entre as variáveis, temos:
 - CATEG: comprou dois livros ou mais;
 - STATUS: variável resposta, bom ou mau cliente.
 
-Com isso já é possível mapear a classe de cada variável, se é numérica, string ou fator. Essa diferença entre as classes das varáveis pode interferir na análise descritiva e na modelagem.
+Com isso é possível mapear se aclasse de cada variável é numérica, string ou fator. Essa diferença entre as classes das varáveis pode interferir na análise descritiva e na modelagem.
 
-Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes (missing), NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados eu vou pular essa parte.
+Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes (missing), NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados não foi dado tanto foco para essa.
 
 ## Análise Descritiva
 
-Como estou trabalhando com uma base de dado de variável resposta binária é importante ver qual é a proporção dessa variável, nesse caso, de bons e maus clientes.
+Ao trabalhar com uma base de dados de variável resposta binária é importante ver qual é a proporção dessa variável, nesse caso, de bons e maus clientes.
 
 ```{r}
 
@@ -87,9 +87,9 @@ prop.table(table(data$STATUS))
 
 ```
 
-Vemos então que de todos os 3.000 clientes, 80% são bons e 20% apresentaram atraso maior do que 30 dias.
+NOta-se então que de todos os 3.000 clientes, 80% são bons e 20% apresentaram atraso maior do que 30 dias.
 
-Agora posso seguir a análise das variáveis preditoras, começando com a variável numérica idade.
+Após esse passo é possível seguir com a análise das variáveis preditoras, começando com a variável numérica idade.
 
 ```{r echo=FALSE, message=FALSE,warning=FALSE,fig.cap = 'Gráfico de Idade', fig.keep='all',fig.show='asis'}
 
@@ -159,7 +159,7 @@ freq.tab <- function(data,coluna){
 
 ```
 
-Vou começar analisando as variáveis de UNIFED, FONE, INSTRU e CARTAO.
+Serão analisadas primeiramente as variáveis de UNIFED, FONE, INSTRU e CARTAO.
 
 ```{r warning=F, message = F, echo = FALSE}
 # UNIFED
@@ -199,9 +199,9 @@ Como a base de dados é de uma época em que telefones fixos eram mais utilizado
 
 Já na tabela da variável UNIFED é possível notar que os clientes do RJ apresentam uma taxa menor de maus clientes, podendo ser um fator importante para a variável.
 
-Na tabela de CARTAO, aqueles que previamente já tinham um cartão apresentaram uma taxa menor de inadimplência e os clientes sem cartão e sem informação (MV) apresentaram uma distribuição semelhante de maus clientes, não farei nenhuma junção de classe considerando MV como um fator.
+Na tabela de CARTAO, aqueles que previamente já tinham um cartão apresentaram uma taxa menor de inadimplência e os clientes sem cartão e sem informação (MV) apresentaram uma distribuição semelhante de maus clientes, não foi nenhuma junção de classe considerando MV como um fator.
 
-Na variável INSTRU, aqueles que têm nível PRIM E SEC mostraram uma distribuição de bons e maus clientes diferente das classes SUP e de MV, que tiveram uma distribuição semelhante, nesse caso também não vou fazer nenhuma junção de níveis, mantendo o MV.
+Na variável INSTRU, aqueles que têm nível PRIM E SEC mostraram uma distribuição de bons e maus clientes diferente das classes SUP e de MV, que tiveram uma distribuição semelhante, nesse caso também não foi feito junção de níveis, mantendo o MV.
 
 ```{r warning=F, message = F, echo=FALSE}
 
@@ -234,9 +234,9 @@ Já a variável que aponta aqueles clientes que compraram livro de auto ajuda o 
 
 ## Modelagem
 
-Para fazer a criação do modelo farei a divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.
+Para fazer a criação do modelo é feito uma divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.
 
-Fazendo isso podemos avaliarmos a performance do modelos em uma base que não seja utilizada para o ajuste do modelo.
+Fazendo isso pode-se avaliar a performance do modelos em uma base que não seja utilizada para o ajuste do modelo.
 
 ```{r message = F,warning = FALSE}
 
@@ -263,7 +263,7 @@ kbl(resultado$coefficients,align = "c", format = "html") %>%
 
 ```
 
-No resultado do modelo vemos que algumas variáveis não foram significativas, visto isso, vou fazer uma nova modelagem sem essas variáveis.
+No resultado do modelo há algumas variáveis que não foram significativas, pois o resultado do P-Valor está abaixo de 0,05 (nível de significância), visto isso, elas serão retiradas e uma nova modelagem sem essas variáveis será feita.
 
 ```{r echo=F, message = F, warning=F}
 
@@ -276,7 +276,7 @@ kbl(resultado$coefficients,align = "c", format = "html") %>%
 
 ```
 
-Agora vejo que todas as variáveis são influentes. Posso prosseguir a análise fazendo a escoragem e analisando a performance do modelo feito na base de teste. Para avaliar o modelo vou utilizar o KS (maior diferença entre a frquência acumulada de bons e maus pagadores) e o AUC (área abaixo da curva) com curva ROC.
+Agora todas as variáveis foram influentes, então é possível prosseguir a análise fazendo a escoragem e analisando a performance do modelo feito na base de teste. Para avaliar o modelo foi utilizado o KS (maior diferença entre a frquência acumulada de bons e maus pagadores) e o AUC (área abaixo da curva) com curva ROC.
 
 ```{r echo=F, message = F, warning=F, results='asis',eval = T,fig.cap = 'Performance modelo'}
 
@@ -318,7 +318,7 @@ data_aux <- data_aux %>% arrange(score)
 
 limiares <- c()
 
-for(i in c(seq(300,3000,300))){
+for(i in c(seq(150,3000,150))){
   
   limiares <- c(limiares,data_aux$score[i])
   
@@ -349,7 +349,8 @@ linha1 <- data.frame(range = 0, Mau = 0,Bom = 0,n = 0,
                      acumulado_mau = 0,acumulado_bom = 0, KS = "0%")
 
 tabela_ks <- data.frame(rbind(linha1,tabela_ks))
-tabela_ks$range <- factor(tabela_ks$range,levels = c("0","477","555","602","644","674", "714","755","807","861","1000"))
+tabela_ks$range <- factor(tabela_ks$range,levels = as.character(c(0,limiares)))
+
 tabela_ks$range <- as.numeric(as.character(tabela_ks$range))
 
 #dev.off()
@@ -368,65 +369,59 @@ ks_graf <- ggplot(data = tabela_ks,aes(x = range, group = 1)) +
 
 ![](C:/Users/gabri/Documents/Projetos/Portfolio/Grafico performance modelo.jpg){width=600px}
 
-O KS resultante de 55%, apesar de ser muito bom, não é visto com frequência no mundo de modelagem de crédito, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou bem ajustado.
+O KS resultante de 55%, apesar de ser muito bom, não é visto com frequência em uma modelagem de crédito real, esse resultado alinhado com um AUC de 0,86 mostra que o modelo ficou bem ajustado.
 
 ## Criação de política
 
 Com o modelo ajustado e performance verificada é importante ver como esse modelo irá se comportar dentro de uma política de crédito.
 
-Como o objetivo da livraria é dar crédito sendo justo e não focando exclusivamente no lucro, não vou colocar impedimentos na política de crédito para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfis. Para controlar possíveis perdas vou utilizar limite a ser financiado variavel de acordo com cada perfil e com uma taxa que acompanha o risco do cliente.
+Como o objetivo da livraria é dar crédito sendo justa e não focando exclusivamente no lucro, não haverá colocar impedimentos na política de crédito para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfis. Para controlar possíveis perdas, o  e as taxas aplicadas irão variar de acordo com cada perfil, as taxas utilizadas são 2,5%, 5% e 7,5%.
 
-Analisando os resultados da escoragem optei por um ponto de corte de 602 e para complementar terei limites personalizados para cada perfil de risco seguindo algumas regras:
+Serão financiados compras de livros que fiquem na faixa de 100 à 1000 reais com planos que variam de 2 a 6 vezes, aplicando um limite que dependerá do tipo de livro comprado e da presença de restritivos ou não. Abaixo há a regra que será aplicada independente do ponto de corte a ser escolhido:
 
-  - Limite total para clientes com score acima de 807;
-  - Limite máximo de 700 reais para clientes com score de 675 a 807;
-  - Limite máximo de 600 reais para clientes com score de 602 a 674;
   - Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda;
   - Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo;
   - Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos;
+  
+Para escolher o ponto de corte ideal para essa operação uma simulação será feita com diferentes limiares de corte. Em cada simulação uma amostra da base original será sorteada aleatoriamente contendo bons e maus clientes. Em seguida é feita uma atribuição de valores de compra e plano escolhidos a partir daqueles que serão utilizados na operação. Ao final de cada simulação será registrado a inadimplência, produção e aprovação. Com esses KPI's (Key Performance Indicators) será possível escolher o valor de score que maximiza a produção da livraria com uma taxa de aprovação que seja considerada boa e uma baixa inadimplência.
 
-Três tipos de taxa serão aplicadas em cima dessa política:
+Os pontos de corte que serão testados são: 516, 602, 644 e 734. Esses limiares em específico foram escolhidos pois acima deles a uma mudança na taxa de maus clientes.
 
-  - Taxa 1: taxa fixa de de 10% em cima do valor da compra;
-  - Taxa 2: taxa variando entre 5%, 10% e 15% no valor da compra de acordo com o perfil do cliente;
-  - Taxa 3: taxa fixa de 4% ao mês;
-  - Taxa 4: taxa variando entre 2,5%, 5% e 7,5% ao mês de acordo com o perfil do cliente;
+  - Acima de 516 pontos não há uma taxa de maus clientes por range de score acima de 10%;
+  - Acima de 602 pontos não há uma taxa de maus clientes por range de score acima de 5,5%;
+  - Acima de 644 pontos não há uma taxa de maus clientes por range de score acima de 4%%;
+  - Acima de 734 pontos não há uma taxa de maus clientes por range de score acima de 1,5%%;
 
-Para verificar qual é a melhor forma de taxar o cliente vou fazer uma simulação sorteando uma amostra aleatória da base de dados original, contendo bons e maus clientes, e atribuindo valores de compra que podem variar de 100 a 1000 reais e parcelas que vão de 2 a 6 vezes.
-
-Após essa amostragem de clientes eu aplico a política e cada uma das taxas para calcular o resultado final. Esse processo eu repito 100 vezes e no final pego a média do lucro total e a média de juros pago por cliente.
 
 ```{r echo=F, message = F, warning=F}
 
-lucro_medio <- c("R$ 2.646,00","R$ 1.919,00","R$ 8.297,00","R$ 11.578,00")
-juro_medio <- c("R$ 51,00","R$ 48,00","R$ 80,00","R$ 96,00")
+produção_media <- c("R$ 128.494,20","R$ 108.390,00","R$ 94.246,07","R$ 55.679,61")
+aprovação_media <- c("85,07%","69,4%","59,84%","34,55%")
+inadimplencia_media <- c("10,15%","4,86%","3,05%","0,66%")
 
-final <- data.frame(rbind(lucro_medio,juro_medio))
+final <- data.frame(rbind(produção_media,aprovação_media,inadimplencia_media))
 
-colnames(final) <- c("Taxa 1","Taxa 2","Taxa 3","Taxa 4")
+colnames(final) <- c("Corte 516","Corte 602","Corte 644","Corte 734")
 
 kbl(final,align = "c", format = "html") %>%
   kable_paper("hover", full_width = F)
 
 ```
 
-A forma de aplicação de taxa que parece ser mais interessante para usar com a política feita é a taxa 4, que aplica taxas de 2,5% até 7,5% ao mês dependendo do perfil do cliente. 
+Analisando os resultados da escoragem o ponto de corte escolhido foi o de 602. O ponto de score 516, apesar de ter a maior podução, resulta em 10% de inadimplência. Já o ponto de score de 734, que tem a menor taxa de inadimplência, resulta em uma produção baixa quando comparada com os outros pontos.
 
-Esse tipo de taxa apresentou a melhor relação entre juros pagos e lucro total. Além disso, premia o melhor cliente com uma taxa menor, fazendo assim ele pagar menos para fazer a compra que deseja. Dessa forma a livraria consegue manter o objetivo de trabalhar com financiamentos justos e para o maior público possível, obtendo um lucro considerável por mês.
+Visando alta aprovação, baixa inadimplência e uma produção com volume, será utilizado o ponto de corte de 602 pontos.
 
 ## Conclusão
 
-Ao final desse estudo temos um modelo que apresentou uma boa performance, ou seja, consegue dividir bem os clientes que são bons e maus pagadores. Junto desse modelo conseguimos chegar em uma política de crédito interessante, que varia a taxa e o limite aplicado para cada cliente de acordo com perfil de risco, mantém a taxa de reprovação de 30% e fornece um bom lucro para a livraria.
+O modelo logístico aplicado aos dados apresentados conseguiu uma boa performance, ou seja, consegue dividir bem os clientes que são bons e maus pagadores. Com ajuda do modelo e um conhecimento prévio da operação e de crédito foi possível chegar em uma política de crédito interessante, que varia a taxa e o limite aplicado para cada cliente de acordo com perfil de risco, mantendo a taxa de aprovação alta e uma baixa inadimplência.
 
 A política final ficou da seguinte forma:
 
-  - Limite total para clientes com score acima de 807;
-  - Limite máximo de 700 reais para clientes com score de 675 a 807;
-  - Limite máximo de 600 reais para clientes com score de 602 a 674;
-  - Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda;
-  - Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo;
-  - Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos;
-  - Taxa variando entre 2,5%, 5% e 7,5% de acordo com o perfil do cliente.
+  - Limite total para clientes com score acima de 602 e taxa de 2,5%;
+  - Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda e taxa de 5%;
+  - Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo e taxa de 7,5%;
+  - Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos e taxa de 7,5%;
   
 
 ## Referências

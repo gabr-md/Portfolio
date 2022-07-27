@@ -15,11 +15,11 @@ link-citations: yes
 github-repo: rstudio/bookdown-demo
 ---
 
-# Sobre Mim
+# Currículo
 
 ![](C:/Users/gabri/Documents/Projetos/Portfolio/Gabriel Maciel.jpeg){width=300px}
 
-Olá, bem vindo ao meu portfólio de Ciência de Dados, nele eu vou falar um pouco sobre a minha trajetória na estatística e ciência de dados, mostrar minhas habilidades e experiências profissionais e como ingressei no mercado de crédito.
+Olá, bem vindo ao meu portfólio de Ciência de Dados. Aqui vou falar um pouco sobre a minha trajetória na estatística e ciência de dados, minhas habilidades, experiências profissionais e de crédito.
 
 E-mail: gabrielmacieldias@hotmail.com
 

@@ -71,9 +71,9 @@ Entre as variáveis, temos:
 - CATEG: comprou dois livros ou mais;
 - STATUS: variável resposta, bom ou mau cliente.
 
-Com isso é possível mapear se aclasse de cada variável é numérica, string ou fator. Essa diferença entre as classes das varáveis pode interferir na análise descritiva e na modelagem.
+Com isso é possível mapear se a classe da variável é numérica, string ou fator. Essa diferença entre as classes das varáveis pode interferir na análise descritiva e na modelagem.
 
-Antes de prosseguir para a análise descritiva seria necessário fazer uma análise de dados faltantes (missing), NA e qualquer dado fora do comum, como é dito na descrição da base de dados que não há dados faltantes não mapeados não foi dado tanto foco para essa.
+Antes de prosseguir para a análise descritiva, seria necessário fazer uma análise de dados faltantes (missing) e outliers (anomalias) porém, é dito na descrição da base de dados que não há dados faltantes ou qualquer anomalia.
 
 ## Análise Descritiva
 
@@ -121,7 +121,7 @@ graf_barras <- data %>%
 
 Nota-se acima que aparenta ter pouca diferença de idade entre as classes de bons e maus pagadores, a média de idade dos bons pagadores é 4 anos maior que a dos maus pagadores.
 
-Para analisar as variáveis categóricas eu criei uma pequena função que cria tabelas com a proporção de bons e maus pagadores em cada uma das classes das variáveis.
+Para analisar as variáveis categóricas foi criada uma pequena função que monta tabelas com a proporção de bons e maus pagadores em cada uma das classes das variáveis.
 
 ```{r message=FALSE,warning=FALSE, echo = FALSE}
 
@@ -159,7 +159,7 @@ freq.tab <- function(data,coluna){
 
 ```
 
-Serão analisadas primeiramente as variáveis de UNIFED, FONE, INSTRU e CARTAO.
+Foram analisadas primeiramente as variáveis de UNIFED, FONE, INSTRU e CARTAO.
 
 ```{r warning=F, message = F, echo = FALSE}
 # UNIFED
@@ -195,7 +195,7 @@ kbl(list(tabela_cartao,tabela_instru),align = "c",format = "html") %>%
 
 ```
 
-Como a base de dados é de uma época em que telefones fixos eram mais utilizados, era esperado que a variável FONE apresentasse uma diferença maior na distribuição de bons e maus clientes entre as classes, entretando, vimos que a proporção de clientes bons e maus é semelhante, ficando próximo dos 80% de bons pagadores.
+Como a base de dados é de uma época em que telefones fixos eram mais utilizados, era esperado que a variável FONE apresentasse uma diferença maior na distribuição de bons e maus clientes entre as classes, entretanto, a proporção de clientes bons e maus é semelhante, ficando próximo dos 80% de bons pagadores.
 
 Já na tabela da variável UNIFED é possível notar que os clientes do RJ apresentam uma taxa menor de maus clientes, podendo ser um fator importante para a variável.
 
@@ -234,7 +234,7 @@ Já a variável que aponta aqueles clientes que compraram livro de auto ajuda o 
 
 ## Modelagem
 
-Para fazer a criação do modelo é feito uma divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.
+Para fazer a criação do modelo é necessário fazer uma divisão entre banco treino e teste, tendo o banco treino 70% da base de dados e o teste 30%. Essa divisão é feita mantendo a mesma proporção de maus clientes nos dois bancos.
 
 Fazendo isso pode-se avaliar a performance do modelos em uma base que não seja utilizada para o ajuste do modelo.
 
@@ -263,7 +263,7 @@ kbl(resultado$coefficients,align = "c", format = "html") %>%
 
 ```
 
-No resultado do modelo há algumas variáveis que não foram significativas, pois o resultado do P-Valor está abaixo de 0,05 (nível de significância), visto isso, elas serão retiradas e uma nova modelagem sem essas variáveis será feita.
+No resultado do modelo há algumas variáveis que não foram significativas, pois o resultado do P-Valor está abaixo de 0,05 (nível de significância), visto isso, elas foram retiradas e uma nova modelagem sem essas variáveis foi feita.
 
 ```{r echo=F, message = F, warning=F}
 
@@ -276,7 +276,7 @@ kbl(resultado$coefficients,align = "c", format = "html") %>%
 
 ```
 
-Agora todas as variáveis foram influentes, então é possível prosseguir a análise fazendo a escoragem e analisando a performance do modelo feito na base de teste. Para avaliar o modelo foi utilizado o KS (maior diferença entre a frquência acumulada de bons e maus pagadores) e o AUC (área abaixo da curva) com curva ROC.
+Agora todas as variáveis foram influentes, então é possível prosseguir a análise fazendo a escoragem e analisando a performance do modelo feito na base de teste. Para avaliar o modelo foi utilizado o KS (maior diferença entre a frequência acumulada de bons e maus pagadores) e o AUC (área abaixo da curva) com curva ROC.
 
 ```{r echo=F, message = F, warning=F, results='asis',eval = T,fig.cap = 'Performance modelo'}
 
@@ -375,17 +375,17 @@ O KS resultante de 55%, apesar de ser muito bom, não é visto com frequência e
 
 Com o modelo ajustado e performance verificada é importante ver como esse modelo irá se comportar dentro de uma política de crédito.
 
-Como o objetivo da livraria é dar crédito sendo justa e não focando exclusivamente no lucro, não haverá colocar impedimentos na política de crédito para clientes com restritivo ou que compram livros de autoajuda, apesar da inadimplência maior nesses perfis. Para controlar possíveis perdas, o  e as taxas aplicadas irão variar de acordo com cada perfil, as taxas utilizadas são 2,5%, 5% e 7,5%.
+Como o objetivo da livraria é dar crédito sendo justa e não focando exclusivamente no lucro, não será necessário colocar impedimentos na política de crédito para clientes com restritivo ou que compram livros de autoajuda apesar da inadimplência maior nesses perfis. Para controlar possíveis perdas foram utilizadas taxas de 2,5%, 5% e 7,5% que variam de acotdo com o perfil do cliente.
 
-Serão financiados compras de livros que fiquem na faixa de 100 à 1000 reais com planos que variam de 2 a 6 vezes, aplicando um limite que dependerá do tipo de livro comprado e da presença de restritivos ou não. Abaixo há a regra que será aplicada independente do ponto de corte a ser escolhido:
+Serão financiados compras de livros que fiquem na faixa de 100 à 1000 reais com planos que variam de 2 a 6 vezes, aplicando um limite que dependerá do tipo de livro comprado e da presença de restritivos. Abaixo há a regra que será aplicada independente do ponto de corte a ser escolhido:
 
   - Limite máximo de 500 reais para clientes que apesar do score, compraram livro de autoajuda;
   - Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo;
   - Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos;
   
-Para escolher o ponto de corte ideal para essa operação uma simulação será feita com diferentes limiares de corte. Em cada simulação uma amostra da base original será sorteada aleatoriamente contendo bons e maus clientes. Em seguida é feita uma atribuição de valores de compra e plano escolhidos a partir daqueles que serão utilizados na operação. Ao final de cada simulação será registrado a inadimplência, produção e aprovação. Com esses KPI's (Key Performance Indicators) será possível escolher o valor de score que maximiza a produção da livraria com uma taxa de aprovação que seja considerada boa e uma baixa inadimplência.
+Para escolher o ponto de corte ideal para essa operação uma simulação será feita com diferentes limiares de corte. Em cada simulação uma amostra da base original será sorteada aleatoriamente contendo bons e maus clientes. Em seguida é feita uma atribuição de valores de compra e plano escolhidos a partir daqueles que serão utilizados na operação. Ao final de cada simulação será registrado a inadimplência, produção e aprovação. Com esses KPI's (Key Performance Indicators) será possível escolher o valor de score que maximiza a produção da livraria com uma boa taxa de aprovação e uma baixa inadimplência.
 
-Os pontos de corte que serão testados são: 516, 602, 644 e 734. Esses limiares em específico foram escolhidos pois acima deles a uma mudança na taxa de maus clientes.
+Os pontos de corte que serão testados são: 516, 602, 644 e 734. Esses limiares foram escolhidos pois acima deles a uma mudança na taxa de maus clientes.
 
   - Acima de 516 pontos não há uma taxa de maus clientes por range de score acima de 10%;
   - Acima de 602 pontos não há uma taxa de maus clientes por range de score acima de 5,5%;
@@ -408,13 +408,13 @@ kbl(final,align = "c", format = "html") %>%
 
 ```
 
-Analisando os resultados da escoragem o ponto de corte escolhido foi o de 602. O ponto de score 516, apesar de ter a maior podução, resulta em 10% de inadimplência. Já o ponto de score de 734, que tem a menor taxa de inadimplência, resulta em uma produção baixa quando comparada com os outros pontos.
+Analisando os resultados da escoragem o ponto de corte escolhido foi de 602. O ponto de score 516, apesar de ter a maior podução, resulta em 10% de inadimplência. Já o ponto de score de 734, que tem a menor taxa de inadimplência, resulta em uma produção baixa quando comparada com os outros limiares.
 
 Visando alta aprovação, baixa inadimplência e uma produção com volume, será utilizado o ponto de corte de 602 pontos.
 
 ## Conclusão
 
-O modelo logístico aplicado aos dados apresentados conseguiu uma boa performance, ou seja, consegue dividir bem os clientes que são bons e maus pagadores. Com ajuda do modelo e um conhecimento prévio da operação e de crédito foi possível chegar em uma política de crédito interessante, que varia a taxa e o limite aplicado para cada cliente de acordo com perfil de risco, mantendo a taxa de aprovação alta e uma baixa inadimplência.
+O modelo logístico aplicado aos dados apresentados conseguiu uma boa performance, ou seja, consegue segmentar bem os clientes que são bons e maus pagadores. Com ajuda do modelo e um conhecimento prévio da operação e de crédito, foi possível chegar em uma política de crédito interessante, que varia a taxa e o limite aplicado para cada cliente de acordo com perfil de risco, mantendo a taxa de aprovação alta e uma baixa inadimplência.
 
 A política final ficou da seguinte forma:
 

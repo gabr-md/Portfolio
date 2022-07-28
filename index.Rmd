@@ -23,7 +23,7 @@ Olá, bem vindo ao meu portfólio de Ciência de Dados. Aqui vou falar um pouco 
 
 E-mail: gabrielmacieldias@hotmail.com
 
-LinkedIn: [linkedin.com/in/gabriel-macield/](https://www.linkedin.com/in/gabriel-macield/)
+LinkedIn: [linkedin.com/gabriel-macield/](https://www.linkedin.com/in/gabriel-macield/)
 
 ## Quem sou eu?
 
@@ -43,7 +43,7 @@ Bacharel em Estatística na Universidade Federal de Minas Gerais (UFMG) 2017 - 2
 
 ## Experiência Profissional
 
-Tenho experiência profissional em diferentes áreas, como: saúde, educação e financeira
+Tenho experiência profissional em diferentes áreas, como: saúde, educação e financeira.
 
 ### Hospital Odilon Behrens
 
@@ -61,20 +61,20 @@ Responsável pela elaboração de relatórios com análises descritivas e modelo
 
 Cargo: Estagiário de Crédito – Julho/2020 à Dezembro/2020
 
-Responsável pela conferência de planilhas de classificação de risco e criação de programa em R para automatizar determinadas conferências de dados. Além disso, também faço trabalhos com simulações (em Python e R) de  carteiras de crédito para prever possíveis perdas. Fiz a criação de um programa em R que fazia a leitura e interpretação de PDF´s que verificavam possíveis anomalias, além disso, trabalhei diretamente com análise de fraude.
+Responsável pela conferência de planilhas de classificação de risco e criação de programa em R para automatizar determinadas conferências de dados. Além disso, também fiz trabalhos com simulações (em Python e R) de  carteiras de crédito para prever possíveis perdas. Creiei um código em R para fazer a leitura e interpretação de PDF´s que verificavam possíveis anomalias, além disso, trabalhei diretamente com análise de fraude.
 
 ### Banco BS2
 
 Cargo: Estagiário de Crédito – Janeiro/2021 à Agosto/2021
 
-Responsável pelos atendimentos de ordens de serviço relacionado a dúvidas sobre análise de crédito além verificar  como está o andamento de uma solicitação de crédito dentro do sistema do banco. Além disso, também trabalho na confecção de relatórios Backtest em R em conjunto com R Markdown com base de dados retiradas do SQL Server para verificar como a esteira de crédito está funcionando e se ela está tomando boas decisões de previsão.
+Responsável pelos atendimentos de ordens de serviço relacionado a dúvidas sobre análise de crédito além verificar  como estava o andamento de uma solicitação de crédito dentro do sistema do banco. Trabalhei na confecção de relatórios Backtest juntando R e Rmarkdown com base de dados retiradas do SQL Server para verificar como a esteira de crédito estava funcionando e se ela estava tomando boas decisões de previsão.
 
 ### Banco Semear
 
 Cargo: Assistente de Crédito - Setembro/2021 - Atualmente
 
-Responsável por criação de dashboards para tomada de decisões usando dados de carteira e motor de crédito. Participo de comitês de crédito, reuniões com fornecedores de dados e modelos, bem como, reuniões com lojistas do banco.
-Faço também rateio e pagamento de fornecedores, estudo de base de dados para pré aprovado, sugestões de análises que podem ajudar na resolução de problemas de negócio, como perfil de inadimplência e encontrar oportunidades de crédito.
+Responsável pela criação de dashboards para tomada de decisões usando dados de carteira e motor de crédito. Participo de comitês de crédito, reuniões com fornecedores de dados e modelos, bem como, reuniões com lojistas do banco.
+Faço também rateio de pagamentos, estudo de base de dados para pré aprovado, sugestões de análises que podem ajudar na resolução de problemas de negócio, como perfil de inadimplência e encontrar oportunidades de crédito.
 Todas as análises faço através do software R em conjunto com o Shiny e Excel.
 
 ### Sua Rua

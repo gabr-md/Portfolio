@@ -375,7 +375,7 @@ O KS resultante de 55%, apesar de ser muito bom, não é visto com frequência e
 
 Com o modelo ajustado e performance verificada é importante ver como esse modelo irá se comportar dentro de uma política de crédito.
 
-Como o objetivo da livraria é dar crédito sendo justa e não focando exclusivamente no lucro, não será necessário colocar impedimentos na política de crédito para clientes com restritivo ou que compram livros de autoajuda apesar da inadimplência maior nesses perfis. Para controlar possíveis perdas foram utilizadas taxas de 2,5%, 5% e 7,5% que variam de acotdo com o perfil do cliente.
+Como o objetivo da livraria é dar crédito sendo justa e não focando exclusivamente no lucro, não será necessário colocar impedimentos na política de crédito para clientes com restritivo ou que compram livros de autoajuda apesar da inadimplência maior nesses perfis. Para controlar possíveis perdas foram utilizadas taxas de 2,5%, 5% e 7,5% que variam de acordo com o perfil do cliente.
 
 Serão financiados compras de livros que fiquem na faixa de 100 à 1000 reais com planos que variam de 2 a 6 vezes, aplicando um limite que dependerá do tipo de livro comprado e da presença de restritivos. Abaixo há a regra que será aplicada independente do ponto de corte a ser escolhido:
 

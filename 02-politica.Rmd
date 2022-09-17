@@ -435,6 +435,8 @@ A política final ficou da seguinte forma:
   - Limite máximo de 400 reais para clientes que apesar do score, apresentam restritivo e taxa de 7,5%;
   - Limite máximo de 300 reais para clientes que apesar do score, comparam livros de autoajuda e apresentam restritivos e taxa de 7,5%;
   
+Para ter acesso ao código em R utilizado para fazer esse trabalho acesse o meu [Github](https://github.com/gabr-md/Portfolio) e acessar o arquivo "Politica.R". 
+  
 ## Referências
 
 SICSU, Abraham Laredo. Credit Scoring: Desenvolvimento, Implantação, Acompanhamento. São Paulo: Blucher, 2010

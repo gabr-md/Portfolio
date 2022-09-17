@@ -71,10 +71,13 @@ Responsável pelos atendimentos de ordens de serviço relacionado a dúvidas sob
 
 ### Banco Semear
 
-Cargo: Assistente de Crédito - Setembro/2021 - Atualmente
+Cargo: Assistente de Crédito - Setembro/2021 - Agosto/2022
 
 Responsável pela criação de dashboards para tomada de decisões usando dados de carteira e motor de crédito. Participo de comitês de crédito, reuniões com fornecedores de dados e modelos, bem como, reuniões com lojistas do banco.
-Faço também rateio de pagamentos, estudo de base de dados para pré aprovado, sugestões de análises que podem ajudar na resolução de problemas de negócio, como perfil de inadimplência e encontrar oportunidades de crédito.
+
+Cargo: Especialista de Crédito - Setembro/2022 - Atualmente
+
+Acompanhamento de carteira de crédito, analisando os resultados e evidenciando qualquer movimentação do portfólio. Criação de relatórios de crédito e construção de estudos que visam novas oportunidades na produção e redução de inadimplência. Faço também estudo de base de dados para criação de pré-aprovado.
 Todas as análises faço através do software R em conjunto com o Shiny e Excel.
 
 ### Sua Rua

@@ -6,11 +6,9 @@ Como grande entusiasta de modelos estatísticos e de crédito, busco sempre rete
 
 Atividade proposta:
 
-"Livraria Dorela é uma cadeia de livrarias que tem quiosques nos principais supermercados das grandes capitais brasileiras. A Dorela passou a fazer o financiamento de livros de acordo com um score definido de forma subjetiva, a taxa de rejeição era de 30% e a taxa aplicada era muito baixa, visto isso, os resultados não eram satisfatórios.
+"A Livraria Dorela faz financiamento de livros de acordo com um score definido de forma subjetiva, a taxa de rejeição era de 30% e a taxa aplicada era muito baixa, visto isso, os resultados não eram satisfatórios.
 
-O novo diretor de crédito da Dorela, que havia atuado como gestor de credito de uma grande cadeira verejista de moda e tinha experiência no uso de modelos estatísticos, decidiu desenvolver um modelo para esse caso.
-
-Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi realizado no período de julho de 2007 a junho de 2008, ele considerou a performance do cliente nos 6 meses seguintes, e classificou como mau cliente aquele que teve qualquer atraso acima de 30 dias, caso contrário era classificado com bom cliente."
+O novo diretor de crédito da Dorela decidiu desenvolver um modelo para essa operação. Ele coletou uma amostra aleatória de 3.000 clientes cujo financiamento foi realizado no período de julho de 2007 a junho de 2008, ele considerou a performance do cliente nos 6 meses seguintes, e classificou como mau cliente aquele que teve qualquer atraso acima de 30 dias, caso contrário era classificado com bom cliente."
 
 Com esse banco de dados disponível vou iniciar o estudo e propor ao final um modelo de crédito e política que atenda a necessidade da livraria Dorela.
 
@@ -41,7 +39,9 @@ set.seed(12345)
 
 # Lendo dataset
 
-data <- readxl::read_xls("351.xls")
+#data <- readxl::read_xls("351.xls")
+
+data <- data.table::fread("banco.csv")
 
 # Selecionando as colunas de interesse
 
@@ -73,7 +73,19 @@ Entre as variáveis, temos:
 
 Com isso é possível mapear se a classe da variável é numérica, string ou fator. Essa diferença entre as classes das varáveis pode interferir na análise descritiva e na modelagem.
 
-Antes de prosseguir para a análise descritiva, seria necessário fazer uma análise de dados faltantes (missing) e outliers (anomalias) porém, é dito na descrição da base de dados que não há dados faltantes ou qualquer anomalia.
+Antes de prosseguir para a análise descritiva, seria necessário fazer uma análise de dados faltantes (missing) e outliers (anomalias). Como é dito na descrição da base de dados que não há dados faltantes ou qualquer anomalia, farei apenas uma análise simples e rápida para confirmar essa informação.
+
+```{r}
+
+# NA
+
+table(is.na(data))
+
+# Vazio
+
+table(data == "")
+
+```
 
 ## Análise Descritiva
 
@@ -87,7 +99,7 @@ prop.table(table(data$STATUS))
 
 ```
 
-NOta-se então que de todos os 3.000 clientes, 80% são bons e 20% apresentaram atraso maior do que 30 dias.
+Nota-se então que de todos os 3.000 clientes, 80% são bons e 20% apresentaram atraso maior do que 30 dias.
 
 Após esse passo é possível seguir com a análise das variáveis preditoras, começando com a variável numérica idade.
 
@@ -389,8 +401,8 @@ Os pontos de corte que serão testados são: 516, 602, 644 e 734. Esses limiares
 
   - Acima de 516 pontos não há uma taxa de maus clientes por range de score acima de 10%;
   - Acima de 602 pontos não há uma taxa de maus clientes por range de score acima de 5,5%;
-  - Acima de 644 pontos não há uma taxa de maus clientes por range de score acima de 4%%;
-  - Acima de 734 pontos não há uma taxa de maus clientes por range de score acima de 1,5%%;
+  - Acima de 644 pontos não há uma taxa de maus clientes por range de score acima de 4%;
+  - Acima de 734 pontos não há uma taxa de maus clientes por range de score acima de 1,5%;
 
 
 ```{r echo=F, message = F, warning=F}
